@@ -3,23 +3,23 @@
 namespace Controllers\Seguridad;
 
 use Controllers\PublicController;
-use Dao\Seguridad\Roles as RolesDAO;
+use Dao\Seguridad\Funciones as FuncionesDAO;
 use Views\Renderer;
 
-class Roles extends PublicController
+class Funciones extends PublicController
 {
     private array $viewData;
 
     public function __construct()
     {
         $this->viewData = [
-            "roles" => []
+            "funciones" => []
         ];
     }
 
     public function run(): void
     {
-        $this->viewData["roles"] = RolesDAO::getRol();
-        Renderer::render("seguridad/roles", $this->viewData);
+        $this->viewData["funciones"] = FuncionesDAO::getFunciones();
+        Renderer::render("seguridad/funciones", $this->viewData);
     }
 }

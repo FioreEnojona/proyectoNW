@@ -3,15 +3,15 @@
 namespace Controllers\Seguridad;
 
 use Controllers\PublicController;
-use Dao\Seguridad\Roles as RolesDAO;
+use Dao\Seguridad\Funciones as FuncionesDAO;
 use Utilities\Site;
 use Utilities\Validators;
 use Views\Renderer;
 
-const LIST_URL = "index.php?page=Seguridad-Roles";
-const XSR_KEY = "xsrToken_roles";
+const LIST_URL = "index.php?page=Seguridad-Funciones";
+const XSR_KEY = "xsrToken_funciones";
 
-class Rol extends PublicController
+class Funcion extends PublicController
 {
     private array $viewData;
     private array $modes;
@@ -21,17 +21,18 @@ class Rol extends PublicController
     public function __construct()
     {
         $this->modes = [
-            "INS" => 'Creando nuevo rol',
-            "UPD" => 'Modificando rol %s %s',
-            "DEL" => 'Eliminando rol %s %s',
+            "INS" => 'Creando nueva funcion',
+            "UPD" => 'Modificando funcion %s %s',
+            "DEL" => 'Eliminando funcion %s %s',
             "DSP" => 'Mostrando detalle de %s %s'
         ];
         $this->estados = ["ACT", "INA", "RTR"];
 
         $this->viewData = [
-            "rolescod" => 0,
-            "rolesest" => "",
-            "rolesdsc" => "",
+            "fncod" => "",
+            "fndsc" => "",
+            "fnest" => "",
+            "fntyp" => "",
             "estadoACT" => "",
             "estadoINA" => "",
             "estadoRTR" => "",
@@ -55,7 +56,7 @@ class Rol extends PublicController
         }
 
         $this->prepararVista();
-        Renderer::render("seguridad/rol", $this->viewData);
+        Renderer::render("seguridad/funcion", $this->viewData);
     }
 
     private function capturarModoPantalla()
@@ -71,9 +72,9 @@ class Rol extends PublicController
     private function datosDeDao()
     {
         if ($this->viewData["mode"] != "INS") {
-            if (isset($_GET["rolescod"])) {
-                $this->viewData["rolescod"] = $_GET["rolescod"];
-                $rol = RolesDAO::getRolById($this->viewData["rolescod"]);
+            if (isset($_GET["fncod"])) {
+                $this->viewData["fncod"] = $_GET["fncod"];
+                $rol = FuncionesDAO::getFuncionesById($this->viewData["fncod"]);
                 if (count($rol) > 0) {
                     $this->viewData = array_merge($this->viewData, $rol);
                 } else {
@@ -87,11 +88,14 @@ class Rol extends PublicController
 
     private function datosFormulario()
     {
-        $this->viewData["rolescod"] = $_POST["rolescod"] ?? $this->viewData["rolescod"];
-        $this->viewData["rolesdsc"] = $_POST["rolesdsc"] ?? $this->viewData["rolesdsc"];
-        $this->viewData["rolesest"] = $_POST["rolesest"] ?? $this->viewData["rolesest"];
+        $this->viewData["fncod"] = $_POST["fncod"] ?? $this->viewData["fncod"];
+        $this->viewData["fndsc"] = $_POST["fndsc"] ?? $this->viewData["fndsc"];
+        $this->viewData["fnest"] = $_POST["fnest"] ?? $this->viewData["fnest"];
+        $this->viewData["fntyp"] = $_POST["fntyp"] ?? $this->viewData["fntyp"];
         $this->viewData["xsrToken"] = $_POST["xsrToken"] ?? $this->viewData["xsrToken"];
     }
+
+
 
     private function throwError(string $message)
     {
@@ -100,56 +104,62 @@ class Rol extends PublicController
 
     private function validarDatos()
     {
-        if (Validators::IsEmpty($this->viewData["rolesdsc"])) {
-            $this->viewData["errores"]["rolesdsc"] = "Campo necesario";
+        if (Validators::IsEmpty($this->viewData["fndsc"])) {
+            $this->viewData["errores"]["fndsc"] = "Campo necesario";
         }
 
-        if (!in_array($this->viewData["rolesest"], $this->estados)) {
-            $this->viewData["errores"]["rolesest"] = "El valor del estado no es correcto";
+        if (Validators::IsEmpty($this->viewData["fnest"], $this->estados)) {
+            $this->viewData["errores"]["fnest"] = "Estado invalido";
         }
 
+        if (Validators::IsEmpty($this->viewData["fntyp"])) {
+            $this->viewData["errores"]["fntyp"] = "Campo invalido";
+        }
         $tmpXsrToken = $_SESSION[XSR_KEY] ?? '';
         if ($this->viewData["xsrToken"] !== $tmpXsrToken) {
             error_log("Token inválido.");
             $this->throwError("Solicitud inválida. Intente de nuevo.");
         }
     }
-
     private function procesarDatos()
     {
         switch ($this->viewData["mode"]) {
             case "INS":
                 if (
-                    RolesDAO::nuevoRol(
-                        $this->viewData["rolesdsc"],
-                        $this->viewData["rolesest"]
+                    FuncionesDAO::nuevoFunciones(
+                        $this->viewData["fndsc"],
+                        $this->viewData["fnest"],
+                        $this->viewData["fntyp"]
+
                     ) > 0
                 ) {
-                    Site::redirectToWithMsg(LIST_URL, "Rol agregado exitosamente.");
+                    Site::redirectToWithMsg(LIST_URL, "Funcion agregada exitosamente.");
                 } else {
-                    $this->viewData["errores"]["global"] = ["Error al crear nuevo rol."];
+                    $this->viewData["errores"]["global"] = ["Error al crear nueva funcion."];
                 }
                 break;
             case "UPD":
                 if (
-                    RolesDAO::actualizarRol(
-                        $this->viewData["rolescod"],
-                        $this->viewData["rolesdsc"],
-                        $this->viewData["rolesest"]
+                    FuncionesDAO::actualizarFunciones(
+                        $this->viewData["fncod"],
+                        $this->viewData["fndsc"],
+                        $this->viewData["fnest"],
+                        $this->viewData["fntyp"]
+
                     )
                 ) {
-                    Site::redirectToWithMsg(LIST_URL, "Rol actualizado exitosamente.");
+                    Site::redirectToWithMsg(LIST_URL, "Funcion actualizado exitosamente.");
                 } else {
-                    $this->viewData["errores"]["global"] = ["Error al actualizar el rol."];
+                    $this->viewData["errores"]["global"] = ["Error al actualizar el funcion."];
                 }
                 break;
             case "DEL":
                 if (
-                    RolesDAO::eliminarRol($this->viewData["rolescod"])
+                    FuncionesDAO::eliminarFunciones($this->viewData["fncod"])
                 ) {
-                    Site::redirectToWithMsg(LIST_URL, "Rol eliminado exitosamente.");
+                    Site::redirectToWithMsg(LIST_URL, "Funcion eliminada exitosamente.");
                 } else {
-                    $this->viewData["errores"]["global"] = ["Error al eliminar el rol."];
+                    $this->viewData["errores"]["global"] = ["Error al eliminar el funcion."];
                 }
                 break;
         }
@@ -159,8 +169,8 @@ class Rol extends PublicController
     {
         $this->viewData["modeDsc"] = sprintf(
             $this->modes[$this->viewData["mode"]],
-            $this->viewData["rolesest"],
-            $this->viewData["rolescod"]
+            $this->viewData["fnest"],
+            $this->viewData["fncod"]
         );
 
         if (count($this->viewData["errores"]) > 0) {
@@ -176,7 +186,7 @@ class Rol extends PublicController
             $this->viewData["showAction"] = false;
         }
 
-        $this->viewData["xsrToken"] = hash("sha256", random_int(0, 1000000) . time() . 'rol' . $this->viewData["mode"]);
+        $this->viewData["xsrToken"] = hash("sha256", random_int(0, 1000000) . time() . 'funcion' . $this->viewData["mode"]);
         $_SESSION[XSR_KEY] = $this->viewData["xsrToken"];
     }
 }
