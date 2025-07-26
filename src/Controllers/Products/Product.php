@@ -5,7 +5,6 @@ namespace Controllers\Products;
 use Controllers\PrivateController;
 use Views\Renderer;
 use Dao\Products\Products as ProductsDao;
-use Dao\Products\Categorias as CategoriasDao;
 use Utilities\Site;
 use Utilities\Validators;
 
@@ -28,7 +27,7 @@ class Product extends PrivateController
         "productPrice" => 0,
         "productImgUrl" => "",
         "productStatus" => "ACT",
-        "categoriaId" => 0
+        "categoriaId" => ""
     ];
     private $product_xss_token = "";
 
@@ -79,7 +78,7 @@ class Product extends PrivateController
         }
 
         $errors = [];
-        $this->product_xss_token = $_POST["product_xss_token"] ?? "";
+        $this->product_xss_token = $_POST["token"] ?? "";
         $this->product["productId"] = intval($_POST["productId"] ?? "");
         $this->product["productName"] = strval($_POST["productName"] ?? "");
         $this->product["productDescription"] = strval($_POST["productDescription"] ?? "");
@@ -108,8 +107,9 @@ class Product extends PrivateController
             $errors["productStatus_error"] = "El estado del producto es inválido";
         }
 
-        if ($this->product["categoriaId"] <= 0) {
-            $errors["categoriaId_error"] = "Debe seleccionar una categoría válida.";
+
+        if (!in_array($this->product["categoriaId"], ["1", "2", "3"])) {
+            $errors["categoriaId_error"] = "Debe seleccionar una categoría válida";
         }
 
         if (count($errors) > 0) {
@@ -199,15 +199,23 @@ class Product extends PrivateController
         $this->viewData["showCommitBtn"] = $this->showCommitBtn;
         $this->viewData["readonly"] = $this->readonly;
 
+        // Escapar valores para la vista
+        $this->product["productName"] = htmlspecialchars($this->product["productName"]);
+        $this->product["productDescription"] = htmlspecialchars($this->product["productDescription"]);
+        $this->product["productImgUrl"] = htmlspecialchars($this->product["productImgUrl"]);
+
+        // Manejar estado del producto
         $productStatusKey = "productStatus_" . strtolower($this->product["productStatus"]);
         $this->product[$productStatusKey] = "selected";
 
-        $categorias = CategoriasDao::getCategorias()["categorias"];
-        foreach ($categorias as &$cat) {
-            $cat["isSelected"] = $cat["id"] == $this->product["categoriaId"];
-        }
+        // Manejar selección de categorías
+        $currentCatId = intval($this->product["categoriaId"] ?? 0);
 
-        $this->viewData["categorias"] = $categorias;
+        $this->product["categoriaId_pastel"] = ($currentCatId === 1) ? "selected" : "";
+        $this->product["categoriaId_cheesecake"] = ($currentCatId === 2) ? "selected" : "";
+        $this->product["categoriaId_cupcake"] = ($currentCatId === 3) ? "selected" : "";
+
+
         $this->viewData["product"] = $this->product;
     }
 }

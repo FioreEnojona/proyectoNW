@@ -6,17 +6,7 @@ use Dao\Table;
 
 class Products extends Table
 {
-    public static function getFeaturedProducts()
-    {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus,
-                          c.nombre as categoriaNombre
-                   FROM products p 
-                   INNER JOIN highlights h ON p.productId = h.productId 
-                   INNER JOIN categorias c ON p.categoriaId = c.id
-                   WHERE h.highlightStart <= NOW() AND h.highlightEnd >= NOW()";
-        $params = [];
-        return self::obtenerRegistros($sqlstr, $params);
-    }
+
 
     public static function getNewProducts()
     {
@@ -119,11 +109,16 @@ class Products extends Table
 
     public static function getProductById(int $productId)
     {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus,
-                          c.id as categoriaId, c.nombre as categoriaNombre
-                   FROM products p 
-                   INNER JOIN categorias c ON p.categoriaId = c.id
-                   WHERE p.productId = :productId";
+        $sqlstr = "SELECT 
+                    productId, 
+                    productName, 
+                    productDescription, 
+                    productPrice, 
+                    productImgUrl, 
+                    productStatus,
+                    categoriaId
+                   FROM products 
+                   WHERE productId = :productId";
         $params = ["productId" => $productId];
         return self::obtenerUnRegistro($sqlstr, $params);
     }
@@ -134,19 +129,20 @@ class Products extends Table
         float $productPrice,
         string $productImgUrl,
         string $productStatus,
-        int $categoriaId
-    ) {
-        $sqlstr = "INSERT INTO products (productName, productDescription, productPrice, productImgUrl, productStatus, categoriaId) 
-                   VALUES (:productName, :productDescription, :productPrice, :productImgUrl, :productStatus, :categoriaId)";
-        $params = [
+        string $categoriaId
+    ): int {
+        $sqlstr = "INSERT INTO products 
+                  (productName, productDescription, productPrice, productImgUrl, productStatus, categoriaId) 
+                  VALUES 
+                  (:productName, :productDescription, :productPrice, :productImgUrl, :productStatus, :categoriaId)";
+        return self::executeNonQuery($sqlstr, [
             "productName" => $productName,
             "productDescription" => $productDescription,
             "productPrice" => $productPrice,
             "productImgUrl" => $productImgUrl,
             "productStatus" => $productStatus,
             "categoriaId" => $categoriaId
-        ];
-        return self::executeNonQuery($sqlstr, $params);
+        ]);
     }
 
     public static function updateProduct(
@@ -156,14 +152,17 @@ class Products extends Table
         float $productPrice,
         string $productImgUrl,
         string $productStatus,
-        int $categoriaId
-    ) {
-        $sqlstr = "UPDATE products 
-                   SET productName = :productName, productDescription = :productDescription, 
-                       productPrice = :productPrice, productImgUrl = :productImgUrl, 
-                       productStatus = :productStatus, categoriaId = :categoriaId
-                   WHERE productId = :productId";
-        $params = [
+        string $categoriaId
+    ): int {
+        $sqlstr = "UPDATE products SET 
+                  productName = :productName,
+                  productDescription = :productDescription,
+                  productPrice = :productPrice,
+                  productImgUrl = :productImgUrl,
+                  productStatus = :productStatus,
+                  categoriaId = :categoriaId
+                  WHERE productId = :productId";
+        return self::executeNonQuery($sqlstr, [
             "productId" => $productId,
             "productName" => $productName,
             "productDescription" => $productDescription,
@@ -171,11 +170,10 @@ class Products extends Table
             "productImgUrl" => $productImgUrl,
             "productStatus" => $productStatus,
             "categoriaId" => $categoriaId
-        ];
-        return self::executeNonQuery($sqlstr, $params);
+        ]);
     }
 
-    public static function deleteProduct(int $productId)
+    public static function deleteProduct(int $productId): int
     {
         $sqlstr = "DELETE FROM products WHERE productId = :productId";
         $params = ["productId" => $productId];

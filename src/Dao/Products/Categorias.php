@@ -95,7 +95,15 @@ class Categorias extends Table
             ]
         );
     }
-
+    public static function getActiveCategorias(): array
+    {
+        $sqlstr = "SELECT id as categoriaId, nombre as categoriaNombre 
+               FROM categorias 
+               WHERE estado = 'ACT' 
+               ORDER BY nombre;";
+        $result = self::obtenerRegistros($sqlstr, []);
+        return is_array($result) ? $result : [];
+    }
     public static function actualizarCategoria(int $id, string $nombre, string $estado): int
     {
         $sqlstr = "UPDATE categorias set nombre = :nombre, estado = :estado where id = :id;";

@@ -23,6 +23,21 @@
       {{endif productName_error}}
     </div>
 
+   <div class="row my-2 align-center">
+  <label class="col-12 col-m-3" for="categoriaId">Categoría</label>
+  <select class="col-12 col-m-9" name="categoriaId" id="categoriaId" {{if ~readonly}} disabled {{endif ~readonly}} required>
+    <option value="">-- Seleccione una categoría --</option>
+    <option value="1" {{categoriaId_pastel}}>Pastel</option>
+    <option value="2" {{categoriaId_cheesecake}}>Cheesecake</option>
+    <option value="3" {{categoriaId_cupcake}}>Cupcake</option>
+  </select>
+  {{if categoriaId_error}}
+  <div class="col-12 col-m-9 offset-m-3 error">
+    {{categoriaId_error}}
+  </div>
+  {{endif categoriaId_error}}
+</div>
+
     <div class="row my-2 align-center">
       <label class="col-12 col-m-3" for="productDescription">Descripción</label>
       <textarea class="col-12 col-m-9" {{~readonly}} name="productDescription" id="productDescription" placeholder="Descripción del Producto">{{productDescription}}</textarea>
@@ -60,6 +75,7 @@
         <option value="INA" {{productStatus_ina}}>Inactivo</option>
       </select>
     </div>
+    
   {{endwith product}}
 
     <div class="row my-4 align-center flex-end">
