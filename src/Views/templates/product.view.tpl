@@ -54,25 +54,8 @@
     </div>
 
     <div class="row my-2 align-center">
-      <label class="col-12 col-m-3" for="categoriaNombre">Categoría</label>
-      <input 
-        type="text" 
-        name="categoriaNombre" 
-        id="categoriaNombre" 
-        class="col-12 col-m-9" 
-        placeholder="Ingrese el nombre de la categoría (ej. pastel)" 
-        value="{{product.categoriaNombre}}"
-      />
-      {{if categoriaNombre_error}}
-      <div class="col-12 col-m-9 offset-m-3 error">
-        {{categoriaNombre_error}}
-      </div>
-      {{endif categoriaNombre_error}}
-    </div>
-
-    <div class="row my-2 align-center">
       <label class="col-12 col-m-3" for="productStatus">Estado</label>
-      <select name="productStatus" id="productStatus" class="col-12 col-m-9" {{if ~readonly}} disabled {{endif}}>
+      <select name="productStatus" id="productStatus" class="col-12 col-m-9" {{if ~readonly}} disabled {{endif ~readonly}}>
         <option value="ACT" {{productStatus_act}}>Activo</option>
         <option value="INA" {{productStatus_ina}}>Inactivo</option>
       </select>
@@ -86,8 +69,8 @@
       {{endif showCommitBtn}}
 
       <button class="col-12 col-m-2" type="button" id="btnCancelar">
-        {{if showCommitBtn}} Cancelar {{endif}}
-        {{ifnot showCommitBtn}} Regresar {{endifnot}}
+        {{if showCommitBtn}} Cancelar {{endif showCommitBtn}}
+        {{ifnot showCommitBtn}} Regresar {{endifnot showCommitBtn}}
       </button>
     </div>
   </form>

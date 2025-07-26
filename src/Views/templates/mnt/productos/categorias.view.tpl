@@ -8,10 +8,7 @@
                 <th>Id</th>
                 <th>Categoría</th>
                 <th>Estado</th>
-                <th>
-                    <a href="index.php?page=Mantenimientos-Productos-Categoria&mode=INS&id=">
-                        Nuevo
-                    </a>
+                <th>Acciones</th>
                 </th>
             </tr>
         </thead>
@@ -32,6 +29,10 @@
                     &nbsp;
                     <a href="index.php?page=Mantenimientos-Productos-Categoria&mode=DEL&id={{id}}">
                         Eliminar
+                    </a>
+                    &nbsp;
+                    <a href="index.php?page=Mantenimientos-Productos-Categoria&mode=INS&id={{id}}">
+                        Nuevo
                     </a>
                 </td>
             </tr>

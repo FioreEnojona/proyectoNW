@@ -5,6 +5,7 @@ namespace Controllers\Products;
 use Controllers\PrivateController;
 use Views\Renderer;
 use Dao\Products\Products as ProductsDao;
+use Dao\Products\Categorias as CategoriasDao;
 use Utilities\Site;
 use Utilities\Validators;
 
@@ -201,6 +202,12 @@ class Product extends PrivateController
         $productStatusKey = "productStatus_" . strtolower($this->product["productStatus"]);
         $this->product[$productStatusKey] = "selected";
 
+        $categorias = CategoriasDao::getCategorias()["categorias"];
+        foreach ($categorias as &$cat) {
+            $cat["isSelected"] = $cat["id"] == $this->product["categoriaId"];
+        }
+
+        $this->viewData["categorias"] = $categorias;
         $this->viewData["product"] = $this->product;
     }
 }
