@@ -1,10 +1,6 @@
 {
   "public": [
-     {
-      "id": "Menu_Products",
-      "nav_url": "index.php?page=Products_Products",
-      "nav_label":"<i class=\"fas fa-table\"></i>&nbsp;WW Productos"
-    },
+     
     {
       "id": "Menu_SignIn",
       "nav_url": "index.php?page=Sec_Login",
@@ -17,7 +13,17 @@
     }
   ],
   "private": [
-   
+   {
+      "id": "Menu_Products",
+      "nav_url": "index.php?page=Products_Products",
+      "nav_label":"<i class=\"fas fa-table\"></i>&nbsp;Productos"
+    },
+    {
+  "id": "Menu_Categorias",
+  "nav_url": "index.php?page=Mantenimientos-Productos-Categorias",
+  "nav_label": "<i class=\"fas fa-table\"></i>&nbsp;Categorias"
+}
+,
     {
       "id":"Menu_PaymentCheckout",
       "nav_url": "index.php?page=Checkout_Checkout",

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHP Version 7.2
  *
@@ -9,6 +10,7 @@
  * @version  CVS:1.0.0
  * @link     http://
  */
+
 namespace Controllers;
 
 /**
@@ -20,6 +22,11 @@ namespace Controllers;
  * @license  MIT http://
  * @link     http://
  */
+
+use \Dao\Products\Products as ProductsDao;
+use \Views\Renderer as Renderer;
+use \Utilities\Site as Site;
+
 class Index extends PublicController
 {
     /**
@@ -27,10 +34,11 @@ class Index extends PublicController
      *
      * @return void
      */
-    public function run() :void
+    public function run(): void
     {
-        $viewData = array();
-        \Views\Renderer::render("index", $viewData);
+        Site::addLink("public/css/products.css");
+        $viewData = [];
+        $viewData["allProducts"] = ProductsDao::getProducts("", "ACT", "productName", false, 0, 1000)["products"];
+        Renderer::render("index", $viewData);
     }
 }
-?>

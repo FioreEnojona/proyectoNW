@@ -26,7 +26,8 @@ class Product extends PrivateController
         "productDescription" => "",
         "productPrice" => 0,
         "productImgUrl" => "",
-        "productStatus" => "ACT"
+        "productStatus" => "ACT",
+        "categoriaId" => 0
     ];
     private $product_xss_token = "";
 
@@ -84,6 +85,7 @@ class Product extends PrivateController
         $this->product["productPrice"] = floatval($_POST["productPrice"] ?? "");
         $this->product["productImgUrl"] = strval($_POST["productImgUrl"] ?? "");
         $this->product["productStatus"] = strval($_POST["productStatus"] ?? "");
+        $this->product["categoriaId"] = intval($_POST["categoriaId"] ?? 0);
 
         if (Validators::IsEmpty($this->product["productName"])) {
             $errors["productName_error"] = "El nombre del producto es requerido";
@@ -103,6 +105,10 @@ class Product extends PrivateController
 
         if (!in_array($this->product["productStatus"], ["ACT", "INA"])) {
             $errors["productStatus_error"] = "El estado del producto es inválido";
+        }
+
+        if ($this->product["categoriaId"] <= 0) {
+            $errors["categoriaId_error"] = "Debe seleccionar una categoría válida.";
         }
 
         if (count($errors) > 0) {
@@ -139,7 +145,8 @@ class Product extends PrivateController
             $this->product["productDescription"],
             $this->product["productPrice"],
             $this->product["productImgUrl"],
-            $this->product["productStatus"]
+            $this->product["productStatus"],
+            $this->product["categoriaId"]
         );
         if ($result > 0) {
             Site::redirectToWithMsg(
@@ -157,7 +164,8 @@ class Product extends PrivateController
             $this->product["productDescription"],
             $this->product["productPrice"],
             $this->product["productImgUrl"],
-            $this->product["productStatus"]
+            $this->product["productStatus"],
+            $this->product["categoriaId"]
         );
         if ($result > 0) {
             Site::redirectToWithMsg(

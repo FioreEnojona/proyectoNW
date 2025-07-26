@@ -74,3 +74,5 @@ CREATE TABLE
         `bitusuario` bigint(18) DEFAULT NULL,
         PRIMARY KEY (`bitacoracod`)
     ) ENGINE = InnoDB AUTO_INCREMENT = 10 DEFAULT CHARSET = utf8;
+
+    

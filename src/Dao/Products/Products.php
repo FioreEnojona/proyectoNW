@@ -8,9 +8,11 @@ class Products extends Table
 {
     public static function getFeaturedProducts()
     {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus 
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus,
+                          c.nombre as categoriaNombre
                    FROM products p 
                    INNER JOIN highlights h ON p.productId = h.productId 
+                   INNER JOIN categorias c ON p.categoriaId = c.id
                    WHERE h.highlightStart <= NOW() AND h.highlightEnd >= NOW()";
         $params = [];
         return self::obtenerRegistros($sqlstr, $params);
@@ -18,8 +20,10 @@ class Products extends Table
 
     public static function getNewProducts()
     {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus 
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus,
+                          c.nombre as categoriaNombre
                    FROM products p 
+                   INNER JOIN categorias c ON p.categoriaId = c.id
                    WHERE p.productStatus = 'ACT' 
                    ORDER BY p.productId DESC 
                    LIMIT 3";
@@ -27,27 +31,27 @@ class Products extends Table
         return self::obtenerRegistros($sqlstr, $params);
     }
 
-    public static function getDailyDeals()
-    {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, s.salePrice as productPrice, p.productImgUrl, p.productStatus 
-                   FROM products p 
-                   INNER JOIN sales s ON p.productId = s.productId 
-                   WHERE s.saleStart <= NOW() AND s.saleEnd >= NOW()";
-        $params = [];
-        return self::obtenerRegistros($sqlstr, $params);
-    }
-
-    public static function getProducts(string $partialName = "", string $status = "", string $orderBy = "", bool $orderDescending = false, int $page = 0, int $itemsPerPage = 10)
-    {
+    public static function getProducts(
+        string $partialName = "",
+        string $status = "",
+        string $orderBy = "",
+        bool $orderDescending = false,
+        int $page = 0,
+        int $itemsPerPage = 10,
+        int $categoriaId = 0
+    ) {
         $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus,
+                          c.nombre as categoriaNombre,
                           CASE 
                               WHEN p.productStatus = 'ACT' THEN 'Activo' 
                               WHEN p.productStatus = 'INA' THEN 'Inactivo' 
                               ELSE 'Sin Asignar' 
                           END as productStatusDsc 
-                   FROM products p";
+                   FROM products p
+                   INNER JOIN categorias c ON p.categoriaId = c.id";
 
-        $sqlstrCount = "SELECT COUNT(*) as count FROM products p";
+        $sqlstrCount = "SELECT COUNT(*) as count FROM products p INNER JOIN categorias c ON p.categoriaId = c.id";
+
         $conditions = [];
         $params = [];
 
@@ -63,6 +67,11 @@ class Products extends Table
         if ($status != "") {
             $conditions[] = "p.productStatus = :status";
             $params["status"] = $status;
+        }
+
+        if ($categoriaId > 0) {
+            $conditions[] = "p.categoriaId = :categoriaId";
+            $params["categoriaId"] = $categoriaId;
         }
 
         if (count($conditions) > 0) {
@@ -84,7 +93,6 @@ class Products extends Table
 
         $numeroDeRegistros = self::obtenerUnRegistro($sqlstrCount, $params)["count"];
 
-        // Validar y ajustar paginación
         list($page, $itemsPerPage) = self::sanitizePagination($page, $itemsPerPage, $numeroDeRegistros);
 
         $sqlstr .= " LIMIT " . ($page * $itemsPerPage) . ", " . $itemsPerPage;
@@ -111,8 +119,10 @@ class Products extends Table
 
     public static function getProductById(int $productId)
     {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus 
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus,
+                          c.id as categoriaId, c.nombre as categoriaNombre
                    FROM products p 
+                   INNER JOIN categorias c ON p.categoriaId = c.id
                    WHERE p.productId = :productId";
         $params = ["productId" => $productId];
         return self::obtenerUnRegistro($sqlstr, $params);
@@ -123,16 +133,18 @@ class Products extends Table
         string $productDescription,
         float $productPrice,
         string $productImgUrl,
-        string $productStatus
+        string $productStatus,
+        int $categoriaId
     ) {
-        $sqlstr = "INSERT INTO products (productName, productDescription, productPrice, productImgUrl, productStatus) 
-                   VALUES (:productName, :productDescription, :productPrice, :productImgUrl, :productStatus)";
+        $sqlstr = "INSERT INTO products (productName, productDescription, productPrice, productImgUrl, productStatus, categoriaId) 
+                   VALUES (:productName, :productDescription, :productPrice, :productImgUrl, :productStatus, :categoriaId)";
         $params = [
             "productName" => $productName,
             "productDescription" => $productDescription,
             "productPrice" => $productPrice,
             "productImgUrl" => $productImgUrl,
-            "productStatus" => $productStatus
+            "productStatus" => $productStatus,
+            "categoriaId" => $categoriaId
         ];
         return self::executeNonQuery($sqlstr, $params);
     }
@@ -143,12 +155,13 @@ class Products extends Table
         string $productDescription,
         float $productPrice,
         string $productImgUrl,
-        string $productStatus
+        string $productStatus,
+        int $categoriaId
     ) {
         $sqlstr = "UPDATE products 
                    SET productName = :productName, productDescription = :productDescription, 
                        productPrice = :productPrice, productImgUrl = :productImgUrl, 
-                       productStatus = :productStatus 
+                       productStatus = :productStatus, categoriaId = :categoriaId
                    WHERE productId = :productId";
         $params = [
             "productId" => $productId,
@@ -156,7 +169,8 @@ class Products extends Table
             "productDescription" => $productDescription,
             "productPrice" => $productPrice,
             "productImgUrl" => $productImgUrl,
-            "productStatus" => $productStatus
+            "productStatus" => $productStatus,
+            "categoriaId" => $categoriaId
         ];
         return self::executeNonQuery($sqlstr, $params);
     }

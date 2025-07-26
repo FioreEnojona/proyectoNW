@@ -1,4 +1,3 @@
-<h1>Trabajar con Productos</h1>
 <section class="grid">
   <div class="row">
     <form class="col-12 col-m-8" action="index.php" method="get">
@@ -7,12 +6,18 @@
           <input type="hidden" name="page" value="Products_Products">
           <label class="col-3" for="partialName">Nombre</label>
           <input class="col-9" type="text" name="partialName" id="partialName" value="{{partialName}}" />
+
           <label class="col-3" for="status">Estado</label>
           <select class="col-9" name="status" id="status">
-              <option value="EMP" {{status_EMP}}>Todos</option>
-              <option value="ACT" {{status_ACT}}>Activo</option>
-              <option value="INA" {{status_INA}}>Inactivo</option>
+            <option value="EMP" {{status_EMP}}>Todos</option>
+            <option value="ACT" {{status_ACT}}>Activo</option>
+            <option value="INA" {{status_INA}}>Inactivo</option>
           </select>
+            {{foreach categories}}
+            <option value="{{categoriaId}}" {{selected_categoriaId}}>{{categoriaNombre}}</option>
+            {{endfor categories}}
+          </select>
+
         </div>
         <div class="col-4 align-end">
           <button type="submit">Filtrar</button>
@@ -26,11 +31,6 @@
   <table>
     <thead>
       <tr>
-        <th>
-          {{if product_INS}}
-            <a href="index.php?page=Products-Product&mode=INS">Nuevo</a>
-          {{endif product_INS}}
-        </th>
         <th>
           {{ifnot OrderByProductId}}
           <a href="index.php?page=Products_Products&orderBy=productId&orderDescending=0">Id <i class="fas fa-sort"></i></a>
@@ -64,34 +64,33 @@
           <a href="index.php?page=Products_Products&orderBy=productPrice&orderDescending=1">Precio <i class="fas fa-sort-up"></i></a>
           {{endif OrderProductPrice}}
         </th>
+
+        <th>Categoría</th>
+
         <th>Estado</th>
-        <th><a href="index.php?page=Products-Product&mode=INS">Nuevo</a></th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-{{foreach products}}
+      {{foreach products}}
       <tr>
         <td>{{productId}}</td>
         <td>
-          {{if ~product_DSP}}
-              <a class="link" href="index.php?page=Products-Product&mode=DSP&productId={{productId}}">{{productDescription}}</a>
-          {{endif ~product_DSP}}
-          {{ifnot ~product_DSP}}
-              {{productDescription}}
-          {{endifnot ~product_DSP}}
+          <a class="link" href="index.php?page=Products-Product&mode=DSP&productId={{productId}}">
+            {{productDescription}}
+          </a>
         </td>
-        <td class="right">
-          {{productPrice}}
-        </td>
+        <td class="right">{{productPrice}}</td>
+
+        <td>{{categoriaNombre}}</td>
+
         <td class="center">{{productStatusDsc}}</td>
         <td class="center">
-          {{if ~product_UPD}}
-            <a href="index.php?page=Products-Product&mode=UPD&productId={{productId}}">Editar</a>
-          {{endif ~product_UPD}}
+          <a href="index.php?page=Products-Product&mode=UPD&productId={{productId}}">Editar</a>
           &nbsp;
-          {{if ~product_DEL}}
-            <a href="index.php?page=Products-Product&mode=DEL&productId={{productId}}">Eliminar</a>
-          {{endif ~product_DEL}}
+          <a href="index.php?page=Products-Product&mode=DEL&productId={{productId}}">Eliminar</a>
+          &nbsp;
+          <a href="index.php?page=Products_Product&mode=INS&productId={{productId}}">Agregar</a>
         </td>
       </tr>
       {{endfor products}}

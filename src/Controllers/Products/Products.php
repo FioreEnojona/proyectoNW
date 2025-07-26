@@ -16,6 +16,7 @@ class Products extends PrivateController
     private $orderDescending = false;
     private $pageNumber = 1;
     private $itemsPerPage = 10;
+    private $categoriaId = 0;
     private $viewData = [];
     private $products = [];
     private $productsCount = 0;
@@ -35,7 +36,8 @@ class Products extends PrivateController
             $this->orderBy,
             $this->orderDescending,
             $this->pageNumber - 1,
-            $this->itemsPerPage
+            $this->itemsPerPage,
+            $this->categoriaId
         );
         $this->products = $tmpProducts["products"];
         $this->productsCount = $tmpProducts["total"];
@@ -62,7 +64,9 @@ class Products extends PrivateController
         $this->orderDescending = isset($_GET["orderDescending"]) ? boolval($_GET["orderDescending"]) : $this->orderDescending;
         $this->pageNumber = isset($_GET["pageNum"]) ? intval($_GET["pageNum"]) : $this->pageNumber;
         $this->itemsPerPage = isset($_GET["itemsPerPage"]) ? intval($_GET["itemsPerPage"]) : $this->itemsPerPage;
+        $this->categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : $this->categoriaId;
     }
+
     private function getParamsFromContext(): void
     {
         $this->partialName = Context::getContextByKey("products_partialName");
@@ -71,6 +75,7 @@ class Products extends PrivateController
         $this->orderDescending = boolval(Context::getContextByKey("products_orderDescending"));
         $this->pageNumber = intval(Context::getContextByKey("products_page"));
         $this->itemsPerPage = intval(Context::getContextByKey("products_itemsPerPage"));
+        $this->categoriaId = intval(Context::getContextByKey("products_categoriaId"));
         $this->product_DSP = $this->isFeatureAutorized("Products_DSP");
         $this->product_UPD = $this->isFeatureAutorized("Products_UPD");
         $this->product_DEL = $this->isFeatureAutorized("Products_DEL");
@@ -78,6 +83,7 @@ class Products extends PrivateController
         if ($this->pageNumber < 1) $this->pageNumber = 1;
         if ($this->itemsPerPage < 1) $this->itemsPerPage = 10;
     }
+
     private function setParamsToContext(): void
     {
         Context::setContext("products_partialName", $this->partialName, true);
@@ -86,7 +92,9 @@ class Products extends PrivateController
         Context::setContext("products_orderDescending", $this->orderDescending, true);
         Context::setContext("products_page", $this->pageNumber, true);
         Context::setContext("products_itemsPerPage", $this->itemsPerPage, true);
+        Context::setContext("products_categoriaId", $this->categoriaId, true);
     }
+
     private function setParamsToDataView(): void
     {
         $this->viewData["partialName"] = $this->partialName;
@@ -102,6 +110,8 @@ class Products extends PrivateController
         $this->viewData["product_UPD"] = $this->product_UPD;
         $this->viewData["product_DEL"] = $this->product_DEL;
         $this->viewData["product_INS"] = $this->product_INS;
+        $this->viewData["categoriaId"] = $this->categoriaId;
+
         if ($this->orderBy !== "") {
             $orderByKey = "Order" . ucfirst($this->orderBy);
             $orderByKeyNoOrder = "OrderBy" . ucfirst($this->orderBy);
@@ -111,8 +121,10 @@ class Products extends PrivateController
             }
             $this->viewData[$orderByKey] = true;
         }
+
         $statusKey = "status_" . ($this->status === "" ? "EMP" : $this->status);
         $this->viewData[$statusKey] = "selected";
+
         $pagination = Paging::getPagination(
             $this->productsCount,
             $this->itemsPerPage,
@@ -120,6 +132,7 @@ class Products extends PrivateController
             "index.php?page=Products_Products",
             "Products_Products"
         );
+
         $this->viewData["pagination"] = $pagination;
     }
 }
