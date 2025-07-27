@@ -30,6 +30,9 @@
     <div class="row right flex-end px-4">
       <button class="primary" id="btnLogin" type="submit">Iniciar Sesión</button>
     </div>
+    <div class="row right flex-end px-4 py-4">
+          <a href="index.php?page=sec_register">¿No tienes una cuenta?</a>
+        </div>
     </section>
   </form>
 </section>

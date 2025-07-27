@@ -11,9 +11,13 @@ class Register extends PublicController
     private $txtEmail = "";
     private $txtPswd = "";
     private $txtName = "";
+    private $txtConfirmarEmail = "";
+    private $txtConfirmarPswd = "";
     private $errorName = "";
     private $errorEmail = "";
     private $errorPswd = "";
+    private $errorConfirmarEmail = "";
+    private $errorConfirmarPswd = "";
     private $hasErrors = false;
     public function run(): void
     {
@@ -22,6 +26,10 @@ class Register extends PublicController
             $this->txtEmail = $_POST["txtEmail"];
             $this->txtPswd = $_POST["txtPswd"];
             $this->txtName = $_POST["txtName"];
+            $this->txtConfirmarEmail = $_POST["txtConfirmarEmail"];
+            $this->txtConfirmarPswd = $_POST["txtConfirmarPswd"];
+
+
             //validaciones
             if (!(Validators::IsValidEmail($this->txtEmail))) {
                 $this->errorEmail = "El correo no tiene el formato adecuado";
@@ -31,10 +39,26 @@ class Register extends PublicController
                 $this->errorPswd = "La contraseña debe tener al menos 8 caracteres una mayúscula, un número y un caracter especial.";
                 $this->hasErrors = true;
             }
+            if ($this->txtEmail != $this->txtConfirmarEmail) {
+                $this->errorConfirmarEmail = "El correo electronico no coincide";
+                $this->hasErrors = true;
+            }
+            if ($this->txtPswd != $this->txtConfirmarPswd) {
+                $this->errorConfirmarPswd = "Las contraseñas no coincide";
+                $this->hasErrors = true;
+            }
+
+
+
+
             if (Validators::IsEmpty($this->txtName)) {
                 $this->errorName = "Error al escribir el nombre";
                 $this->hasErrors = true;
             }
+
+
+
+
 
             if (!$this->hasErrors) {
                 try {
