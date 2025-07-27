@@ -37,7 +37,7 @@
         <li><a href="/nosotros"class="nav-ctd">Nosotros</a></li>
         <li><a href="/blog" class="nav-cte" >Blog</a></li>
         <li><a href="/contacto" class="nav-ctf">Contacto</a></li>
-        <li><a href="/pedidos" class="nav-ctg">Hacer Pedido</a></li>
+        <li><a href="index.php?page=Destacados" class="nav-ctg">Lo Mas Popular</a></li>
       </ul>
     </nav>
 
