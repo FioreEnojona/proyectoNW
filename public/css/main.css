@@ -67,7 +67,7 @@
 }
 .col-12 {
   flex-basis: 100%;
-  max-width: 100%;
+  max-width: 100;
 }
 .offset-12 {
   margin-left: 100% !important;
@@ -77,7 +77,7 @@
 }
 .col-11 {
   flex-basis: 91.66666667%;
-  max-width: 91.66666667%;
+  max-width: 91.66666667;
 }
 .offset-11 {
   margin-left: 91.66666667% !important;
@@ -87,7 +87,7 @@
 }
 .col-10 {
   flex-basis: 83.33333333%;
-  max-width: 83.33333333%;
+  max-width: 83.33333333;
 }
 .offset-10 {
   margin-left: 83.33333333% !important;
@@ -97,7 +97,7 @@
 }
 .col-9 {
   flex-basis: 75%;
-  max-width: 75%;
+  max-width: 75;
 }
 .offset-9 {
   margin-left: 75% !important;
@@ -107,7 +107,7 @@
 }
 .col-8 {
   flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
+  max-width: 66.66666667;
 }
 .offset-8 {
   margin-left: 66.66666667% !important;
@@ -117,7 +117,7 @@
 }
 .col-7 {
   flex-basis: 58.33333333%;
-  max-width: 58.33333333%;
+  max-width: 58.33333333;
 }
 .offset-7 {
   margin-left: 58.33333333% !important;
@@ -127,7 +127,7 @@
 }
 .col-6 {
   flex-basis: 50%;
-  max-width: 50%;
+  max-width: 50;
 }
 .offset-6 {
   margin-left: 50% !important;
@@ -137,7 +137,7 @@
 }
 .col-5 {
   flex-basis: 41.66666667%;
-  max-width: 41.66666667%;
+  max-width: 41.66666667;
 }
 .offset-5 {
   margin-left: 41.66666667% !important;
@@ -147,7 +147,7 @@
 }
 .col-4 {
   flex-basis: 33.33333333%;
-  max-width: 33.33333333%;
+  max-width: 33.33333333;
 }
 .offset-4 {
   margin-left: 33.33333333% !important;
@@ -157,7 +157,7 @@
 }
 .col-3 {
   flex-basis: 25%;
-  max-width: 25%;
+  max-width: 25;
 }
 .offset-3 {
   margin-left: 25% !important;
@@ -167,7 +167,7 @@
 }
 .col-2 {
   flex-basis: 16.66666667%;
-  max-width: 16.66666667%;
+  max-width: 16.66666667;
 }
 .offset-2 {
   margin-left: 16.66666667% !important;
@@ -177,7 +177,7 @@
 }
 .col-1 {
   flex-basis: 8.33333333%;
-  max-width: 8.33333333%;
+  max-width: 8.33333333;
 }
 .offset-1 {
   margin-left: 8.33333333% !important;
@@ -196,7 +196,7 @@
   }
   .col-m-12 {
     flex-basis: 100%;
-    max-width: 100%;
+    max-width: 100;
   }
   .offset-m-12 {
     margin-left: 100% !important;
@@ -206,7 +206,7 @@
   }
   .col-m-11 {
     flex-basis: 91.66666667%;
-    max-width: 91.66666667%;
+    max-width: 91.66666667;
   }
   .offset-m-11 {
     margin-left: 91.66666667% !important;
@@ -216,7 +216,7 @@
   }
   .col-m-10 {
     flex-basis: 83.33333333%;
-    max-width: 83.33333333%;
+    max-width: 83.33333333;
   }
   .offset-m-10 {
     margin-left: 83.33333333% !important;
@@ -226,7 +226,7 @@
   }
   .col-m-9 {
     flex-basis: 75%;
-    max-width: 75%;
+    max-width: 75;
   }
   .offset-m-9 {
     margin-left: 75% !important;
@@ -236,7 +236,7 @@
   }
   .col-m-8 {
     flex-basis: 66.66666667%;
-    max-width: 66.66666667%;
+    max-width: 66.66666667;
   }
   .offset-m-8 {
     margin-left: 66.66666667% !important;
@@ -246,7 +246,7 @@
   }
   .col-m-7 {
     flex-basis: 58.33333333%;
-    max-width: 58.33333333%;
+    max-width: 58.33333333;
   }
   .offset-m-7 {
     margin-left: 58.33333333% !important;
@@ -256,7 +256,7 @@
   }
   .col-m-6 {
     flex-basis: 50%;
-    max-width: 50%;
+    max-width: 50;
   }
   .offset-m-6 {
     margin-left: 50% !important;
@@ -266,7 +266,7 @@
   }
   .col-m-5 {
     flex-basis: 41.66666667%;
-    max-width: 41.66666667%;
+    max-width: 41.66666667;
   }
   .offset-m-5 {
     margin-left: 41.66666667% !important;
@@ -276,7 +276,7 @@
   }
   .col-m-4 {
     flex-basis: 33.33333333%;
-    max-width: 33.33333333%;
+    max-width: 33.33333333;
   }
   .offset-m-4 {
     margin-left: 33.33333333% !important;
@@ -286,7 +286,7 @@
   }
   .col-m-3 {
     flex-basis: 25%;
-    max-width: 25%;
+    max-width: 25;
   }
   .offset-m-3 {
     margin-left: 25% !important;
@@ -296,7 +296,7 @@
   }
   .col-m-2 {
     flex-basis: 16.66666667%;
-    max-width: 16.66666667%;
+    max-width: 16.66666667;
   }
   .offset-m-2 {
     margin-left: 16.66666667% !important;
@@ -306,7 +306,7 @@
   }
   .col-m-1 {
     flex-basis: 8.33333333%;
-    max-width: 8.33333333%;
+    max-width: 8.33333333;
   }
   .offset-m-1 {
     margin-left: 8.33333333% !important;
@@ -323,7 +323,7 @@
   }
   .col-l-12 {
     flex-basis: 100%;
-    max-width: 100%;
+    max-width: 100;
   }
   .offset-l-12 {
     margin-left: 100% !important;
@@ -333,7 +333,7 @@
   }
   .col-l-11 {
     flex-basis: 91.66666667%;
-    max-width: 91.66666667%;
+    max-width: 91.66666667;
   }
   .offset-l-11 {
     margin-left: 91.66666667% !important;
@@ -343,7 +343,7 @@
   }
   .col-l-10 {
     flex-basis: 83.33333333%;
-    max-width: 83.33333333%;
+    max-width: 83.33333333;
   }
   .offset-l-10 {
     margin-left: 83.33333333% !important;
@@ -353,7 +353,7 @@
   }
   .col-l-9 {
     flex-basis: 75%;
-    max-width: 75%;
+    max-width: 75;
   }
   .offset-l-9 {
     margin-left: 75% !important;
@@ -363,7 +363,7 @@
   }
   .col-l-8 {
     flex-basis: 66.66666667%;
-    max-width: 66.66666667%;
+    max-width: 66.66666667;
   }
   .offset-l-8 {
     margin-left: 66.66666667% !important;
@@ -373,7 +373,7 @@
   }
   .col-l-7 {
     flex-basis: 58.33333333%;
-    max-width: 58.33333333%;
+    max-width: 58.33333333;
   }
   .offset-l-7 {
     margin-left: 58.33333333% !important;
@@ -383,7 +383,7 @@
   }
   .col-l-6 {
     flex-basis: 50%;
-    max-width: 50%;
+    max-width: 50;
   }
   .offset-l-6 {
     margin-left: 50% !important;
@@ -393,7 +393,7 @@
   }
   .col-l-5 {
     flex-basis: 41.66666667%;
-    max-width: 41.66666667%;
+    max-width: 41.66666667;
   }
   .offset-l-5 {
     margin-left: 41.66666667% !important;
@@ -403,7 +403,7 @@
   }
   .col-l-4 {
     flex-basis: 33.33333333%;
-    max-width: 33.33333333%;
+    max-width: 33.33333333;
   }
   .offset-l-4 {
     margin-left: 33.33333333% !important;
@@ -413,7 +413,7 @@
   }
   .col-l-3 {
     flex-basis: 25%;
-    max-width: 25%;
+    max-width: 25;
   }
   .offset-l-3 {
     margin-left: 25% !important;
@@ -423,7 +423,7 @@
   }
   .col-l-2 {
     flex-basis: 16.66666667%;
-    max-width: 16.66666667%;
+    max-width: 16.66666667;
   }
   .offset-l-2 {
     margin-left: 16.66666667% !important;
@@ -433,7 +433,7 @@
   }
   .col-l-1 {
     flex-basis: 8.33333333%;
-    max-width: 8.33333333%;
+    max-width: 8.33333333;
   }
   .offset-l-1 {
     margin-left: 8.33333333% !important;
@@ -450,7 +450,7 @@
   }
   .col-xl-12 {
     flex-basis: 100%;
-    max-width: 100%;
+    max-width: 100;
   }
   .offset-xl-12 {
     margin-left: 100% !important;
@@ -460,7 +460,7 @@
   }
   .col-xl-11 {
     flex-basis: 91.66666667%;
-    max-width: 91.66666667%;
+    max-width: 91.66666667;
   }
   .offset-xl-11 {
     margin-left: 91.66666667% !important;
@@ -470,7 +470,7 @@
   }
   .col-xl-10 {
     flex-basis: 83.33333333%;
-    max-width: 83.33333333%;
+    max-width: 83.33333333;
   }
   .offset-xl-10 {
     margin-left: 83.33333333% !important;
@@ -480,7 +480,7 @@
   }
   .col-xl-9 {
     flex-basis: 75%;
-    max-width: 75%;
+    max-width: 75;
   }
   .offset-xl-9 {
     margin-left: 75% !important;
@@ -490,7 +490,7 @@
   }
   .col-xl-8 {
     flex-basis: 66.66666667%;
-    max-width: 66.66666667%;
+    max-width: 66.66666667;
   }
   .offset-xl-8 {
     margin-left: 66.66666667% !important;
@@ -500,7 +500,7 @@
   }
   .col-xl-7 {
     flex-basis: 58.33333333%;
-    max-width: 58.33333333%;
+    max-width: 58.33333333;
   }
   .offset-xl-7 {
     margin-left: 58.33333333% !important;
@@ -510,7 +510,7 @@
   }
   .col-xl-6 {
     flex-basis: 50%;
-    max-width: 50%;
+    max-width: 50;
   }
   .offset-xl-6 {
     margin-left: 50% !important;
@@ -520,7 +520,7 @@
   }
   .col-xl-5 {
     flex-basis: 41.66666667%;
-    max-width: 41.66666667%;
+    max-width: 41.66666667;
   }
   .offset-xl-5 {
     margin-left: 41.66666667% !important;
@@ -530,7 +530,7 @@
   }
   .col-xl-4 {
     flex-basis: 33.33333333%;
-    max-width: 33.33333333%;
+    max-width: 33.33333333;
   }
   .offset-xl-4 {
     margin-left: 33.33333333% !important;
@@ -540,7 +540,7 @@
   }
   .col-xl-3 {
     flex-basis: 25%;
-    max-width: 25%;
+    max-width: 25;
   }
   .offset-xl-3 {
     margin-left: 25% !important;
@@ -550,7 +550,7 @@
   }
   .col-xl-2 {
     flex-basis: 16.66666667%;
-    max-width: 16.66666667%;
+    max-width: 16.66666667;
   }
   .offset-xl-2 {
     margin-left: 16.66666667% !important;
@@ -560,7 +560,7 @@
   }
   .col-xl-1 {
     flex-basis: 8.33333333%;
-    max-width: 8.33333333%;
+    max-width: 8.33333333;
   }
   .offset-xl-1 {
     margin-left: 8.33333333% !important;
@@ -570,22 +570,22 @@
   }
 }
 .modalBackground {
-  background-color: #bb1900;
+  background-color: #000000;
 }
 .modalBackground .modal {
   background-color: #bebebe;
 }
 .depth-0 {
-  box-shadow: 0px 0px 3px #bb1900;
+  box-shadow: 0px 0px 3px #000000;
 }
 .depth-1 {
-  box-shadow: 1px 1px 3px #bb1900;
+  box-shadow: 1px 1px 3px #000000;
 }
 .depth-2 {
-  box-shadow: 3px 3px 5px #bb1900;
+  box-shadow: 3px 3px 5px #000000;
 }
 .depth-3 {
-  box-shadow: 3px 3px 7px #bb1900;
+  box-shadow: 3px 3px 7px #000000;
 }
 .py-0 {
   padding-top: 0rem !important;
@@ -698,9 +698,6 @@
     display: none;
   }
 }
-.border-b {
-  border-bottom: solid 1px #999999;
-}
 html {
   min-height: 100%;
 }
@@ -721,15 +718,13 @@ header {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: #bb1900;
+  background-color: #000000;
   color: #ffffff;
   padding: 0px;
   flex-wrap: wrap;
-  gap: 0.75rem;
   z-index: 1001;
 }
 header h1 {
-  flex: 1;
   margin: 0px;
   padding: 0.75rem 1rem;
   font-size: 1.5rem;
@@ -741,7 +736,7 @@ main {
   min-height: calc(100vh - 102px);
 }
 footer {
-  background-color: #bb1900;
+  background-color: #000000;
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -774,7 +769,7 @@ header nav {
   bottom: 0px;
   height: calc(100% - 51px);
   transform: translateX(-100vw);
-  background-color: #bb1900;
+  background-color: #000000;
   color: #ffffff;
   transition: transform 250ms ease-in-out;
   z-index: 1000;
@@ -901,14 +896,6 @@ button {
   cursor: pointer;
   margin: 0px;
 }
-button.circle {
-  border-radius: 50%;
-  box-shadow: 0px 0px 3px #999999;
-}
-button.nobg {
-  background-color: white;
-  color: #ffffff;
-}
 a.btn {
   color: #000;
   text-decoration: none;
@@ -920,7 +907,7 @@ a.btn {
 }
 button:hover {
   background-color: var();
-  box-shadow: 1px 1px 3px #bb1900;
+  box-shadow: 1px 1px 3px #000000;
 }
 button.primary {
   background-color: #25a8ff;
@@ -955,22 +942,22 @@ table a.btn {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  border: 1px solid #bb1900;
-  background-color: #ff4022;
+  border: 1px solid #000000;
+  background-color: #333333;
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 table a.btn:hover {
-  background-color: #bb1900;
+  background-color: #000000;
 }
 table a.btn:disabled {
-  background-color: #bb1900;
+  background-color: #000000;
   color: #000;
   cursor: not-allowed;
 }
 table a.btn:disabled:hover {
-  background-color: #bb1900;
+  background-color: #000000;
   color: #000;
   cursor: not-allowed;
 }
@@ -1005,7 +992,7 @@ a.link::after {
 .WWList table tbody tr:hover {
   outline-width: 1px;
   outline-style: solid;
-  outline-color: #bb1900;
+  outline-color: #000000;
   outline-offset: -1px;
 }
 .WWList table thead th,
@@ -1039,7 +1026,7 @@ a.link::after {
   display: flex;
   width: 100vw;
   height: 90vh;
-  background-color: #bb1900;
+  background-color: #000000;
   color: #ffffff;
   position: relative;
 }
@@ -1063,7 +1050,7 @@ a.link::after {
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #bb1900;
+  background-color: #000000;
   color: #ffffff;
   width: 100%;
 }
@@ -1077,95 +1064,4 @@ a.link::after {
     bottom: initial;
     width: 320px;
   }
-}
-/* Creacion de Usuarios e Inicio de Sesion */
-.form-login {
-  padding: 6rem;
-  background-color: #fff8e1;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-  font-family: 'Arial', sans-serif;
-  color: #4e342e;
-}
-
-.form-register {
-  background-color: #fff8e1;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
-  color: #4e342e;
-}
-
-.fullCenter h1 {
-  font-family: 'Pacifico', cursive;
-  color: #6d4c41;
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.fullCenter label {
-  font-weight: bold;
-  color: #5d4037;
-  margin-bottom: 0.3rem;
-}
-
-.fullCenter input[type="text"],
-.fullCenter input[type="email"],
-.fullCenter input[type="password"] {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  transition: border 0.3s;
-}
-
-.fullCenter input:focus {
-  border: 1px solid #ffcc80;
-  outline: none;
-}
-
-.error {
-  color: #d32f2f;
-  font-size: 0.9rem;
-}
-
-#btnSignin {
-  background-color: #8bc34a;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#btnSignin:hover {
-  background-color: #689f38;
-}
-
-#btnLogin {
-  background-color: #8bc34a;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#btnLogin:hover {
-  background-color: #689f38;
-}
-.fullCenter a {
-  color: #ff7043;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.fullCenter a:hover {
-  text-decoration: underline;
 }

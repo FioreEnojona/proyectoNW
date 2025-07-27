@@ -1,5 +1,5 @@
 <section class="fullCenter">
-  <form class="grid" method="post" action="index.php?page=sec_register">
+  <form class="grid form-register" method="post" action="index.php?page=sec_register">
     <section class="depth-1 row col-12 col-m-8 offset-m-2 col-xl-6 offset-xl-3">
       <h1 class="col-12">Crea tu cuenta</h1>
     </section>
@@ -64,7 +64,7 @@
         <button class="primary" id="btnSignin" type="submit">Crear Cuenta</button>
       </div>
         <div class="row right flex-end px-4 py-4">
-          <a href="index.php?page=sec_login">¿Tienes una cuenta?</a>
+          <a href="index.php?page=sec_login">¿Tienes una cuenta? Iniciar Sesión</a>
         </div>
     </section>
   </form>

@@ -1,5 +1,5 @@
 <section class="fullCenter">
-  <form class="grid" method="post" action="index.php?page=sec_login{{if redirto}}&redirto={{redirto}}{{endif redirto}}">
+  <form class="grid form-login" method="post" action="index.php?page=sec_login{{if redirto}}&redirto={{redirto}}{{endif redirto}}">
     <section class="depth-1 row col-12 col-m-8 offset-m-2 col-xl-6 offset-xl-3">
       <h1 class="col-12">Iniciar Sesión</h1>
     </section>
@@ -31,7 +31,7 @@
       <button class="primary" id="btnLogin" type="submit">Iniciar Sesión</button>
     </div>
     <div class="row right flex-end px-4 py-4">
-          <a href="index.php?page=sec_register">¿No tienes una cuenta?</a>
+          <a href="index.php?page=sec_register">¿No tienes una cuenta? Crea una cuenta</a>
         </div>
     </section>
   </form>

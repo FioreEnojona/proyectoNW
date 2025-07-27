@@ -5,7 +5,7 @@
       <th>Fecha</th>
       <th>Compra</th>
       <th>Descripción</th>
-      <th>Observación</th>
+      <th>Tipo</th>
     </tr>
   </thead>
   
