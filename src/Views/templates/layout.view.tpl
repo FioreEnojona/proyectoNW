@@ -6,8 +6,8 @@
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{BASE_DIR}}/public/css/appstyle.css" />
-  <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
   {{foreach SiteLinks}}
     <link rel="stylesheet" href="{{~BASE_DIR}}/{{this}}" />
   {{endfor SiteLinks}}
@@ -36,8 +36,25 @@
   <main>
   {{{page_content}}}
   </main>
-  <footer>
-    <div>Todo los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
+<footer>
+    <div class="footer-content">
+      <a href="https://www.facebook.com/Jireth.da/" target="_blank" rel="noopener" class="footer-link">
+        <i class="fab fa-facebook-square"></i> <span class="facebook-text">Facebook</span>
+      </a>
+      <span class="footer-separator">|</span>
+      <span class="footer-contact">
+        <i class="fas fa-phone-alt"></i> (+504) 2662-0171
+      </span>
+      <span class="footer-separator">|</span>
+      <a href="mailto:info@jireth.com" class="footer-link">
+        <i class="fas fa-envelope"></i> info@jireth.com
+      </a>
+      <span class="footer-separator">|</span>
+      <span class="footer-location">
+        <i class="fas fa-map-marker-alt"></i> Santa Rosa de Copán, Honduras, América Central.
+      </span>
+    </div>
+    <div>Todos los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
   </footer>
   {{foreach EndScripts}}
     <script src="{{~BASE_DIR}}/{{this}}"></script>

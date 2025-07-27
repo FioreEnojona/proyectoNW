@@ -7,9 +7,9 @@
         <div class="col-8 row">
           <input type="hidden" name="page" value="Roles_Roles">
           <label class="col-3" for="rolCode">Código</label>
-          <input class="col-9" type="text" name="rolCode" id="rolCode" value="{{rolCode}}" />
-          <label class="col-3" for="rolStatus">Estado</label>
-          <select class="col-9" name="rolStatus" id="rolStatus">
+          <input class="col-9" type="text" name="roleCode" id="roleCode" value="{{roleCode}}" />
+          <label class="col-3" for="roleStatus">Estado</label>
+          <select class="col-9" name="roleStatus" id="roleStatus">
             <option value="EMP" {{roleStatus_EMP}}>Todos</option>
             <option value="ACT" {{roleStatus_ACT}}>Activo</option>
             <option value="INA" {{roleStatus_INA}}>Inactivo</option>
