@@ -1,3 +1,4 @@
+/* Variables principales */
 @primary_text: #ffffff;
 @primary_bg: #000000;
 @primary_bg300: #999999;
@@ -19,6 +20,21 @@
 @warning: #bb980d;
 @info: #3236ae;
 
+/* Colores específicos para pastelería */
+@rosado-pastel: #F8C8DC;
+@rosado-fuerte: #FF9BB3;
+@dorado: #FFD700;
+@crema: #FFF8E8;
+@vainilla: #F5EDDC;
+@chocolate: #5C3A21;
+@frambuesa: #D32F5E;
+@menta: #A2E4B8;
+@lavanda: #B2A4D4;
+@caramelo: #D4A373;
+
+/* Degradados especiales */
+@gradient-pastel: linear-gradient(135deg, @rosado-pastel 0%, @lavanda 100%);
+@gradient-dulce: linear-gradient(135deg, @caramelo 0%, @frambuesa 100%);
 
 /* BreakPoints*/
 @mediumDevices: 568px;
@@ -29,17 +45,15 @@
   box-sizing: border-box;
 }
 
+/* Importaciones */
 @import "breakpoints.less";
 @import "grid.less";
-
-
 @import "modal.less";
-
 @import "utilities.less";
 @import "main.less";
 @import "menu.less";
 @import "form.less";
 @import "table.less";
 
-/*Custom CSS*/
+/* Custom CSS */
 @import "hero.less";
