@@ -10,12 +10,18 @@
       "nav_url": "index.php?page=Sec_Register",
       "nav_label":"<i class=\"fas fa-sign-in-alt\"></i>&nbsp;Crear Cuenta"
     }
+
   ],
   "private": [
+   {
+      "id": "Menu_Roles",
+      "nav_url": "index.php?page=Roles_Roles",
+      "nav_label":"<i class=\"fas fa-table\"></i>&nbsp; Roles"
+    },
     {
       "id":"Menu_PaymentCheckout",
       "nav_url": "index.php?page=Checkout_Checkout",
       "nav_label": "Carretilla de Compra"
-    }
-  ]
+}
+]
 }
