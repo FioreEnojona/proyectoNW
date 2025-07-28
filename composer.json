@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 {
     "autoload": {
       "psr-4": {"":"src/"}
     }
 }
+=======
+{
+    "autoload": {
+      "psr-4": {"":"src/"}
+    },
+    "require": {
+        "wikimedia/less.php": "^5.4"
+    },
+    "scripts": {
+      "less": "lessc ./public/css_src/style.less ./public/css/appstyle.css"
+    }
+}
+>>>>>>> origin/steven
