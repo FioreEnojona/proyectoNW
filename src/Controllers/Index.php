@@ -17,15 +17,7 @@ class Index extends PublicController
         $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
         $viewData["selected_categoriaId"] = $categoriaId;
 
-        $productos = ProductsDao::getProducts(
-            "",
-            "ACT",
-            "productName",
-            false,
-            0,
-            1000,
-            $categoriaId
-        );
+        $productos = ProductsDao::getProducts("", "ACT", "productName", false, 0, 1000, $categoriaId);
         $viewData["allProducts"] = $productos["products"];
 
         $resultadoCategorias = CategoriasDao::getCategorias();
