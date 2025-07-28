@@ -87,3 +87,23 @@ INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Controllers\\Destacados', 'Página de Productos Destacados', 'ACT', 'CTR');
+-- Para ADMIN
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Controllers\\Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+-- Para AUDIT
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('AUDIT', 'Controllers\\Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+-- Para OPADQ
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('OPADQ', 'Controllers\\Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Menu_Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Menu_Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Menu_Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+
