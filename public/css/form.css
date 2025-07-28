@@ -13,25 +13,33 @@ input.width-full{
 }
 
 button{
-  background-color: var(--frambuesa);
+  background-color: var(--lavanda);
   color: var(--primary_text);
   border: solid 2px var(--lavanda);
   padding: 0.75rem;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover{
   background-color: var();
   box-shadow: 1px 1px 3px var(--primary_bg);
+  text-decoration: none; 
+  background-color: var(--rosado-pastel); 
 }
 
 button.primary{
-  background-color: var(--lavanda);
+  background-color: var(--frambuesa);
+  border: solid 2px var(--frambuesa);
   color: var(--primary_action_tx);
+  transition: background-color 0.3s ease;
 }
 
 button.primary:hover{
-   box-shadow: 1px 1px 3px var(--primary_action_bg);
+   box-shadow: 1px 1px 3px var(--lavanda);
+   text-decoration: none; 
+   background-color: var(--rosado-pastel); 
 }
+>>>>>>> jossdetalle

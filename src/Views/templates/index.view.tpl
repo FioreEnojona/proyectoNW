@@ -128,6 +128,7 @@
         <p>{{productDescription}}</p>
         <span class="price">L. {{productPrice}}</span>
         <button class="add-to-cart">Agregar al Carrito</button>
+        <a href="index.php?page=Products-Detalle&productId={{productId}}"class="btn-detail">Ver Detalle</a>
     </div>
     {{endfor allProducts}}
 </div>

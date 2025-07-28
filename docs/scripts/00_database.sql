@@ -1,3 +1,4 @@
+-- Active: 1750217631131@@127.0.0.1@3306@nwbd1
 CREATE SCHEMA `ecommerce` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `usuario` (
@@ -5,17 +6,21 @@ INSERT INTO `usuario` (
     `userpswdest`, `userpswdexp`, `userest`,
     `useractcod`, `userpswdchg`, `usertipo`
 ) VALUES
+('timdrake@gmail.com', 'Robin', SHA2('Soybatman123', 256), NOW(),
+ 'ACT', DATE_ADD(NOW(), INTERVAL 90 DAY), 'ACT',
+ NULL, NULL, 'NOR')
 ('brucewayne@gmail.com', 'Batman', SHA2('Soybatman123', 256), NOW(),
  'ACT', DATE_ADD(NOW(), INTERVAL 90 DAY), 'ACT',
  NULL, NULL, 'ADM'),
 
 ('dickgrayson@gmail.com', 'Nightwing', SHA2('Soybatman123', 256), NOW(),
  'ACT', DATE_ADD(NOW(), INTERVAL 90 DAY), 'ACT',
- NULL, NULL, 'NOR'),
-
-('timdrake@gmail.com', 'Robin', SHA2('Soybatman123', 256), NOW(),
- 'ACT', DATE_ADD(NOW(), INTERVAL 90 DAY), 'ACT',
  NULL, NULL, 'NOR');
+
+
+ INSERT INTO roles (rolescod, rolesdsc, rolesest) VALUES ('ADMIN', 'Administrador', 'ACT');
+INSERT INTO roles (rolescod, rolesdsc, rolesest) VALUES ('AUDIT', 'Auditor', 'ACT');
+INSERT INTO roles (rolescod, rolesdsc, rolesest) VALUES ('OPADQ', 'Operador de Adquisiciones', 'ACT');
 INSERT INTO roles_usuarios (usercod, rolescod, roleuserest, roleuserfch, roleuserexp) VALUES (1, 'ADMIN', 'ACT', NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO roles_usuarios (usercod, rolescod, roleuserest, roleuserfch, roleuserexp) VALUES (2, 'AUDIT', 'ACT', NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO roles_usuarios (usercod, rolescod, roleuserest, roleuserfch, roleuserexp) VALUES (3, 'OPADQ', 'ACT', NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR));
@@ -87,6 +92,7 @@ INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+<<<<<<< HEAD
 
 
 INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
@@ -149,3 +155,96 @@ INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Controllers\\Roles\\Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Controllers\\Roles\\Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 
+--Esquizofrenia de detalle de josselin
+GRANT ALL PRIVILEGES ON nwbd1.* TO 'devuser'@'%';
+FLUSH PRIVILEGES;
+INSERT INTO products (
+  productId, productName, productDescription, productPrice, productImgUrl,
+  productStock, productStatus, categoriaId,
+  productIngredients, productFeatures, productPresentation,
+  productAllergens, productRecommendation, productStorage, productCustom
+) VALUES
+(1, 'Pastel de Chocolate', 'Delicioso pastel de chocolate con cobertura de ganache', 25.00, 'https://placehold.co/290x250?text=Pastel+Chocolate&font=roboto', 15, 'ACT', 1,
+ 'Harina, cacao, azúcar, huevos, mantequilla, ganache de chocolate',
+ 'Pastel húmedo con cobertura de ganache, ideal para cumpleaños.',
+ '8 porciones (23 cm de diámetro)',
+ 'Gluten, huevo, lácteos',
+ 'Ideal para cumpleaños y celebraciones con café.',
+ 'Mantener en refrigeración hasta 5 días.',
+ 'Sí'),
+
+(2, 'Pastel Red Velvet', 'Pastel red velvet con crema de queso', 28.00, 'https://placehold.co/290x250?text=Red+Velvet&font=roboto', 12, 'ACT', 1,
+ 'Harina, cacao, azúcar, crema de queso, colorante rojo',
+ 'Textura suave, con crema de queso y un toque elegante.',
+ '8 porciones (23 cm) – también disponible mini',
+ 'Gluten, lácteos, colorantes',
+ 'Perfecto para eventos románticos o aniversarios.',
+ 'Refrigerar y consumir en 4 días.',
+ 'Sí'),
+
+(3, 'Pastel de Zanahoria', 'Pastel de zanahoria con glaseado de queso crema', 24.00, 'https://placehold.co/290x250?text=Pastel+Zanahoria&font=roboto', 10, 'ACT', 1,
+ 'Harina, zanahoria rallada, azúcar, huevos, glaseado de queso crema',
+ 'Sabor casero, glaseado dulce, buena opción para la merienda.',
+ '6 porciones (20 cm) – versión sin nueces',
+ 'Gluten, huevo, lácteos',
+ 'Acompañar con té o leche caliente.',
+ 'A temperatura ambiente, hasta 3 días.',
+ 'No'),
+
+(4, 'Cheesecake Clásico', 'Cheesecake cremoso con base de galleta', 30.00, 'https://placehold.co/290x250?text=Cheesecake+Clasico&font=roboto', 10, 'ACT', 2,
+ 'Queso crema, galletas molidas, mantequilla, azúcar',
+ 'Cremoso y clásico, una delicia fría.',
+ 'Molde redondo 18 cm – porciones individuales',
+ 'Lácteos, gluten',
+ 'Postre frío para después de almuerzos.',
+ 'Refrigerado hasta 7 días.',
+ 'Sí'),
+
+(5, 'Cheesecake de Fresa', 'Cheesecake con topping de fresas frescas', 32.00, 'https://placehold.co/290x250?text=Cheesecake+Fresa&font=roboto', 8, 'ACT', 2,
+ 'Queso crema, fresas frescas, galletas, azúcar',
+ 'Con topping de fresas frescas, sabor equilibrado.',
+ 'Molde cuadrado – 9 porciones medianas',
+ 'Lácteos, gluten',
+ 'Excelente para reuniones familiares.',
+ 'Refrigerar – 5 días máximo.',
+ 'Sí'),
+
+(6, 'Cheesecake de Chocolate Blanco', 'Cheesecake con chocolate blanco y base de galleta', 33.00, 'https://placehold.co/290x250?text=Cheesecake+Choco+Blanco&font=roboto', 6, 'ACT', 2,
+ 'Queso crema, chocolate blanco, galletas, azúcar',
+ 'Para amantes del chocolate blanco, textura cremosa.',
+ '10 porciones pequeñas',
+ 'Lácteos, gluten',
+ 'Delicioso con vino blanco dulce.',
+ 'Refrigeración obligatoria – consumir en 4 días.',
+ 'No'),
+
+(7, 'Cupcake Vainilla', 'Cupcake esponjoso de vainilla con glaseado de mantequilla', 5.00, 'https://placehold.co/290x250?text=Cupcake+Vainilla&font=roboto', 50, 'ACT', 3,
+ 'Harina, vainilla, azúcar, huevos, mantequilla',
+ 'Dulce ligero, ideal para eventos infantiles.',
+ 'Individual – caja de 6 o 12',
+ 'Huevo, gluten, lácteos',
+ 'Perfecto para fiestas infantiles.',
+ 'Temperatura ambiente – 2 días.',
+ 'Sí'),
+
+(8, 'Cupcake de Chocolate', 'Cupcake de chocolate con glaseado de crema de chocolate', 6.00, 'https://placehold.co/290x250?text=Cupcake+Chocolate&font=roboto', 45, 'ACT', 3,
+ 'Harina, cacao, azúcar, crema de chocolate, huevos',
+ 'Intenso sabor a chocolate con cobertura suave.',
+ 'Individual – presentación en caja de 6',
+ 'Gluten, huevo',
+ 'Para amantes del chocolate, con café expreso.',
+ 'Refrigerar – 3 días máximo.',
+ 'Sí'),
+
+(9, 'Cupcake Red Velvet', 'Cupcake red velvet con crema de queso', 6.50, 'https://placehold.co/290x250?text=Cupcake+Red+Velvet&font=roboto', 40, 'ACT', 3,
+ 'Harina, cacao, azúcar, crema de queso, colorante rojo',
+ 'Mini versión del pastel Red Velvet con toque elegante.',
+ 'Individual – presentación gourmet',
+ 'Gluten, colorantes, lácteos',
+ 'Excelente para brunch o bodas.',
+ 'Refrigerado – ideal consumir antes de 3 días.',
+ 'Sí');
+
+SELECT * FROM products WHERE productId = 1;
+SELECT productId, productName, productIngredients, productFeatures FROM products WHERE productId <= 9;
+>>>>>>> jossdetalle

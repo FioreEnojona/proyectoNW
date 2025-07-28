@@ -1,0 +1,47 @@
+@import url("colors.css");
+
+.product-detail {
+  background: var(--gradient-pastel);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(92, 58, 33, 0.25);
+  margin-bottom: 2rem;
+  text-align: center;
+  border: 3px solid var(--rosado-fuerte);
+}
+
+.product-detail img.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  border: 4px solid var(--rosado-fuerte);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.product-detail h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--chocolate);
+  text-shadow: 1px 1px 0px var(--vainilla);
+}
+
+.product-detail p {
+  font-size: 1.1rem;
+  margin: 0.8rem 0; 
+  color: var(--chocolate);
+  line-height: 1.6; 
+}
+
+.product-detail strong {
+  color: var(--frambuesa);
+}
+
+.product-detail hr {
+  margin: 2rem auto;
+  border: 0;
+  height: 3px;
+  width: 80%;
+  border-radius: 3px;
+  background: var(--gradient-dulce);
+}
