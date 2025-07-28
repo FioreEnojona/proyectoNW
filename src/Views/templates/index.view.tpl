@@ -1,5 +1,4 @@
-<h1>{{SITE_TITLE}}</h1>
-<!-- Hero Section -->
+
 <section class="hero">
     <div class="hero-content container">
         <h1 class="titulo-principal">Bienvenidos a <span class="brand">Dulce Encanto</span></h1>

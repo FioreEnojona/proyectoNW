@@ -7,7 +7,9 @@
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
+  <link rel="stylesheet" href="{{BASE_DIR}}/public/css/appstyle.css" />
+    <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
+
   <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
   {{foreach SiteLinks}}
   <link rel="stylesheet" href="{{~BASE_DIR}}/{{this}}" />
@@ -33,11 +35,6 @@
         {{foreach PUBLIC_NAVIGATION}}
         <li><a href="{{nav_url}}" class="nav-ctb">{{nav_label}}</a></li>
         {{endfor PUBLIC_NAVIGATION}}
-        <li><a href="/productos" class="nav-ctc" >Productos</a></li>
-        <li><a href="/nosotros"class="nav-ctd">Nosotros</a></li>
-        <li><a href="/blog" class="nav-cte" >Blog</a></li>
-        <li><a href="/contacto" class="nav-ctf">Contacto</a></li>
-        <li><a href="index.php?page=Destacados" class="nav-ctg">Lo Mas Popular</a></li>
       </ul>
     </nav>
 

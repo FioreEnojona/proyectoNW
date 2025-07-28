@@ -1320,14 +1320,14 @@ a.link::after {
     }
 }
 .about-section {
-    background-color: #FF8282; /* Fondo rosado suave */
+    background-color: #FF8282; 
     padding: 40px 20px;
     margin: 30px 0;
     border-radius: 15px;
 }
 
 .about-section h1 {
-    color: #533B4D; /* Color para títulos principales */
+    color: #533B4D; 
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 30px;

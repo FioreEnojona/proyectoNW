@@ -12,6 +12,8 @@ class Index extends PublicController
     public function run(): void
     {
         Site::addLink("public/css/products.css");
+        Site::addLink("public/css/style.css");
+
         $viewData = [];
 
         $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
