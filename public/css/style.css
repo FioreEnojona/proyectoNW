@@ -68,12 +68,31 @@ header ul li a:hover{
   background-color: #c4c4c4;
 }
 main {
+  background-color: var(--vainilla);
   position: relative;
   padding:1em;
   min-height: calc(100vh - 154px);
 }
+.btn-detail {
+  color: white; 
+  background-color:var(--frambuesa); 
+  padding: 0.5em 1em; 
+  border-radius: 4px; 
+  text-decoration: none; 
+  display: inline-block; 
+  cursor: pointer; 
+  border: none; 
+  font-weight: 500; 
+  transition: background-color 0.3s ease;
+}
+
+.btn-detail:hover {
+  background-color: var(--rosado-pastel); 
+  text-decoration: none; 
+}
+
 footer{
-  background-color: var(--primary_bg);
+  background-color: var(--alert);
   color:var(--primary_text);
   display:flex;
   justify-content: center;

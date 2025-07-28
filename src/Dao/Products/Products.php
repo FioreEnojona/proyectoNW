@@ -108,20 +108,30 @@ class Products extends Table
     }
 
     public static function getProductById(int $productId)
-    {
-        $sqlstr = "SELECT 
-                    productId, 
-                    productName, 
-                    productDescription, 
-                    productPrice, 
-                    productImgUrl, 
-                    productStatus,
-                    categoriaId
-                   FROM products 
-                   WHERE productId = :productId";
-        $params = ["productId" => $productId];
-        return self::obtenerUnRegistro($sqlstr, $params);
-    }
+{
+    $sqlstr = "SELECT 
+                p.productId, 
+                p.productName, 
+                p.productDescription, 
+                p.productPrice, 
+                p.productImgUrl, 
+                p.productStatus,
+                p.categoriaId,
+                p.productIngredients,
+                p.productFeatures,
+                p.productPresentation,
+                p.productAllergens,
+                p.productRecommendation,
+                p.productStorage,
+                p.productCustom,
+                c.nombre as categoriaNombre
+               FROM products p
+               INNER JOIN categorias c ON p.categoriaId = c.id
+               WHERE p.productId = :productId";
+    $params = ["productId" => $productId];
+    return self::obtenerUnRegistro($sqlstr, $params);
+}
+
 
     public static function insertProduct(
         string $productName,

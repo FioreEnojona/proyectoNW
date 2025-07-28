@@ -1,3 +1,5 @@
+-- Active: 1750217631131@@127.0.0.1@3306@nwbd1
+-- Active: 1750217631131@@127.0.0.1@3306@nwbd1
 CREATE TABLE
     `usuario` (
         `usercod` bigint(10) NOT NULL AUTO_INCREMENT,
@@ -76,3 +78,30 @@ CREATE TABLE
     ) ENGINE = InnoDB AUTO_INCREMENT = 10 DEFAULT CHARSET = utf8;
 
     
+    CREATE TABLE categorias (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255) NOT NULL,
+    estado CHAR(3) NOT NULL
+);
+
+CREATE TABLE products (
+    productId INT(11) NOT NULL AUTO_INCREMENT,
+    productName VARCHAR(255) NOT NULL,
+    productDescription TEXT NOT NULL,
+    productPrice DECIMAL(10, 2) NOT NULL,
+    productImgUrl VARCHAR(255) NOT NULL,
+    productStock INT(11) NOT NULL DEFAULT 0,
+    productStatus CHAR(3) NOT NULL,
+    categoriaId INT NOT NULL,
+    PRIMARY KEY (productId),
+    FOREIGN KEY (categoriaId) REFERENCES categorias(id) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE products
+ADD COLUMN productIngredients TEXT,
+ADD COLUMN productFeatures TEXT,
+ADD COLUMN productPresentation VARCHAR(255),
+ADD COLUMN productAllergens VARCHAR(255),
+ADD COLUMN productRecommendation TEXT,
+ADD COLUMN productStorage VARCHAR(255),
+ADD COLUMN productCustom VARCHAR(5);
