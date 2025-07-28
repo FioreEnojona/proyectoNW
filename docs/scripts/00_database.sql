@@ -106,4 +106,46 @@ INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Menu_Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Menu_Destacados', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 
+INSERT INTO roles (rolescod, rolesdsc, rolesest) VALUES ('ADMIN', 'Administrador', 'ACT');
+INSERT INTO roles (rolescod, rolesdsc, rolesest) VALUES ('AUDIT', 'Auditor', 'ACT');
+INSERT INTO roles (rolescod, rolesdsc, rolesest) VALUES ('OPADQ', 'Operador de Adquisiciones', 'ACT');
+
+
+-- Asignación de menú Roles para ADMIN, AUDIT y OPADQ
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Menu_Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Menu_Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Menu_Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+    -- Inserta las funciones (acciones) relacionadas con la gestión de Roles
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('role_DSP', 'Detalle de Roles', 'ACT', 'FNC'); -- Ver detalle de rol
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('role_UPD', 'Editar Roles', 'ACT', 'FNC');        -- Editar rol
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('role_DEL', 'Eliminar Roles', 'ACT', 'FNC');      -- Eliminar rol
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('role_INS', 'Agregar Roles', 'ACT', 'FNC');       -- Agregar nuevo rol
+
+-- Inserta las funciones tipo controlador y menú para la gestión de Roles
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Controllers\\Roles\\Rol', 'Formulario de Roles', 'ACT', 'CTR');  -- Controlador formulario rol
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Controllers\\Roles\\Roles', 'Lista de Roles', 'ACT', 'CTR');      -- Controlador lista de roles
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Menu_Roles', 'Menu Roles', 'ACT', 'MNU');                         -- Menú Roles
+   
+    -- Asignación de permisos de funciones para el rol ADMIN (acceso completo a todas las funciones)
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'role_DSP', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR)); 
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'role_UPD', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'role_DEL', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'role_INS', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+-- Permisos limitados para el rol AUDIT (solo ver detalle)
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'role_DSP', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+-- Permisos para OPADQ (ver y editar roles)
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'role_DSP', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'role_UPD', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+-- Asignación de controladores para los roles ADMIN, AUDIT y OPADQ
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Controllers\\Roles\\Rol', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Controllers\\Roles\\Rol', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Controllers\\Roles\\Rol', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Controllers\\Roles\\Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Controllers\\Roles\\Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Controllers\\Roles\\Roles', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 

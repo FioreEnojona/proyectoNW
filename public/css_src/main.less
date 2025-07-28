@@ -45,16 +45,14 @@ main {
 }
 
 footer {
-  background-color: @chocolate; /* Igual que el header */
-  color: @crema;
+  background-color: @primary_bg;
+  color: @primary_text;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   z-index: 1010;
-  border-top: 1px solid @caramelo; /* Borde superior caramelo */
 }
-
 header .username {
   margin-left: auto;
   margin-right: 1rem;
@@ -76,12 +74,12 @@ header .username a {
 @media @lg {
   header {
     flex-direction: row;
-    padding: 0 2rem; /* Más padding en pantallas grandes */
+    padding: 0 2rem; 
   }
 
   main {
     min-height: ~"calc(100vh - 102px)";
-    padding: 2em; /* Más espacio en pantallas grandes */
+    padding: 2em; 
   }
   
   footer {
@@ -89,12 +87,12 @@ header .username a {
   }
 }
 
-/* Efectos adicionales para pastelería */
+
 header {
   transition: all 0.3s ease;
   
   &:hover {
-    background-color: darken(@chocolate, 5%); /* Oscurecer ligeramente al hover */
+    background-color: darken(@chocolate, 5%); 
   }
 }
 

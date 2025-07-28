@@ -18,6 +18,11 @@
   ],
   "private": [
     {
+      "id": "Menu_Roles",
+      "nav_url": "index.php?page=Roles_Roles",
+      "nav_label":"<i class=\"fas fa-table\"></i>&nbsp; Roles"
+    },
+    {
       "id": "Menu_Products",
       "nav_url": "index.php?page=Products_Products",
       "nav_label": "<i class=\"fas fa-table\"></i>&nbsp;Productos"

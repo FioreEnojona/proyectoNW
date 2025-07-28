@@ -43,6 +43,23 @@
     {{{page_content}}}
   </main>
   <footer>
+      <div class="footer-content">
+      <a href="https://www.facebook.com/Jireth.da/" target="_blank" rel="noopener" class="footer-link">
+        <i class="fab fa-facebook-square"></i> <span class="facebook-text">Facebook</span>
+      </a>
+      <span class="footer-separator">|</span>
+      <span class="footer-contact">
+        <i class="fas fa-phone-alt"></i> (+504) 2662-0171
+      </span>
+      <span class="footer-separator">|</span>
+      <a href="mailto:info@jireth.com" class="footer-link">
+        <i class="fas fa-envelope"></i> info@jireth.com
+      </a>
+      <span class="footer-separator">|</span>
+      <span class="footer-location">
+        <i class="fas fa-map-marker-alt"></i> Santa Rosa de Copán, Honduras, América Central.
+      </span>
+    </div>
     <div>Todo los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
   </footer>
   {{foreach EndScripts}}
