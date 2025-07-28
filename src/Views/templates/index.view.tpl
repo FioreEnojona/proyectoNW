@@ -1,11 +1,24 @@
 <h1>{{SITE_TITLE}}</h1>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content container">
+        <h1 class="titulo-principal">Bienvenidos a <span class="brand">Dulce Encanto</span></h1>
+        <p class="subtitulo">Deliciosas creaciones artesanales que endulzan cada momento especial de tu vida. Desde
+            1995, llevamos alegría y sabor a tus celebraciones con recetas tradicionales y un toque de innovación.</p>
+        <a href="/productos" class="btn btn-primary">Explorar Nuestro Catálogo</a>
+    </div>
+</section>
+
 <section class="about-section">
     <h1>Sobre Nuestra Pastelería</h1>
     <div class="about-cards">
         <div class="about-card about-info">
             <h2>Dulce Tradición</h2>
-            <p>Más que una pastelería, somos un rincón donde los sabores de antaño se encuentran con la innovación. Cada producto que elaboramos lleva el sello de nuestra pasión por la repostería y el cuidado por los ingredientes de calidad.</p>
-            <p>Desde hace más de 15 años, endulzamos los momentos especiales de nuestros clientes con creaciones únicas que despiertan emociones y crean recuerdos.</p>
+            <p>Más que una pastelería, somos un rincón donde los sabores de antaño se encuentran con la innovación. Cada
+                producto que elaboramos lleva el sello de nuestra pasión por la repostería y el cuidado por los
+                ingredientes de calidad.</p>
+            <p>Desde hace más de 15 años, endulzamos los momentos especiales de nuestros clientes con creaciones únicas
+                que despiertan emociones y crean recuerdos.</p>
         </div>
         <div class="about-card about-contact">
             <h2>Contáctanos</h2>
@@ -18,23 +31,21 @@
             <div class="contact-info">
                 <i class="fas fa-envelope"></i>
                 <span>contacto@pasteleria.com</span>
-                 <span>contacto@pasteleria.com</span>
+                <span>contacto@pasteleria.com</span>
             </div>
         </div>
         <div class="about-card about-location">
             <h2>Visítanos</h2>
             <p>Estamos abiertos de Lunes a Viernes de 8:00 a.m a 4:00 p.m y los Sabados de 10:00 p.m a 3:00 p.m</p>
-            <p>Nuestra tienda está ubicada en el corazón de la ciudad, un espacio acogedor donde el aroma a pan recién horneado te da la bienvenida.</p>
+            <p>Nuestra tienda está ubicada en el corazón de la ciudad, un espacio acogedor donde el aroma a pan recién
+                horneado te da la bienvenida.</p>
             <div class="contact-info">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Calle Dulce, #123, Colonia Postres, Tegucigalpa</span>
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-content container">
-        <h1 class="titulo-principal">Bienvenidos a <span class="brand">Dulce Encanto</span></h1>
-        <p class="subtitulo">Deliciosas creaciones artesanales que endulzan cada momento especial de tu vida. Desde 
-            1995, llevamos alegría y sabor a tus celebraciones con recetas tradicionales y un toque de innovación.</p>
-        <a href="/productos" class="btn btn-primary">Explorar Nuestro Catálogo</a>
+            </div>
+
+
+        </div>
     </div>
 </section>
 
@@ -42,8 +53,10 @@
 <section class="beneficios">
     <div class="container">
         <h2 class="titulo-secundario text-center">¿Por qué elegirnos?</h2>
-        <p class="text-center text-secondary" style="max-width: 800px; margin: 0 auto 3rem;">En Dulce Encanto, cada 
-            creación es una obra maestra de sabor y dedicación. Descubre lo que nos hace diferentes en el mundo de la
+        <p class="text-center text-secondary" style="max-width: 800px; margin: 0 auto 3rem;">En Dulce Encanto,
+            cada
+            creación es una obra maestra de sabor y dedicación. Descubre lo que nos hace diferentes en el mundo
+            de la
             repostería fina.</p>
 
         <div class="grid-p">
@@ -51,10 +64,14 @@
                 <div class="card-body p-4">
                     <img src="/img/icon-ingredientes.png" alt="Ingredientes Frescos" class="icono">
                     <h3 class="text-frambuesa">Ingredientes Frescos y Naturales</h3>
-                    <p class="text-secondary">Seleccionamos cuidadosamente los mejores ingredientes de proveedores 
-                        locales comprometidos con la calidad. Nuestras frutas son siempre de temporada, los huevos 
-                        provienen de granjas libres de jaulas, y utilizamos mantequilla 100% natural sin aditivos. 
-                        Rechazamos el uso de conservantes, colorantes artificiales y sabores sintéticos, priorizando 
+                    <p class="text-secondary">Seleccionamos cuidadosamente los mejores ingredientes de
+                        proveedores
+                        locales comprometidos con la calidad. Nuestras frutas son siempre de temporada, los
+                        huevos
+                        provienen de granjas libres de jaulas, y utilizamos mantequilla 100% natural sin
+                        aditivos.
+                        Rechazamos el uso de conservantes, colorantes artificiales y sabores sintéticos,
+                        priorizando
                         siempre lo natural.</p>
                 </div>
             </div>
@@ -63,10 +80,14 @@
                 <div class="card-body p-4">
                     <img src="/img/icon-artesanal.png" alt="Recetas Artesanales" class="icono">
                     <h3 class="text-frambuesa">Tradición Artesanal</h3>
-                    <p class="text-secondary">Nuestras recetas son un legado familiar perfeccionado a lo largo de tres 
-                        generaciones. Cada producto es elaborado a mano con técnicas tradicionales combinadas con 
-                        innovación moderna. Desde el amasado hasta el decorado final, cada paso es supervisado por 
-                        nuestros maestros pasteleros con más de 20 años de experiencia. La paciencia y el cuidado en 
+                    <p class="text-secondary">Nuestras recetas son un legado familiar perfeccionado a lo largo
+                        de tres
+                        generaciones. Cada producto es elaborado a mano con técnicas tradicionales combinadas
+                        con
+                        innovación moderna. Desde el amasado hasta el decorado final, cada paso es supervisado
+                        por
+                        nuestros maestros pasteleros con más de 20 años de experiencia. La paciencia y el
+                        cuidado en
                         cada detalle hacen la diferencia en cada bocado.</p>
                 </div>
             </div>
@@ -75,10 +96,14 @@
                 <div class="card-body p-4">
                     <img src="/img/icon-corazon.png" alt="Hecho con Amor" class="icono">
                     <h3 class="text-frambuesa">Pasión en Cada Detalle</h3>
-                    <p class="text-secondary">Más que un negocio, esto es nuestra pasión. Cada pastel, galleta o postre 
-                        que creamos lleva una dosis especial de amor y dedicación. Nos enorgullece ser parte de tus 
-                        momentos especiales: bodas, cumpleaños, aniversarios o simplemente esos días que merecen ser 
-                        endulzados. Nuestro compromiso va más allá del sabor; creamos experiencias memorables a través 
+                    <p class="text-secondary">Más que un negocio, esto es nuestra pasión. Cada pastel, galleta o
+                        postre
+                        que creamos lleva una dosis especial de amor y dedicación. Nos enorgullece ser parte de
+                        tus
+                        momentos especiales: bodas, cumpleaños, aniversarios o simplemente esos días que merecen
+                        ser
+                        endulzados. Nuestro compromiso va más allá del sabor; creamos experiencias memorables a
+                        través
                         de la repostería.</p>
                 </div>
             </div>
@@ -91,7 +116,7 @@
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
         {{foreach categories}}
-            <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
+        <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
         {{endfor categories}}
     </select>
 </form>
@@ -111,7 +136,7 @@
 <section class="destacados">
     <div class="container">
         <h2 class="titulo-secundario text-center">Nuestras Exquisitas Creaciones</h2>
-        <p class="parrafo" style="margin: 0 auto 3rem;">Descubre nuestras 
+        <p class="parrafo" style="margin: 0 auto 3rem;">Descubre nuestras
             especialidades más solicitadas, cada una con una historia única de sabor y textura.</p>
 
         <div class="grid-p">
@@ -119,9 +144,12 @@
                 <img src="/img/pastel-fresa.jpg" alt="Pastel de Fresa" class="img-producto w-100">
                 <div class="p-4">
                     <h3 class="text-chocolate">Pastel de Fresa Clásico</h3>
-                    <p class="text-secondary">Nuestro emblemático pastel de fresa combina capas esponjosas de bizcocho
-                        vainilla con fresas frescas de cultivo local y crema batida casera. Un clásico reinventado que
-                        ha sido el favorito de nuestros clientes por más de 15 años. Perfecto para celebraciones íntimas
+                    <p class="text-secondary">Nuestro emblemático pastel de fresa combina capas esponjosas de
+                        bizcocho
+                        vainilla con fresas frescas de cultivo local y crema batida casera. Un clásico
+                        reinventado que
+                        ha sido el favorito de nuestros clientes por más de 15 años. Perfecto para celebraciones
+                        íntimas
                         o eventos grandes.</p>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <span class="precio text-dorado">$450 - $1,200</span>
@@ -134,9 +162,12 @@
                 <img src="/img/cupcakes.jpg" alt="Cupcakes Surtidos" class="img-producto w-100">
                 <div class="p-4">
                     <h3 class="text-chocolate">Colección de Cupcakes Premium</h3>
-                    <p class="text-secondary">Una selección gourmet que incluye: chocolate belga con ganache, vainilla
-                        tahití con frosting de crema de mantequilla y frambuesa silvestre con corazón de coulis. Cada
-                        cupcake es una pequeña obra de arte, decorada a mano con ingredientes de primera calidad. Ideal
+                    <p class="text-secondary">Una selección gourmet que incluye: chocolate belga con ganache,
+                        vainilla
+                        tahití con frosting de crema de mantequilla y frambuesa silvestre con corazón de coulis.
+                        Cada
+                        cupcake es una pequeña obra de arte, decorada a mano con ingredientes de primera
+                        calidad. Ideal
                         para regalos corporativos o eventos especiales.</p>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <span class="precio text-dorado">$320 la docena</span>
@@ -149,9 +180,11 @@
                 <img src="/img/cheesecake.jpg" alt="Cheesecake de Frambuesa" class="img-producto w-100">
                 <div class="p-4">
                     <h3 class="text-chocolate">Cheesecake de Frambuesa </h3>
-                    <p class="text-secondary">Nuestra versión del clásico cheesecake combina una base crujiente de
+                    <p class="text-secondary">Nuestra versión del clásico cheesecake combina una base crujiente
+                        de
                         galleta artesanal con un suave relleno de queso crema y un generoso coulis de frambuesa
-                        silvestre. Lo que lo hace único es nuestro toque secreto: un delicado aroma de vainilla de
+                        silvestre. Lo que lo hace único es nuestro toque secreto: un delicado aroma de vainilla
+                        de
                         Madagascar y una pizca de cardamomo que realza todos los sabores.</p>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <span class="precio">$380 - $850</span>
@@ -171,16 +204,22 @@
 <section class="testimonios">
     <div class="container">
         <h2 class="titulo-secundario text-center">Historias Dulces de Nuestros Clientes</h2>
-        <p class="text-center_text-secondary-1-2" style="max-width: 800px; margin: 0 auto 3rem;">La satisfacción de nuestros 
-            clientes es nuestra mejor receta. Estas son algunas de las experiencias que han compartido con nosotros.</p>
+        <p class="text-center_text-secondary-1-2" style="max-width: 800px; margin: 0 auto 3rem;">La satisfacción
+            de nuestros
+            clientes es nuestra mejor receta. Estas son algunas de las experiencias que han compartido con
+            nosotros.</p>
 
         <div class="grid-p">
             <div class="testimonial">
                 <div class="p-4">
-                    <p class="text-secondary-2">"El pastel de mi boda fue absolutamente increíble, no solo por su belleza
-                        impresionante que dejó a todos boquiabiertos, sino por su sabor excepcional. Meses después de la
-                        boda, mis invitados seguían preguntando dónde lo habíamos encargado. El equipo de Dulce Encanto
-                        entendió perfectamente nuestra visión y la superó con creces, creando un pastel que fue el
+                    <p class="text-secondary-2">"El pastel de mi boda fue absolutamente increíble, no solo por
+                        su belleza
+                        impresionante que dejó a todos boquiabiertos, sino por su sabor excepcional. Meses
+                        después de la
+                        boda, mis invitados seguían preguntando dónde lo habíamos encargado. El equipo de Dulce
+                        Encanto
+                        entendió perfectamente nuestra visión y la superó con creces, creando un pastel que fue
+                        el
                         centro de atención de nuestra recepción."</p>
                     <footer>— Ana López, Novia feliz</footer>
                 </div>
@@ -188,11 +227,14 @@
 
             <div class="testimonial">
                 <div class="p-4">
-                    <p class="text-secondary-2">"Como madre de tres niños con gustos muy diferentes, encontrar postres que
+                    <p class="text-secondary-2">"Como madre de tres niños con gustos muy diferentes, encontrar
+                        postres que
                         satisfagan a todos era un desafío... hasta que descubrimos Dulce Encanto. Mis hijos han
-                        desarrollado un paladar exigente y ahora rechazan cupcakes de cualquier otro lugar. La calidad
+                        desarrollado un paladar exigente y ahora rechazan cupcakes de cualquier otro lugar. La
+                        calidad
                         de los ingredientes y el equilibrio perfecto de dulzura hacen que sus creaciones sean
-                        irresistibles. Hemos convertido la visita mensual a su pastelería en una tradición familiar."
+                        irresistibles. Hemos convertido la visita mensual a su pastelería en una tradición
+                        familiar."
                     </p>
                     <footer>— Carlos Mendoza, Padre satisfecho</footer>
                 </div>
@@ -200,10 +242,14 @@
 
             <div class="testimonial">
                 <div class="p-4">
-                    <p class="text-secondary-2">"Como organizadora de eventos, he trabajado con muchas pastelerías, pero
-                        Dulce Encanto se ha convertido en mi proveedor exclusivo. Cada interacción con su equipo es una
-                        experiencia positiva: desde la asesoría personalizada hasta la puntualidad en las entregas. Sus
-                        productos no solo son visualmente impresionantes, sino que mantienen una calidad excepcional
+                    <p class="text-secondary-2">"Como organizadora de eventos, he trabajado con muchas
+                        pastelerías, pero
+                        Dulce Encanto se ha convertido en mi proveedor exclusivo. Cada interacción con su equipo
+                        es una
+                        experiencia positiva: desde la asesoría personalizada hasta la puntualidad en las
+                        entregas. Sus
+                        productos no solo son visualmente impresionantes, sino que mantienen una calidad
+                        excepcional
                         incluso cuando necesito servir a 300 invitados. ¡Nunca decepcionan!"</p>
                     <footer>— Paola Rodríguez, Event Planner</footer>
                 </div>
@@ -216,7 +262,8 @@
 <section class="newsletter">
     <div class="newsletter-content">
         <h2 class="titulo-secundario text-center">¡Dulces Noticias para Ti!</h2>
-        <p class="text-center text-white mb-4">Únete a nuestra comunidad de amantes de la repostería fina y recibe
+        <p class="text-center text-white mb-4">Únete a nuestra comunidad de amantes de la repostería fina y
+            recibe
             contenido exclusivo directamente en tu bandeja de entrada:</p>
         <br>
         <ul class="text-white mb-4" style="max-width: 600px; margin: 0 auto 2rem;">
@@ -235,8 +282,9 @@
             </div>
         </form>
 
-        <p class="text-center text-white mt-3" style="opacity: 0.7; font-size: 0.9rem;">Respetamos tu privacidad.                       
-        Nunca compartiremos tu información.</p>
+        <p class="text-center text-white mt-3" style="opacity: 0.7; font-size: 0.9rem;">Respetamos tu
+            privacidad.
+            Nunca compartiremos tu información.</p>
     </div>
 </section>
 
