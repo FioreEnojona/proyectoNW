@@ -2,15 +2,18 @@
   display: flex;
   width: 100vw;
   height: 90vh;
-  background-color: @primary_bg;
-  color: @primary_text;
+  background: var(--gradient-pastel); /* Usamos el gradiente pastel */
+  color: var(--chocolate); /* Texto en color chocolate */
   position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--dorado); /* Borde dorado */
 
   img {
     width: 100%;
     padding: 0px;
     margin: 0px;
     object-fit: cover;
+    opacity: 0.8; /* Hacemos la imagen un poco transparente */
   }
 }
 
@@ -29,19 +32,57 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: @primary_bg;
-  color: @primary_text;
-  width:100%;
+  background-color: rgba(248, 200, 220, 0.9); /* Rosa pastel con transparencia */
+  color: var(--chocolate);
+  width: 100%;
+  backdrop-filter: blur(5px); /* Efecto de vidrio esmerilado */
+  border-top: 2px solid var(--dorado);
+  box-shadow: 0 -4px 12px rgba(92, 58, 33, 0.1);
 }
 
-@media @md {
+.action h2 {
+  color: var(--frambuesa); /* Título en color frambuesa */
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.action .btn {
+  background-color: var(--frambuesa);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 8px rgba(211, 47, 94, 0.3);
+}
+
+.action .btn:hover {
+  background-color: var(--rosado-fuerte);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(211, 47, 94, 0.4);
+}
+
+@media (min-width: 768px) {
   .hero {
     height: 640px;
   }
   .action {
-      left: ~"calc(75% - 160px)";
-      top: ~"calc(75% - 160px)";
-      bottom: initial;
-      width: 320px;
-    }
+    left: calc(75% - 160px);
+    top: calc(75% - 160px);
+    bottom: initial;
+    width: 320px;
+    border-radius: 16px;
+    border: 2px solid var(--dorado);
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo más claro en desktop */
+    animation: float 3s ease-in-out infinite;
   }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}

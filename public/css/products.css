@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -51,3 +52,110 @@
     cursor: pointer;
     margin-left:auto;
 }
+=======
+@import url("colors.css");
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: var(--crema);
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.product {
+  position: relative;
+  width: 320px;
+  border-radius: 1rem;
+  background: var(--vainilla);
+  border: 2px solid var(--rosado-fuerte);
+  box-shadow: 0 8px 16px rgba(212, 163, 115, 0.3);
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(212, 163, 115, 0.4);
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.8rem;
+  border: 3px solid var(--rosado-pastel);
+  object-fit: cover;
+}
+
+.product .price {
+  position: absolute;
+  top: 14rem;
+  left: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--chocolate);
+  background-color: rgba(255, 248, 232, 0.9);
+  border: 2px dashed var(--dorado);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.product p {
+  margin: 1rem 0 4rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--chocolate);
+  text-align: center;
+}
+
+.product .add-to-cart {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: block;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  background: var(--gradient-dulce);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.product .add-to-cart:hover {
+  background: var(--gradient-pastel);
+  color: var(--chocolate);
+}
+
+@media (max-width: 992px) {
+  .product {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .product {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .product .price {
+    top: 13rem;
+    left: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .product .add-to-cart {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+>>>>>>> bryan

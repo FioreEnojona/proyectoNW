@@ -4,6 +4,7 @@ namespace Dao\Products;
 
 use Dao\Table;
 
+<<<<<<< HEAD
 class Products extends Table
 {
 
@@ -19,6 +20,32 @@ class Products extends Table
                    LIMIT 3";
         $params = [];
         return self::obtenerRegistros($sqlstr, $params);
+=======
+class  Products extends Table
+{
+    public static function getFeaturedProducts()
+    {
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus FROM products p INNER JOIN highlights h ON p.productId = h.productId WHERE h.highlightStart <= NOW() AND h.highlightEnd >= NOW()";
+        $params = [];
+        $registros = self::obtenerRegistros($sqlstr, $params);
+        return $registros;
+    }
+
+    public static function getNewProducts()
+    {
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus FROM products p WHERE p.productStatus = 'ACT' ORDER BY p.productId DESC LIMIT 3";
+        $params = [];
+        $registros = self::obtenerRegistros($sqlstr, $params);
+        return $registros;
+    }
+
+    public static function getDailyDeals()
+    {
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, s.salePrice as productPrice, p.productImgUrl, p.productStatus FROM products p INNER JOIN sales s ON p.productId = s.productId WHERE s.saleStart <= NOW() AND s.saleEnd >= NOW()";
+        $params = [];
+        $registros = self::obtenerRegistros($sqlstr, $params);
+        return $registros;
+>>>>>>> bryan
     }
 
     public static function getProducts(
@@ -27,6 +54,7 @@ class Products extends Table
         string $orderBy = "",
         bool $orderDescending = false,
         int $page = 0,
+<<<<<<< HEAD
         int $itemsPerPage = 10,
         int $categoriaId = 0
     ) {
@@ -45,19 +73,35 @@ class Products extends Table
         $conditions = [];
         $params = [];
 
+=======
+        int $itemsPerPage = 10
+    ) {
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus, case when p.productStatus = 'ACT' then 'Activo' when p.productStatus = 'INA' then 'Inactivo' else 'Sin Asignar' end as productStatusDsc 
+    FROM products p";
+        $sqlstrCount = "SELECT COUNT(*) as count FROM products p";
+        $conditions = [];
+        $params = [];
+>>>>>>> bryan
         if ($partialName != "") {
             $conditions[] = "p.productName LIKE :partialName";
             $params["partialName"] = "%" . $partialName . "%";
         }
+<<<<<<< HEAD
 
         if (!in_array($status, ["ACT", "INA", ""])) {
             throw new \Exception("Error Processing Request: Status has invalid value");
         }
 
+=======
+        if (!in_array($status, ["ACT", "INA", ""])) {
+            throw new \Exception("Error Processing Request Status has invalid value");
+        }
+>>>>>>> bryan
         if ($status != "") {
             $conditions[] = "p.productStatus = :status";
             $params["status"] = $status;
         }
+<<<<<<< HEAD
 
         if ($categoriaId > 0) {
             $conditions[] = "p.categoriaId = :categoriaId";
@@ -74,12 +118,22 @@ class Products extends Table
             throw new \Exception("Error Processing Request: OrderBy has invalid value");
         }
 
+=======
+        if (count($conditions) > 0) {
+            $sqlstr .= " WHERE " . implode(" AND ", $conditions);
+            $sqlstrCount .= " WHERE " . implode(" AND ", $conditions);
+        }
+        if (!in_array($orderBy, ["productId", "productName", "productPrice", ""])) {
+            throw new \Exception("Error Processing Request OrderBy has invalid value");
+        }
+>>>>>>> bryan
         if ($orderBy != "") {
             $sqlstr .= " ORDER BY " . $orderBy;
             if ($orderDescending) {
                 $sqlstr .= " DESC";
             }
         }
+<<<<<<< HEAD
 
         $numeroDeRegistros = self::obtenerUnRegistro($sqlstrCount, $params)["count"];
 
@@ -105,10 +159,22 @@ class Products extends Table
             $page = max(0, $pagesCount - 1);
         }
         return [$page, $itemsPerPage];
+=======
+        $numeroDeRegistros = self::obtenerUnRegistro($sqlstrCount, $params)["count"];
+        $pagesCount = ceil($numeroDeRegistros / $itemsPerPage);
+        if ($page > $pagesCount - 1) {
+            $page = $pagesCount - 1;
+        }
+        $sqlstr .= " LIMIT " . $page * $itemsPerPage . ", " . $itemsPerPage;
+
+        $registros = self::obtenerRegistros($sqlstr, $params);
+        return ["products" => $registros, "total" => $numeroDeRegistros, "page" => $page, "itemsPerPage" => $itemsPerPage];
+>>>>>>> bryan
     }
 
     public static function getProductById(int $productId)
     {
+<<<<<<< HEAD
         $sqlstr = "SELECT 
                     productId, 
                     productName, 
@@ -119,6 +185,9 @@ class Products extends Table
                     categoriaId
                    FROM products 
                    WHERE productId = :productId";
+=======
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus FROM products p WHERE p.productId = :productId";
+>>>>>>> bryan
         $params = ["productId" => $productId];
         return self::obtenerUnRegistro($sqlstr, $params);
     }
@@ -128,6 +197,7 @@ class Products extends Table
         string $productDescription,
         float $productPrice,
         string $productImgUrl,
+<<<<<<< HEAD
         string $productStatus,
         string $categoriaId
     ): int {
@@ -136,13 +206,25 @@ class Products extends Table
                   VALUES 
                   (:productName, :productDescription, :productPrice, :productImgUrl, :productStatus, :categoriaId)";
         return self::executeNonQuery($sqlstr, [
+=======
+        string $productStatus
+    ) {
+        $sqlstr = "INSERT INTO products (productName, productDescription, productPrice, productImgUrl, productStatus) VALUES (:productName, :productDescription, :productPrice, :productImgUrl, :productStatus)";
+        $params = [
+>>>>>>> bryan
             "productName" => $productName,
             "productDescription" => $productDescription,
             "productPrice" => $productPrice,
             "productImgUrl" => $productImgUrl,
+<<<<<<< HEAD
             "productStatus" => $productStatus,
             "categoriaId" => $categoriaId
         ]);
+=======
+            "productStatus" => $productStatus
+        ];
+        return self::executeNonQuery($sqlstr, $params);
+>>>>>>> bryan
     }
 
     public static function updateProduct(
@@ -151,6 +233,7 @@ class Products extends Table
         string $productDescription,
         float $productPrice,
         string $productImgUrl,
+<<<<<<< HEAD
         string $productStatus,
         string $categoriaId
     ): int {
@@ -163,17 +246,32 @@ class Products extends Table
                   categoriaId = :categoriaId
                   WHERE productId = :productId";
         return self::executeNonQuery($sqlstr, [
+=======
+        string $productStatus
+    ) {
+        $sqlstr = "UPDATE products SET productName = :productName, productDescription = :productDescription, productPrice = :productPrice, productImgUrl = :productImgUrl, productStatus = :productStatus WHERE productId = :productId";
+        $params = [
+>>>>>>> bryan
             "productId" => $productId,
             "productName" => $productName,
             "productDescription" => $productDescription,
             "productPrice" => $productPrice,
             "productImgUrl" => $productImgUrl,
+<<<<<<< HEAD
             "productStatus" => $productStatus,
             "categoriaId" => $categoriaId
         ]);
     }
 
     public static function deleteProduct(int $productId): int
+=======
+            "productStatus" => $productStatus
+        ];
+        return self::executeNonQuery($sqlstr, $params);
+    }
+
+    public static function deleteProduct(int $productId)
+>>>>>>> bryan
     {
         $sqlstr = "DELETE FROM products WHERE productId = :productId";
         $params = ["productId" => $productId];
