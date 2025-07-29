@@ -1299,3 +1299,22 @@ a.link::after {
   font-weight: bold;
   color: #ff5722; /* color del número */
 }
+
+
+
+.historial-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.historial-table th,
+.historial-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.historial-table th {
+    background-color: #f5f5f5;
+}

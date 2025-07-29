@@ -20,20 +20,24 @@ class Accept extends PublicController
             $dataview["orderjson"] = json_encode($result, JSON_PRETTY_PRINT);
 
 
-            $orden = \Dao\Cart\Cart::getAuthCart($_SESSION["login"]["userId"]);
-            if (\Dao\Bitacora\Bitacora::guardarCompra(
-                "Programa",
-                "Orden Aceptada",
-                $orden["ordenTotal"],
-                $orden["ordenSubtotal"],
-                $_SESSION["login"]["userId"],
-                "ACP",
-                $orden["ordenImpuestos"]
-            )) {
+            $ordenProductos = \Dao\Cart\Cart::getAuthCart($_SESSION["login"]["userId"]);
+
+            if (!empty($ordenProductos)) {
+                foreach ($ordenProductos as $producto) {
+                    \Dao\Bitacora\Bitacora::guardarCompra(
+                        $producto["productName"],                  // Nombre del producto
+                        "Orden Aceptada",                           // Descripción
+                        $producto["crrctd"] * $producto["crrprc"],  // Total
+                        $producto["crrctd"] * $producto["crrprc"],  // Subtotal
+                        $_SESSION["login"]["userId"],               // ID del usuario logueado
+                        "ACP"                                       // Tipo
+                    );
+                }
             }
         } else {
             $dataview["orderjson"] = "No Order Available!!!";
         }
+
 
         \Views\Renderer::render("paypal/accept", $dataview);
     }
