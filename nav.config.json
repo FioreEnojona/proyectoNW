@@ -41,6 +41,11 @@
     "id": "Menu_Destacados",
     "nav_url": "index.php?page=Destacados",
     "nav_label": "<i class=\"fas fa-table\"></i>&nbsp;Destacados"
+  },
+  {
+    "id": "Menu_Usuarios",
+    "nav_url": "index.php?page=Seguridad_Usuarios",
+    "nav_label": "<i class=\"fas fa-table\"></i>&nbsp;Usuarios"
   }
   ]
 }

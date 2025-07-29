@@ -92,7 +92,6 @@ INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('OPADQ', 'Menu_Categorias', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
-<<<<<<< HEAD
 
 
 INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
@@ -245,6 +244,26 @@ INSERT INTO products (
  'Refrigerado – ideal consumir antes de 3 días.',
  'Sí');
 
-SELECT * FROM products WHERE productId = 1;
-SELECT productId, productName, productIngredients, productFeatures FROM products WHERE productId <= 9;
->>>>>>> jossdetalle
+--Usuarios Crud y menu
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Controllers\\Seguridad\\Usuario', 'Formulario de Usuarios', 'ACT', 'CTR');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Controllers\\Seguridad\\Usuarios', 'Lista de Usuarios', 'ACT', 'CTR');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Menu_Usuarios', 'Menu_Usuarios', 'ACT', 'MNU');
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Controllers\\Seguridad\\Usuario', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Controllers\\Seguridad\\Usuario', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Controllers\\Seguridad\\Usuarios', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Controllers\\Seguridad\\Usuarios', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Menu_Usuarios', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('AUDIT', 'Menu_Usuarios', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Usuario_DSP', 'Ver Detalle Usuario', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Usuario_INS', 'Crear Usuario', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Usuario_UPD', 'Editar Usuario', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Usuario_DEL', 'Eliminar Usuario', 'ACT', 'PFL');
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Usuario_DSP', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Usuario_INS', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Usuario_UPD', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Usuario_DEL', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
