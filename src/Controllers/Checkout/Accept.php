@@ -3,8 +3,10 @@
 namespace Controllers\Checkout;
 
 use Controllers\PublicController;
-class Accept extends PublicController{
-    public function run():void
+
+class Accept extends PublicController
+{
+    public function run(): void
     {
         $dataview = array();
         $token = $_GET["token"] ?: "";
@@ -18,5 +20,3 @@ class Accept extends PublicController{
         \Views\Renderer::render("paypal/accept", $dataview);
     }
 }
-
-?>
