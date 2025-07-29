@@ -1,6 +1,7 @@
 <?php
 
 namespace Utilities;
+
 class DotEnv
 {
     /**
@@ -13,13 +14,13 @@ class DotEnv
 
     public function __construct(string $path)
     {
-        if(!file_exists($path)) {
+        if (!file_exists($path)) {
             throw new \InvalidArgumentException(sprintf('%s does not exist', $path));
         }
         $this->path = $path;
     }
 
-    public function load() :array
+    public function load(): array
     {
         $returnEnv = array();
         if (!is_readable($this->path)) {
@@ -47,5 +48,3 @@ class DotEnv
         return $returnEnv;
     }
 }
-
-?>

@@ -6,14 +6,42 @@ use Dao\Table;
 
 class Bitacora extends Table
 {
-    public static function getByUserAndType($bitusuario, $bitTipo)
+    public static function obtenerBitacoras()
     {
-        return self::obtenerRegistros(
-            "SELECT * FROM bitacora WHERE bitusuario = :bitusuario AND bitTipo = :bitTipo ORDER BY bitacorafch DESC;",
-            [
-                "bitusuario" => $bitusuario,
-                "bitTipo" => $bitTipo
-            ]
+        $sqlStr = "SELECT * from bitacora;";
+        return self::obtenerRegistros($sqlStr, array());
+    }
+    public static function obtenerBitacora($bitacoracod)
+    {
+        $sqlStr = "SELECT * from bitacora where bitacoracod = :bitacoracod;";
+        return self::obtenerUnRegistro($sqlStr, array("bitacoracod" => intval($bitacoracod)));
+    }
+    public static function guardarCompra($bitprograma, $bitdescripcion, $bitTotal, $bitSubtotal, $bitusuario, $bitTipo, $bitImpuesto)
+    {
+        $sqlStr = "INSERT INTO bitacora (
+                bitacorafch,
+                bitprograma,
+                bitdescripcion,
+                bitobservacion,
+                bitTipo,
+                bitusuario
+              ) VALUES (
+                NOW(),
+                :bitprograma,
+                :bitdescripcion,
+                CONCAT('Total: ', :bitTotal, ', Subtotal: ', :bitSubtotal, ', Impuesto: ', :bitImpuesto),
+                :bitTipo,
+                :bitusuario
+              )";
+        $parametros = array(
+            "bitprograma" => $bitprograma,
+            "bitdescripcion" => $bitdescripcion,
+            "bitTotal" => $bitTotal,
+            "bitSubtotal" => $bitSubtotal,
+            "bitusuario" => $bitusuario,
+            "bitImpuesto" => $bitImpuesto,
+            "bitTipo" => $bitTipo
         );
+        return self::executeNonQuery($sqlStr, $parametros);
     }
 }

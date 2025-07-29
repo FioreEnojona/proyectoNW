@@ -17,7 +17,9 @@ class Checkout extends PublicController
             2.2) Redirigir al usuario a la página de Paypal para que complete el pago.
         
         */
-        $viewData = array();
+        $viewData = array(
+            "carretilla" => Cart::getAuthCart(Security::getUserId())
+        );
 
         $carretilla = Cart::getAuthCart(Security::getUserId());
         if ($this->isPostBack()) {
@@ -50,8 +52,8 @@ class Checkout extends PublicController
             if ($processPayment) {
                 $PayPalOrder = new \Utilities\Paypal\PayPalOrder(
                     "test" . (time() - 10000000),
-                    "http://localhost:8080/proyectoNW/index.php?page=Checkout_Error",
-                    "http://localhost:8080/proyectoNW/index.php?page=Checkout_Accept"
+                    "http://localhost:8080/mvcNegocios/mvc/index.php?page=Checkout_Error",
+                    "http://localhost:8080/mvcNegocios/mvc/index.php?page=Checkout_Accept"
                 );
 
                 foreach ($viewData["carretilla"] as $producto) {

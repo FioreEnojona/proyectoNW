@@ -172,4 +172,10 @@ class Cart extends \Dao\Table
         $productosDisponibles = self::obtenerRegistros($sqlAllProductosActivos, array("productId" => $productId));
         return $productosDisponibles;
     }
+    public static function buscarPorNombre(string $nombre): array
+    {
+        $sql = "SELECT * FROM products WHERE productName LIKE :nombre AND productStatus = 'ACT'";
+        $param = ["nombre" => "%$nombre%"];
+        return self::obtenerRegistros($sql, $param);
+    }
 }

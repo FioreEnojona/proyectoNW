@@ -18,9 +18,23 @@ class Accept extends PublicController
             );
             $result = $PayPalRestApi->captureOrder($session_token);
             $dataview["orderjson"] = json_encode($result, JSON_PRETTY_PRINT);
+
+
+            $orden = \Dao\Cart\Cart::getAuthCart($_SESSION["login"]["userId"]);
+            if (\Dao\Bitacora\Bitacora::guardarCompra(
+                "Programa",
+                "Orden Aceptada",
+                $orden["ordenTotal"],
+                $orden["ordenSubtotal"],
+                $_SESSION["login"]["userId"],
+                "ACP",
+                $orden["ordenImpuestos"]
+            )) {
+            }
         } else {
             $dataview["orderjson"] = "No Order Available!!!";
         }
+
         \Views\Renderer::render("paypal/accept", $dataview);
     }
 }

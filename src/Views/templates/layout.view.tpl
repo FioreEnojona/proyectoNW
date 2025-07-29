@@ -6,13 +6,13 @@
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{BASE_DIR}}/public/css/appstyle.css" />
+  <link rel="stylesheet" href="/{{BASE_DIR}}/public/css/appstyle.css" />
   <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
   {{foreach SiteLinks}}
-    <link rel="stylesheet" href="{{~BASE_DIR}}/{{this}}" />
+    <link rel="stylesheet" href="/{{~BASE_DIR}}/{{this}}" />
   {{endfor SiteLinks}}
   {{foreach BeginScripts}}
-    <script src="{{~BASE_DIR}}/{{this}}"></script>
+    <script src="/{{~BASE_DIR}}/{{this}}"></script>
   {{endfor BeginScripts}}
 </head>
 <body>
@@ -24,6 +24,17 @@
       <div class="hmb dgn pt-2"></div>
     </label>
     <h1>{{SITE_TITLE}}</h1>
+
+    <form class="buscador_amazon" method="GET" action="index.php">
+  <input type="hidden" name="page" value="Index" />
+  <div class="buscador_amazon_contenedor">
+    <input class="buscador_amazon_input" type="search" name="nombre" placeholder="Buscar productos, marcas y más..." />
+    <button class="buscador_amazon_boton" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</form>
+
     <nav id="menu">
       <ul>
         <li><a href="index.php?page={{PUBLIC_DEFAULT_CONTROLLER}}"><i class="fas fa-home"></i>&nbsp;Inicio</a></li>
@@ -41,7 +52,7 @@
     <div>Todo los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
   </footer>
   {{foreach EndScripts}}
-    <script src="{{~BASE_DIR}}/{{this}}"></script>
+    <script src="/{{~BASE_DIR}}/{{this}}"></script>
   {{endfor EndScripts}}
 </body>
 </html>
