@@ -1,41 +1,3 @@
-<<<<<<< HEAD
-<?php
-/**
- * PHP Version 7.2
- *
- * @category Public
- * @package  Controllers
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
- * @license  MIT http://
- * @version  CVS:1.0.0
- * @link     http://
- */
-namespace Controllers;
-
-/**
- * Index Controller
- *
- * @category Public
- * @package  Controllers
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
- * @license  MIT http://
- * @link     http://
- */
-class Index extends PublicController
-{
-    /**
-     * Index run method
-     *
-     * @return void
-     */
-    public function run() :void
-    {
-        $viewData = array();
-        \Views\Renderer::render("index", $viewData);
-    }
-}
-?>
-=======
 <?php
 
 /**
@@ -56,6 +18,7 @@ use Utilities\Site;
 use Utilities\Cart\CartFns;
 use Utilities\Security;
 
+
 /**
  * Index Controller
  *
@@ -65,6 +28,7 @@ use Utilities\Security;
  * @license  MIT http://
  * @link     http://
  */
+
 class Index extends PublicController
 {
     /**
@@ -108,11 +72,19 @@ class Index extends PublicController
             $this->getCartCounter();
         }
 
-        $products = Cart::getProductosDisponibles();
+        $nombre = $_GET["nombre"] ?? "";
+        if (!empty($nombre)) {
+            $products = Cart::buscarPorNombre($nombre);
+        } else {
+            $products = Cart::getProductosDisponibles();
+        }
+
+
+
+
         $viewData = [
             "products" => $products,
         ];
         \Views\Renderer::render("index", $viewData);
-    }
+    }
 }
->>>>>>> origin/steven
