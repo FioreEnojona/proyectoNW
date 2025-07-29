@@ -6,5 +6,10 @@ use Views\Renderer;
 
 class Valores extends \Controllers\PublicController
 {
-    public function run(): void {}
+    public function run(): void
+    {
+
+        $viewData = [];
+        Renderer::render("security/valores", $viewData);
+    }
 }
