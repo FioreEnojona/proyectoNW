@@ -9,20 +9,20 @@ class Factura extends Table
     public static function obtenerFacturaPorId($id)
     {
 
-        $json = '{
-            "id": "5O190127TN364715T",
-            "status": "APPROVED",
-            "intent": "CAPTURE",
-            "payment_source": {
-                "paypal": {
-                    "name": {
-                        "given_name": "John",
-                        "surname": "Doe"
-                    },
-                    "email_address": "[email protected]",
-                    "account_id": "QYR5Z8XDVJNXQ"
-                }
-            },
+            $json = '{
+                "id": "5O190127TN364715T",
+                "status": "APPROVED",
+                "intent": "CAPTURE",
+                "payment_source": {
+                    "paypal": {
+                        "name": {
+                            "given_name": "John",
+                            "surname": "Doe"
+                        },
+                        "email_address": "[email protected]",
+                        "account_id": "QYR5Z8XDVJNXQ"
+                    }
+                },
             "purchase_units": [
                 {
                     "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b",
