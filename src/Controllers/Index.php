@@ -1,83 +1,37 @@
 <?php
 
-/**
- * PHP Version 7.2
- *
- * @category Public
- * @package  Controllers
- */
-
 namespace Controllers;
 
-use Dao\Cart\Cart;
-use Utilities\Site;
-use Utilities\Cart\CartFns;
-use Utilities\Security;
-use Dao\Products\Products as ProductsDao;
-use Dao\Products\Categorias as CategoriasDao;
-use Views\Renderer;
+use \Dao\Products\Products as ProductsDao;
+use \Dao\Products\Categorias as CategoriasDao;
+use \Views\Renderer as Renderer;
+use \Utilities\Site as Site;
 
 class Index extends PublicController
 {
     public function run(): void
     {
         Site::addLink("public/css/products.css");
-        Site::addLink("public/css/style.css");
-
         $viewData = [];
 
-        // Obtener categorías activas
-        $viewData["categories"] = CategoriasDao::getActiveCategorias();
-
-        // Filtro por categoría
         $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
         $viewData["selected_categoriaId"] = $categoriaId;
 
-        // Obtener productos filtrados por categoría
         $productos = ProductsDao::getProducts("", "ACT", "productName", false, 0, 1000, $categoriaId);
-        $viewData["products"] = $productos["products"];
+        $viewData["allProducts"] = $productos["products"];
 
-        // Manejar POST (añadir al carrito)
-        if ($this->isPostBack()) {
-            if (Security::isLogged()) {
-                $usercod = Security::getUserId();
-                $productId = intval($_POST["productId"]);
-                $product = Cart::getProductoDisponible($productId);
+        $resultadoCategorias = CategoriasDao::getCategorias();
+        $categorias = $resultadoCategorias["categorias"];
 
-                if ($product && isset($product["productStock"]) && $product["productStock"] - 1 >= 0) {
-                    Cart::addToAuthCart(
-                        $productId,
-                        $usercod,
-                        1,
-                        $product["productPrice"]
-                    );
-                }
-            } else {
-                $cartAnonCod = CartFns::getAnnonCartCode();
-                if (isset($_POST["addToCart"])) {
-                    $productId = intval($_POST["productId"]);
-                    $product = Cart::getProductoDisponible($productId);
-
-                    if ($product && isset($product["productStock"]) && $product["productStock"] - 1 >= 0) {
-                        Cart::addToAnonCart(
-                            $productId,
-                            $cartAnonCod,
-                            1,
-                            $product["productPrice"]
-                        );
-                    }
-                }
-            }
-            $this->getCartCounter();
+        foreach ($categorias as $cat) {
+            $viewData["categories"][] = [
+                "categoriaId" => $cat["id"],
+                "nombre" => $cat["nombre"],
+                "selected_categoriaId" => ($cat["id"] == $categoriaId) ? "selected" : ""
+            ];
         }
 
-        // Búsqueda por nombre
-        $nombre = $_GET["nombre"] ?? "";
-        if (!empty($nombre)) {
-            $viewData["products"] = Cart::buscarPorNombre($nombre);
-        }
 
-        // Renderizar vista
         Renderer::render("index", $viewData);
     }
 }

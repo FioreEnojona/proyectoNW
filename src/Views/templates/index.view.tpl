@@ -76,34 +76,26 @@
     </div>
 </section>
 
-
 <h1>Menú</h1>
 <form method="get" action="index.php?page=Index">
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
         {{foreach categories}}
-<option value="{{categoriaId}}" {{selected_categoriaId}}>{{categoriaNombre}}</option>
+            <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
         {{endfor categories}}
     </select>
 </form>
-<div class="product-list">
-  {{foreach products}}
-  <div class="product" data-productId="{{productId}}">
-    <img src="{{productImgUrl}}" alt="{{productName}}">
-    <h2>{{productName}}</h2>
-    <p>{{productDescription}}</p>
-    <span class="price">{{productPrice}}</span>
-    <span class="stock">Disponible {{productStock}}</span>
-    <form action="index.php?page=index" method="post">
-        <input type="hidden" name="productId" value="{{productId}}">
-        <button type="submit" name="addToCart" class="add-to-cart">
-          <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
-        </button>
-         <a href="index.php?page=Products-Detalle&productId={{productId}}"class="btn-detail">Ver Detalle</a>
 
-    </form>
-  </div>
-  {{endfor products}}
+<div class="product-list">
+    {{foreach allProducts}}
+    <div class="product" data-productId="{{productId}}">
+        <img src="{{productImgUrl}}" alt="{{productName}}">
+        <h2>{{productName}}</h2>
+        <p>{{productDescription}}</p>
+        <span class="price">L. {{productPrice}}</span>
+        <button class="add-to-cart">Agregar al Carrito</button>
+    </div>
+    {{endfor allProducts}}
 </div>
 
 <section>
