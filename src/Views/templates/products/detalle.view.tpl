@@ -24,7 +24,7 @@
 
   <div class="row my-4 align-center flex-end">
     <!-- Botón Añadir al Carrito -->
-    <form action="index.php?page=Cart_Add" method="POST" class="col-12 col-m-3">
+    <form action="index.php?page=Cart_Add" method="POST" class="">
       <input type="hidden" name="productId" value="{{productId}}">
       <button class="primary col-12" type="submit">Añadir al Carrito</button>
     </form>

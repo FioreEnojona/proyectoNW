@@ -76,9 +76,9 @@
       <tr>
         <td>{{productId}}</td>
         <td>
-          <a href="index.php?page=Products-Product&mode=DSP&productId={{productId}}">
+          <p{{productId}}>
             {{productDescription}}
-          </a>
+          </p>
         </td>
         <td class="right">{{productPrice}}</td>
 

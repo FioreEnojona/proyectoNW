@@ -38,7 +38,7 @@
       <tr>
         <td>{{rolescod}}</td>
         <td>
-          <a class="link" href="index.php?page=Roles-Rol&mode=DSP&rolescod={{rolescod}}">{{rolesdsc}}</a>
+          <p>{{rolesdsc}}</p>
         </td>
         <td class="center">{{rolStatusDsc}}</td>
         <td class="center">
