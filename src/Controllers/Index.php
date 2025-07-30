@@ -5,10 +5,6 @@
  *
  * @category Public
  * @package  Controllers
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
- * @license  MIT http://
- * @version  CVS:1.0.0
- * @link     http://
  */
 
 namespace Controllers;
@@ -21,30 +17,19 @@ use Dao\Products\Products as ProductsDao;
 use Dao\Products\Categorias as CategoriasDao;
 use Views\Renderer;
 
-/**
- * Index Controller
- *
- * @category Public
- * @package  Controllers
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
- * @license  MIT http://
- * @link     http://
- */
 class Index extends PublicController
 {
-    /**
-     * Index run method
-     *
-     * @return void
-     */
     public function run(): void
     {
         Site::addLink("public/css/products.css");
         Site::addLink("public/css/style.css");
 
-        // Obtener categorías
         $viewData = [];
-        $viewData["categories"] = CategoriasDao::getCategorias();
+
+        // Obtener categorías activas
+        $viewData["categories"] = CategoriasDao::getActiveCategorias();
+
+        // Filtro por categoría
         $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
         $viewData["selected_categoriaId"] = $categoriaId;
 
@@ -86,13 +71,13 @@ class Index extends PublicController
             $this->getCartCounter();
         }
 
-        // Búsqueda por nombre (si aplica)
+        // Búsqueda por nombre
         $nombre = $_GET["nombre"] ?? "";
         if (!empty($nombre)) {
             $viewData["products"] = Cart::buscarPorNombre($nombre);
         }
 
-        // Renderizar vista con todos los datos
+        // Renderizar vista
         Renderer::render("index", $viewData);
     }
 }

@@ -73,11 +73,13 @@ class Usuarios extends PrivateController
 
     private function applyPagination(): void
     {
+        // Aseguramos que itemsPerPage sea al menos 1
+        $this->itemsPerPage = max(1, $this->itemsPerPage);
+
         $this->pages = $this->usuariosCount > 0 ? ceil($this->usuariosCount / $this->itemsPerPage) : 1;
 
-        if ($this->pageNumber > $this->pages) {
-            $this->pageNumber = $this->pages;
-        }
+        // Validamos que pageNumber esté dentro del rango válido
+        $this->pageNumber = max(1, min($this->pages, $this->pageNumber));
 
         $offset = ($this->pageNumber - 1) * $this->itemsPerPage;
         $this->usuarios = array_slice($this->usuarios, $offset, $this->itemsPerPage);
@@ -100,8 +102,8 @@ class Usuarios extends PrivateController
         $this->orderDescending = isset($_GET["orderDescending"]) ?
             boolval($_GET["orderDescending"]) : $this->orderDescending;
 
-        $this->pageNumber = isset($_GET["pageNum"]) ? intval($_GET["pageNum"]) : $this->pageNumber;
-        $this->itemsPerPage = isset($_GET["itemsPerPage"]) ? intval($_GET["itemsPerPage"]) : $this->itemsPerPage;
+        $this->pageNumber = isset($_GET["pageNum"]) ? max(1, intval($_GET["pageNum"])) : $this->pageNumber;
+        $this->itemsPerPage = isset($_GET["itemsPerPage"]) ? max(1, intval($_GET["itemsPerPage"])) : $this->itemsPerPage;
     }
 
     private function getParamsFromContext(): void
@@ -111,8 +113,8 @@ class Usuarios extends PrivateController
         $this->userest = Context::getContextByKey("usuarios_userest");
         $this->orderBy = Context::getContextByKey("usuarios_orderBy");
         $this->orderDescending = boolval(Context::getContextByKey("usuarios_orderDescending"));
-        $this->pageNumber = intval(Context::getContextByKey("usuarios_page"));
-        $this->itemsPerPage = intval(Context::getContextByKey("usuarios_itemsPerPage"));
+        $this->pageNumber = max(1, intval(Context::getContextByKey("usuarios_page")));
+        $this->itemsPerPage = max(1, intval(Context::getContextByKey("usuarios_itemsPerPage")));
 
         $this->canView = $this->isFeatureAutorized("Usuarios_DSP");
         $this->canEdit = $this->isFeatureAutorized("Usuarios_UPD");

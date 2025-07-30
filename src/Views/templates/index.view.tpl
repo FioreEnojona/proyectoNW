@@ -75,16 +75,17 @@
         </div>
     </div>
 </section>
-<h1>Menu</h1>
+
+
+<h1>Menú</h1>
 <form method="get" action="index.php?page=Index">
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
-        {{foreach categorias}}
-        <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
-        {{endfor categorias}}
+        {{foreach categories}}
+<option value="{{categoriaId}}" {{selected_categoriaId}}>{{categoriaNombre}}</option>
+        {{endfor categories}}
     </select>
 </form>
-
 <div class="product-list">
   {{foreach products}}
   <div class="product" data-productId="{{productId}}">

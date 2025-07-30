@@ -1,6 +1,6 @@
 <h1>Historial de Compras</h1>
-
-{{if bitacoras}}
+<section class="WWList my-4">
+    {{if bitacoras}}
 <table class="historial-table">
     <thead>
         <tr>
@@ -28,3 +28,5 @@
 {{else}}
 <p>No tienes compras registradas.</p>
 {{endif bitacoras}}
+
+</section>
