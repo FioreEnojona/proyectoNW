@@ -81,7 +81,7 @@
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
         {{foreach categories}}
-            <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
+        <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
         {{endfor categories}}
     </select>
 </form>
@@ -92,8 +92,15 @@
         <img src="{{productImgUrl}}" alt="{{productName}}">
         <h2>{{productName}}</h2>
         <p>{{productDescription}}</p>
-        <span class="price">L. {{productPrice}}</span>
+        <span class="price">{{productPrice}}</span>
+        <span class="stock">Disponible {{productStock}}</span>
         <button class="add-to-cart">Agregar al Carrito</button>
+         <form action="index.php?page=index" method="post">
+        <input type="hidden" name="productId" value="{{productId}}">
+        <button type="submit" name="addToCart" class="add-to-cart">
+          <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
+        </button>
+    </form>
     </div>
     {{endfor allProducts}}
 </div>
