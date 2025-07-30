@@ -192,4 +192,13 @@ class Cart extends \Dao\Table
             "productId" => $productId
         ]);
     }
+    public static function removeFromAuthCart($userId, $productId)
+    {
+        $sql = "DELETE FROM carretilla WHERE usercod = :usercod AND productId = :productId";
+        $params = [
+            "usercod" => $userId,
+            "productId" => $productId
+        ];
+        return self::executeNonQuery($sql, $params);
+    }
 }

@@ -21,7 +21,6 @@
             <td>{{nombre}}</td>
             <td>{{cantidad}}</td>
             <td>{{precio}}</td>
-            <td>{{subtotal}}</td>
         </tr>
         {{endfor productos}}
     </tbody>

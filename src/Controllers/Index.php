@@ -44,9 +44,10 @@ class Index extends PublicController
                 $usercod = Security::getUserId();
                 $productId = intval($_POST["productId"]);
                 $product = Cart::getProductoDisponible($productId);
-                if ($product["productStock"] - 1 >= 0) {
+
+                if ($product && isset($product["productStock"]) && $product["productStock"] - 1 >= 0) {
                     Cart::addToAuthCart(
-                        intval($_POST["productId"]),
+                        $productId,
                         $usercod,
                         1,
                         $product["productPrice"]
@@ -55,12 +56,12 @@ class Index extends PublicController
             } else {
                 $cartAnonCod = CartFns::getAnnonCartCode();
                 if (isset($_POST["addToCart"])) {
-
                     $productId = intval($_POST["productId"]);
                     $product = Cart::getProductoDisponible($productId);
-                    if ($product["productStock"] - 1 >= 0) {
+
+                    if ($product && isset($product["productStock"]) && $product["productStock"] - 1 >= 0) {
                         Cart::addToAnonCart(
-                            intval($_POST["productId"]),
+                            $productId,
                             $cartAnonCod,
                             1,
                             $product["productPrice"]
