@@ -28,3 +28,7 @@
 </table>
 
 <h3>Total: {{total}}</h3>
+
+<div class="factura_footer">
+    <button class="btn-regresar" onclick="window.location.href='index.php?page=Index'">Regresar</button>
+  </div>
