@@ -8,8 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{BASE_DIR}}/public/css/appstyle.css" />
-    <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
-
+  <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
   <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
   {{foreach SiteLinks}}
   <link rel="stylesheet" href="{{~BASE_DIR}}/{{this}}" />
@@ -46,7 +45,14 @@
         {{endfor PUBLIC_NAVIGATION}}
       </ul>
     </nav>
-    <span>{{if ~CART_ITEMS}}<i class="fa-solid fa-cart-shopping"></i>{{~CART_ITEMS}}{{endif ~CART_ITEMS}}</span>
+<span>
+  <a href="index.php?page=Checkout_Checkout" class="carrito-link">
+    <img src="{{~BASE_DIR}}/public/imgs/carretilla.png" alt="Carrito" class="icono-carrito">
+    {{if ~CART_ITEMS}}
+      <i class="fa-solid fa-cart-shopping"></i> {{~CART_ITEMS}}
+    {{endif ~CART_ITEMS}}
+  </a>
+</span>
 
   </header>
   <main>

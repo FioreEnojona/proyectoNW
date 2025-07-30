@@ -51,6 +51,16 @@
       "id":"Menu_Historial",
       "nav_url": "index.php?page=Historial_Historial",
       "nav_label": "Historial de Compra"
+    },
+    {
+      "id":"Menu_Historial",
+      "nav_url": "index.php?page=Historial_Historial",
+      "nav_label": "Historial de Compra"
+    },
+    {
+      "id": "Menu_Valores",
+      "nav_url": "index.php?page=Sec_Valores",
+      "nav_label": "<i class=\"fas fa-users\"></i>&nbsp;Valores y Quiénes Somos"
     }
   ]
 }

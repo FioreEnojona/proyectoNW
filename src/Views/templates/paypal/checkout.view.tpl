@@ -37,6 +37,11 @@
       <button type="submit">Place Order</button>
     </form>
   </div>
+  <div class="row">
+    <form action="index.php?page=Index" method="post" class="col-12 right">
+      <button type="submit">Regresar</button>
+    </form>
+  </div>
 </section>
 
 </section>

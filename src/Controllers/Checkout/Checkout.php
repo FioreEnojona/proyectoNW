@@ -22,6 +22,7 @@ class Checkout extends PublicController
         );
 
         $carretilla = Cart::getAuthCart(Security::getUserId());
+
         if ($this->isPostBack()) {
             $processPayment = true;
             if (isset($_POST["removeOne"]) || isset($_POST["addOne"])) {
@@ -92,6 +93,7 @@ class Checkout extends PublicController
             $prod["subtotal"] = number_format($prod["crrprc"] * $prod["crrctd"], 2);
             $total += $prod["crrprc"] * $prod["crrctd"];
             $prod["crrprc"] = number_format($prod["crrprc"], 2);
+            $prod["disableRemove"] = ($prod["crrctd"] <= 1);
             $finalCarretilla[] = $prod;
             $counter++;
         }

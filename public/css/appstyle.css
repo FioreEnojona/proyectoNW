@@ -1414,64 +1414,6 @@ a.link::after {
 
 
 }
-.factura {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #fffef5;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-}
-
-.factura_heading {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 25px;
-  color: #4e342e;
-}
-
-.factura_info,
-.factura_pagador,
-.factura_detalle {
-  margin-bottom: 30px;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #f0e6d2;
-  border-radius: 8px;
-}
-
-.factura_subheading {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  color: #6d4c41;
-}
-
-.factura p {
-  margin: 6px 0;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.factura strong {
-  color: #3e2723;
-}
-
-@media (max-width: 600px) {
-  .factura {
-    padding: 20px;
-  }
-
-  .factura_heading {
-    font-size: 1.5rem;
-  }
-
-  .factura_subheading {
-    font-size: 1.1rem;
-  }
-}
     
 
 
