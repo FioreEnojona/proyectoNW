@@ -10,6 +10,7 @@
  * @version  CVS:1.0.0
  * @link     http://
  */
+
 namespace Views;
 
 /**
@@ -71,7 +72,7 @@ class Renderer
                     $htmlContent
                 );
                 //Cargar Otras plantillas
-                if(strpos($htmlContent, "{{include")){
+                if (strpos($htmlContent, "{{include")) {
                     $htmlContent = self::loadPartials($htmlContent);
                 }
                 //Limpiar Saltos de Pagina
@@ -87,7 +88,7 @@ class Renderer
                 $htmlResult = self::_renderTemplate($template_code, $datos);
 
                 if ($render) {
-                    if($datos["USE_URLREWRITE"] == "1") {
+                    if ($datos["USE_URLREWRITE"] == "1") {
                         echo self::rewriteUrl($htmlResult);
                     } else {
                         echo $htmlResult;
@@ -362,14 +363,14 @@ class Renderer
     private static function _parseTemplate($htmlTemplate)
     {
         $regexp_array = array(
-          'foreach'      => '(\{\{foreach [~&]?\w*\}\})',
-          'endfor'       => '(\{\{endfor [~&]?\w*\}\})',
-          'if'           => '(\{\{if [~&]?\w*\}\})',
-          'if_not'       => '(\{\{ifnot [~&]?\w*\}\})',
-          'if_close'     => '(\{\{endif [~&]?\w*\}\})',
-          'ifnot_close'  => '(\{\{endifnot [~&]?\w*\}\})',
-          'with'         => '(\{\{with [~&]?\w*\}\})',
-          'with_close'   => '(\{\{endwith [~&]?\w*\}\})'
+            'foreach'      => '(\{\{foreach [~&]?\w*\}\})',
+            'endfor'       => '(\{\{endfor [~&]?\w*\}\})',
+            'if'           => '(\{\{if [~&]?\w*\}\})',
+            'if_not'       => '(\{\{ifnot [~&]?\w*\}\})',
+            'if_close'     => '(\{\{endif [~&]?\w*\}\})',
+            'ifnot_close'  => '(\{\{endifnot [~&]?\w*\}\})',
+            'with'         => '(\{\{with [~&]?\w*\}\})',
+            'with_close'   => '(\{\{endwith [~&]?\w*\}\})'
         );
 
         $tag_regexp = "/" . join("|", $regexp_array) . "/";
@@ -401,11 +402,11 @@ class Renderer
             PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
         );
         $htmlBuffer = "";
-        foreach($template_code as $block) {
+        foreach ($template_code as $block) {
             if (strpos($block, "include")) {
                 $filePath = trim(
-                        str_replace("}}", "", str_replace("{{include", "", $block))
-                ). ".view.tpl";;
+                    str_replace("}}", "", str_replace("{{include", "", $block))
+                ) . ".view.tpl";;
                 $viewsPath = "src/Views/templates/";
                 if (file_exists($viewsPath . $filePath)) {
                     $htmlContent = file_get_contents($viewsPath . $filePath);
@@ -440,13 +441,13 @@ class Renderer
         foreach ($template_code as $node) {
             if (strpos($node, "index.php?page=")  !== false) {
                 $pageStart = strpos($node, "=") + 1;
-                $pageEnd = strpos($node, "&")?:strlen($node);
+                $pageEnd = strpos($node, "&") ?: strlen($node);
                 $pageValueLength = $pageEnd - $pageStart;
                 $page = substr($node, $pageStart, $pageValueLength);
                 $query = substr($node, $pageEnd + 1);
 
-                $url = $basedir . "/" . str_replace(array("_",".","-"), "/", $page);
-                $url .= strlen($query)?"/?".$query:"/";
+                $url = $basedir . "/" . str_replace(array("_", ".", "-"), "/", $page);
+                $url .= strlen($query) ? "/?" . $query : "/";
                 $htmlBuffer .= $url;
             } else {
                 if ($node == "index.php") {
@@ -461,8 +462,5 @@ class Renderer
     /**
      * Constructor privado evita instancia de esta clase
      */
-    private function __construct()
-    {
-
-    }
+    private function __construct() {}
 }

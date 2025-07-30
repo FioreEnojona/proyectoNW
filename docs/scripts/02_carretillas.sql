@@ -39,6 +39,6 @@ CREATE TABLE
         `crrprc` decimal(12, 2) NOT NULL,
         `crrfching` datetime NOT NULL,
         PRIMARY KEY (`anoncod`, `productId`),
-        KEY `productId_idx` (`productId`),
+        INDEX `productId_idx` (`productId` ASC),
         CONSTRAINT `carretillaanon_prd_key` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`) ON DELETE NO ACTION ON UPDATE NO ACTION
     );

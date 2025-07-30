@@ -28,7 +28,16 @@
       <div class="hmb dgn pt-2"></div>
     </label>
     <h1>{{SITE_TITLE}}</h1>
-    
+       <form class="buscador_amazon" method="GET" action="index.php">
+  <input type="hidden" name="page" value="Index" />
+  <div class="buscador_amazon_contenedor">
+    <input class="buscador_amazon_input" type="search" name="nombre" placeholder="Buscar productos, marcas y más..." />
+    <button class="buscador_amazon_boton" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</form>
+
     <nav id="menu">
       <ul>
         <li><a href="index.php?page={{PUBLIC_DEFAULT_CONTROLLER}}" class="nav-cta"><i class="fas fa-home"></i>&nbsp;Inicio</a></li>
@@ -37,6 +46,7 @@
         {{endfor PUBLIC_NAVIGATION}}
       </ul>
     </nav>
+    <span>{{if ~CART_ITEMS}}<i class="fa-solid fa-cart-shopping"></i>{{~CART_ITEMS}}{{endif ~CART_ITEMS}}</span>
 
   </header>
   <main>

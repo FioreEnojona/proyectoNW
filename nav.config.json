@@ -46,6 +46,11 @@
     "id": "Menu_Usuarios",
     "nav_url": "index.php?page=Seguridad_Usuarios",
     "nav_label": "<i class=\"fas fa-table\"></i>&nbsp;Usuarios"
-  }
+  },
+    {
+      "id":"Menu_Historial",
+      "nav_url": "index.php?page=Historial_Historial",
+      "nav_label": "Historial de Compra"
+    }
   ]
 }

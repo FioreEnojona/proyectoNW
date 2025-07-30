@@ -1319,18 +1319,31 @@ a.link::after {
         width: 320px
     }
 }
-.about-section {
-    background-color: #FF8282; 
-    padding: 40px 20px;
-    margin: 30px 0;
-    border-radius: 15px;
+/* Creacion de Usuarios e Inicio de Sesion */
+.form-login {
+  padding: 6rem;
+  background-color: #fff8e1;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  font-family: 'Arial', sans-serif;
+  color: #4e342e;
 }
 
-.about-section h1 {
-    color: #533B4D; 
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+.form-register {
+  background-color: #fff8e1;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  color: #4e342e;
+}
+
+.fullCenter h1 {
+  font-family: 'Pacifico', cursive;
+  color: #6d4c41;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .about-cards {
@@ -1400,4 +1413,102 @@ a.link::after {
     }
 
 
+}
+.factura {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fffef5;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.factura_heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #4e342e;
+}
+
+.factura_info,
+.factura_pagador,
+.factura_detalle {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #f0e6d2;
+  border-radius: 8px;
+}
+
+.factura_subheading {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #6d4c41;
+}
+
+.factura p {
+  margin: 6px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.factura strong {
+  color: #3e2723;
+}
+
+@media (max-width: 600px) {
+  .factura {
+    padding: 20px;
+  }
+
+  .factura_heading {
+    font-size: 1.5rem;
+  }
+
+  .factura_subheading {
+    font-size: 1.1rem;
+  }
+}
+    
+
+
+.icono-carrito {
+  width: 38px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.carrito-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+
+.contador-carrito {
+  margin-left: 2px;
+  font-weight: bold;
+  color: #ff5722; /* color del número */
+}
+
+
+
+.historial-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.historial-table th,
+.historial-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.historial-table th {
+    background-color: #f5f5f5;
 }

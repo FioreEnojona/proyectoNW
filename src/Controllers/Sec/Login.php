@@ -1,5 +1,7 @@
 <?php
+
 namespace Controllers\Sec;
+
 class Login extends \Controllers\PublicController
 {
     private $txtEmail = "";
@@ -9,7 +11,7 @@ class Login extends \Controllers\PublicController
     private $generalError = "";
     private $hasError = false;
 
-    public function run() :void
+    public function run(): void
     {
         if ($this->isPostBack()) {
             $this->txtEmail = $_POST["txtEmail"];
@@ -78,4 +80,3 @@ class Login extends \Controllers\PublicController
         \Views\Renderer::render("security/login", $dataView);
     }
 }
-?>
