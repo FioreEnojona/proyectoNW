@@ -267,3 +267,14 @@ INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Usuario_INS', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Usuario_UPD', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Usuario_DEL', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Products_DSP', 'Ver Detalle Producto', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Products_INS', 'Crear Producto', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Products_UPD', 'Editar Producto', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) VALUES ('Products_DEL', 'Eliminar Producto', 'ACT', 'PFL');
+
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Products_DSP', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Products_INS', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Products_UPD', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Products_DEL', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));

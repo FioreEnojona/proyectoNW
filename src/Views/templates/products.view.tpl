@@ -76,7 +76,7 @@
       <tr>
         <td>{{productId}}</td>
         <td>
-          <a class="link" href="index.php?page=Products-Product&mode=DSP&productId={{productId}}">
+          <a href="index.php?page=Products-Product&mode=DSP&productId={{productId}}">
             {{productDescription}}
           </a>
         </td>
