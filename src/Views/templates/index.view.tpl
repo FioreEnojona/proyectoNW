@@ -1,12 +1,11 @@
-
-<section class="hero">
-    <div class="hero-content container">
-        <h1 class="titulo-principal">Bienvenidos a <span class="brand">Dulce Encanto</span></h1>
-        <p class="subtitulo">Deliciosas creaciones artesanales que endulzan cada momento especial de tu vida. Desde
-            1995, llevamos alegría y sabor a tus celebraciones con recetas tradicionales y un toque de innovación.</p>
-        <a href="/productos" class="btn btn-primary">Explorar Nuestro Catálogo</a>
-    </div>
 <section>
+    <div>
+        <h1>Bienvenidos a <strong>Dulce Encanto</strong></h1>
+        <p>Deliciosas creaciones artesanales que endulzan cada momento especial de tu vida. Desde 1995, llevamos alegría
+            y sabor a tus celebraciones con recetas tradicionales y un toque de innovación.</p>
+        <a href="#produtos">Explorar Nuestro Catálogo</a>
+    </div>
+</section>
 
 <section>
     <h1>Sobre Nuestra Pastelería</h1>
