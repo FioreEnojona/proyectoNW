@@ -27,6 +27,7 @@
       <div class="hmb hrz"></div>
       <div class="hmb dgn pt-2"></div>
     </label>
+
     <h1>{{SITE_TITLE}}</h1>
 
     <form class="buscador_amazon" method="GET" action="index.php">
@@ -34,6 +35,8 @@
       <div class="buscador_amazon_contenedor">
         <input class="buscador_amazon_input" type="search" name="nombre"
           placeholder="Buscar productos, marcas y más..." />
+              &nbsp;
+
         <button class="buscador_amazon_boton" type="submit">
           <i class="fas fa-search"></i>
         </button>
@@ -52,9 +55,9 @@
     {{with login}}
     <span>
       <a href="index.php?page=Checkout_Checkout" class="carrito-link">
-        <img src="{{~BASE_DIR}}/public/imgs/carretilla.png" alt="Carrito" class="icono-carrito">
+        <i class="fa-solid fa-cart-shopping"></i> 
         {{if ~CART_ITEMS}}
-        <i class="fa-solid fa-cart-shopping"></i> {{~CART_ITEMS}}
+        {{~CART_ITEMS}}
         {{endif ~CART_ITEMS}}
       </a>
     </span>

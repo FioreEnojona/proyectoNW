@@ -278,3 +278,69 @@ INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Products_INS', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Products_UPD', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
 INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) VALUES ('ADMIN', 'Products_DEL', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+
+--Historial
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Controllers\\Historial\\Historial', 'Historial de Actividades', 'ACT', 'CTR');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Menu_Historial', 'Menu_Historial', 'ACT', 'MNU');
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Controllers\\Historial\\Historial', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('AUDIT', 'Controllers\\Historial\\Historial', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Menu_Historial', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('AUDIT', 'Menu_Historial', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+--valores
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Controllers\\Sec\\Valores', 'Gestión de Valores del Sistema', 'ACT', 'CTR');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Menu_Valores', 'Menu_Valores', 'ACT', 'MNU');
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Controllers\\Sec\\Valores', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('AUDIT', 'Controllers\\Sec\\Valores', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Menu_Valores', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('AUDIT', 'Menu_Valores', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+--Funciones
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Controllers\\Mantenimiento\\Funciones', 'Mantenimiento de Funciones', 'ACT', 'CTR');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Controllers\\Mantenimiento\\Funcion', 'Mantenimiento de Funcion', 'ACT', 'CTR');
+
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Menu_Funciones', 'Menu_Funciones', 'ACT', 'MNU');
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Controllers\\Mantenimiento\\Funciones', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Controllers\\Mantenimiento\\Funcion', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Menu_Funciones', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Funciones_DSP', 'Ver Detalle Función', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Funciones_INS', 'Crear Función', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Funciones_UPD', 'Editar Función', 'ACT', 'PFL');
+INSERT INTO funciones (fncod, fndsc, fnest, fntyp) 
+VALUES ('Funciones_DEL', 'Eliminar Función', 'ACT', 'PFL');
+
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Funciones_DSP', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Funciones_INS', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Funciones_UPD', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));
+INSERT INTO funciones_roles (rolescod, fncod, fnrolest, fnexp) 
+VALUES ('ADMIN', 'Funciones_DEL', 'ACT', DATE_ADD(NOW(), INTERVAL 1 YEAR));

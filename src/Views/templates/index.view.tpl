@@ -75,7 +75,7 @@
         </div>
     </div>
 </section>
-
+<h1>Menu</h1>
 <form method="get" action="index.php?page=Index">
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
@@ -104,6 +104,7 @@
   </div>
   {{endfor products}}
 </div>
+
 <section>
     <div>
         <h2>Nuestras Exquisitas Creaciones</h2>

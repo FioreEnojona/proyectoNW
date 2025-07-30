@@ -5,7 +5,7 @@
 <section class="WWList my-4">
     <table>
         <thead>
-            <tr >
+            <tr>
                 <th>ID</th>
                 <th>Estado</th>
                 <th>DSC</th>
@@ -23,6 +23,10 @@
                 <td>
                     <a href="index.php?page=Seguridad-funcion&mode=DSP&fncod={{fncod}}">
                         Ver
+                    </a>
+                    &nbsp;
+                    <a href="index.php?page=Seguridad-funcion&mode=INS&fncod={{fncod}}">
+                        Crear
                     </a>
                     &nbsp;
 

@@ -97,7 +97,8 @@ button.secondary {
   color: var(--chocolate);
 }
 
-form input[type="email"] {
+form input[type="email"], input[type="text"],
+input[type="password"],input[type="search"] {
   padding: 0.9rem 1rem;
   border: 2px solid var(--rosado-pastel);
   border-radius: 0.8rem;
@@ -108,7 +109,8 @@ form input[type="email"] {
   box-shadow: inset 0 2px 4px rgba(212, 163, 115, 0.1);
 }
 
-form input[type="email"]:focus {
+form input[type="email"], input[type="text"],
+input[type="password"]:focus {
   outline: none;
   border-color: var(--rosado-fuerte);
   box-shadow: 0 0 0 3px rgba(255, 183, 197, 0.3);

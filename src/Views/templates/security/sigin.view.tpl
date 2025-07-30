@@ -26,6 +26,7 @@
         <div class="error col-12 py-2 col-m-8 offset-m-4">{{errorEmail}}</div>
         {{endif errorEmail}}
       </div>
+
       <div class="row">
         <label class="col-12 col-m-4 flex align-center" for="txtConfirmarEmail">Confirmar Correo Electrónico</label>
         <div class="col-12 col-m-8">
@@ -37,11 +38,6 @@
       </div>
 
 
-
-
-
-
-
       <div class="row">
         <label class="col-12 col-m-4 flex align-center" for="txtPswd">Contraseña</label>
         <div class="col-12 col-m-8">
@@ -50,6 +46,7 @@
         <div class="error col-12 py-2 col-m-8 offset-m-4">{{errorPswd}}</div>
         {{endif errorPswd}}
       </div>
+      
       <div class="row">
         <label class="col-12 col-m-4 flex align-center" for="txtConfirmarPswd">Confirmar Contraseña</label>
         <div class="col-12 col-m-8">

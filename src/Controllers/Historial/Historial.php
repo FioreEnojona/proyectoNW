@@ -3,11 +3,11 @@
 namespace Controllers\Historial;
 
 use Controllers\PrivateController;
-use Controllers\PublicController;
 use Views\Renderer;
 use Dao\Bitacora\Bitacora as BitacoraDao;
+use \Utilities\Site as Site;
 
-class Historial extends PublicController
+class Historial extends PrivateController
 {
     public function run(): void
     {
