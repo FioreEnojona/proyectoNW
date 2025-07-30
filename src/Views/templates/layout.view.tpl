@@ -7,8 +7,9 @@
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="{{BASE_DIR}}/public/css/appstyle.css" />
-    <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
+  <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
 
   <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
   {{foreach SiteLinks}}
@@ -43,7 +44,7 @@
     {{{page_content}}}
   </main>
   <footer>
-      <div class="footer-content">
+    <div class="footer-content">
       <a href="https://www.facebook.com/Jireth.da/" target="_blank" rel="noopener" class="footer-link">
         <i class="fab fa-facebook-square"></i> <span class="facebook-text">Facebook</span>
       </a>
@@ -60,8 +61,8 @@
         <i class="fas fa-map-marker-alt"></i> Santa Rosa de Copán, Honduras, América Central.
       </span>
     </div>
-    <div>Todo los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
-  </footer>
+    <div>Todos los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
+  </footer>
   {{foreach EndScripts}}
   <script src="{{~BASE_DIR}}/{{this}}"></script>
   {{endfor EndScripts}}
