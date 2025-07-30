@@ -172,10 +172,24 @@ class Cart extends \Dao\Table
         $productosDisponibles = self::obtenerRegistros($sqlAllProductosActivos, array("productId" => $productId));
         return $productosDisponibles;
     }
+
     public static function buscarPorNombre(string $nombre): array
     {
         $sql = "SELECT * FROM products WHERE productName LIKE :nombre AND productStatus = 'ACT'";
         $param = ["nombre" => "%$nombre%"];
         return self::obtenerRegistros($sql, $param);
+    }
+    public static function clearAuthCart(int $usercod)
+    {
+        $sql = "DELETE FROM carretilla WHERE usercod = :usercod";
+        return self::executeNonQuery($sql, ["usercod" => $usercod]);
+    }
+    public static function restarStock(int $productId, int $cantidad)
+    {
+        $sql = "UPDATE products SET productStock = productStock - :cantidad WHERE productId = :productId";
+        return self::executeNonQuery($sql, [
+            "cantidad" => $cantidad,
+            "productId" => $productId
+        ]);
     }
 }

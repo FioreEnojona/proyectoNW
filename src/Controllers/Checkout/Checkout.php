@@ -22,6 +22,13 @@ class Checkout extends PublicController
         );
 
         $carretilla = Cart::getAuthCart(Security::getUserId());
+        if (empty($carretilla)) {
+            \Utilities\Site::redirectToWithMsg(
+                "index.php?page=Index",
+                "⚠️ No tienes productos en tu carrito para pagar."
+            );
+            return;
+        }
         if ($this->isPostBack()) {
             $processPayment = true;
             if (isset($_POST["removeOne"]) || isset($_POST["addOne"])) {

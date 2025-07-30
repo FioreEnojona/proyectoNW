@@ -48,13 +48,14 @@
       </ul>
     </nav>
     {{with login}}
-    <span>{{if ~CART_ITEMS}}
+    <span>
       <a href="index.php?page=Checkout_Checkout" class="carrito-link">
         <img src="{{~BASE_DIR}}/public/imgs/carretilla.png" alt="Carrito" class="icono-carrito">
-        <i class="fa-solid fa-cart-shopping"></i>{{~CART_ITEMS}}
-
-        
-      </a>{{endif ~CART_ITEMS}}</span>
+        {{if ~CART_ITEMS}}
+        <i class="fa-solid fa-cart-shopping"></i> {{~CART_ITEMS}}
+        {{endif ~CART_ITEMS}}
+      </a>
+    </span>
     <span class="username">{{userName}} <a href="index.php?page=sec_logout"><i
           class="fas fa-sign-out-alt"></i></a></span>
     {{endwith login}}

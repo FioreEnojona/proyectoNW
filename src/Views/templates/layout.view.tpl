@@ -43,7 +43,15 @@
         {{endfor PUBLIC_NAVIGATION}}
       </ul>
     </nav>
-    <span>{{if ~CART_ITEMS}}<i class="fa-solid fa-cart-shopping"></i>{{~CART_ITEMS}}{{endif ~CART_ITEMS}}</span>
+<span>
+  <a href="index.php?page=Checkout_Checkout" class="carrito-link">
+    <img src="{{~BASE_DIR}}/public/imgs/carretilla.png" alt="Carrito" class="icono-carrito">
+    {{if ~CART_ITEMS}}
+      <i class="fa-solid fa-cart-shopping"></i> {{~CART_ITEMS}}
+    {{endif ~CART_ITEMS}}
+  </a>
+</span>
+      
   </header>
   <main>
   {{{page_content}}}

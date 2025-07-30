@@ -9,6 +9,11 @@
       "id": "Menu_SignUp",
       "nav_url": "index.php?page=Sec_Register",
       "nav_label":"<i class=\"fas fa-sign-in-alt\"></i>&nbsp;Crear Cuenta"
+    },
+    {
+      "id": "Menu_Valores",
+      "nav_url": "index.php?page=Sec_Valores",
+      "nav_label": "<i class=\"fas fa-users\"></i>&nbsp;Valores y Quiénes Somos"
     }
   ],
   "private": [
@@ -21,6 +26,11 @@
       "id":"Menu_Historial",
       "nav_url": "index.php?page=Historial_Historial",
       "nav_label": "Historial de Compra"
+    },
+    {
+      "id": "Menu_Valores",
+      "nav_url": "index.php?page=Sec_Valores",
+      "nav_label": "<i class=\"fas fa-users\"></i>&nbsp;Valores y Quiénes Somos"
     }
   ]
 }
