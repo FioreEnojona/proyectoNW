@@ -75,15 +75,13 @@
         </div>
     </div>
 </section>
-<<<<<<< HEAD
 
-<h1>Menú</h1>
 <form method="get" action="index.php?page=Index">
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
-        {{foreach categories}}
+        {{foreach categorias}}
         <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
-        {{endfor categories}}
+        {{endfor categorias}}
     </select>
 </form>
 
@@ -106,97 +104,6 @@
   </div>
   {{endfor products}}
 </div>
-<!-- Productos Destacados -->
-<section class="destacados">
-    <div class="container">
-        <h2 class="titulo-secundario text-center">Nuestras Exquisitas Creaciones</h2>
-        <p class="parrafo" style="margin: 0 auto 3rem;">Descubre nuestras
-            especialidades más solicitadas, cada una con una historia única de sabor y textura.</p>
-
-        <div class="grid-p">
-            <div class="producto-card">
-                <img src="/img/pastel-fresa.jpg" alt="Pastel de Fresa" class="img-producto w-100">
-                <div class="p-4">
-                    <h3 class="text-chocolate">Pastel de Fresa Clásico</h3>
-                    <p class="text-secondary">Nuestro emblemático pastel de fresa combina capas esponjosas de
-                        bizcocho
-                        vainilla con fresas frescas de cultivo local y crema batida casera. Un clásico
-                        reinventado que
-                        ha sido el favorito de nuestros clientes por más de 15 años. Perfecto para celebraciones
-                        íntimas
-                        o eventos grandes.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="precio text-dorado">$450 - $1,200</span>
-                        <a href="/productos/pastel-fresa" class="btn-detalles">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="producto-card">
-                <img src="/img/cupcakes.jpg" alt="Cupcakes Surtidos" class="img-producto w-100">
-                <div class="p-4">
-                    <h3 class="text-chocolate">Colección de Cupcakes Premium</h3>
-                    <p class="text-secondary">Una selección gourmet que incluye: chocolate belga con ganache,
-                        vainilla
-                        tahití con frosting de crema de mantequilla y frambuesa silvestre con corazón de coulis.
-                        Cada
-                        cupcake es una pequeña obra de arte, decorada a mano con ingredientes de primera
-                        calidad. Ideal
-                        para regalos corporativos o eventos especiales.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="precio text-dorado">$320 la docena</span>
-                        <a href="/productos/cupcakes" class="btn-detalles">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="producto-card">
-                <img src="/img/cheesecake.jpg" alt="Cheesecake de Frambuesa" class="img-producto w-100">
-                <div class="p-4">
-                    <h3 class="text-chocolate">Cheesecake de Frambuesa </h3>
-                    <p class="text-secondary">Nuestra versión del clásico cheesecake combina una base crujiente
-                        de
-                        galleta artesanal con un suave relleno de queso crema y un generoso coulis de frambuesa
-                        silvestre. Lo que lo hace único es nuestro toque secreto: un delicado aroma de vainilla
-                        de
-                        Madagascar y una pizca de cardamomo que realza todos los sabores.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="precio">$380 - $850</span>
-                        <a href="/productos/cheesecake" class="btn-detalles">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mt-5">
-            <a href="/productos" class="btn-todos">Ver Todos Nuestros Productos</a>
-        </div>
-=======
-<section>
-    <h1 id="produtos">Menú</h1>
-    <form method="get" action="index.php?page=Index">
-        <label for="categoriaId">Seleccione categoría:</label>
-        <select id="categoriaId" name="categoriaId" onchange="this.form.submit()">
-            <option value="0">Todas las Opciones</option>
-            {{foreach categories}}
-            <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
-            {{endfor categories}}
-        </select>
-    </form>
-    <div>
-        {{foreach allProducts}}
-        <article data-productId="{{productId}}">
-            <img src="{{productImgUrl}}" alt="{{productName}}">
-            <h2>{{productName}}</h2>
-            <p>{{productDescription}}</p>
-            <p>Precio: L. {{productPrice}}</p>
-            <button type="button">Agregar al Carrito</button>
-            <a href="index.php?page=Products-Detalle&productId={{productId}}">Ver Detalles</a>
-        </article>
-        {{endfor allProducts}}
->>>>>>> banditos
-    </div>
-</section>
 <section>
     <div>
         <h2>Nuestras Exquisitas Creaciones</h2>
@@ -307,11 +214,4 @@
 
         <p style="opacity: 0.7; font-size: 0.9rem;">Respetamos tu privacidad. Nunca compartiremos tu información.</p>
     </div>
-<<<<<<< HEAD
 </section>
-
-<!-- Pie de página -->
-
-=======
-</section>
->>>>>>> banditos

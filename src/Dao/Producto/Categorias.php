@@ -9,7 +9,7 @@ class Categorias extends Table
 
     public static function getCategorias()
     {
-        $sqlstr = "SELECT * from categorias;";
+        $sqlstr = "SELECT id as categoriaId, categoria as nombre, estado from categorias;";
         return self::obtenerRegistros($sqlstr, []);
     }
 

@@ -19,6 +19,7 @@ use Utilities\Cart\CartFns;
 use Utilities\Security;
 use Dao\Products\Products as ProductsDao;
 use Dao\Products\Categorias as CategoriasDao;
+use Views\Renderer;
 
 /**
  * Index Controller
@@ -41,26 +42,17 @@ class Index extends PublicController
         Site::addLink("public/css/products.css");
         Site::addLink("public/css/style.css");
 
+        // Obtener categorías
         $viewData = [];
-
+        $viewData["categories"] = CategoriasDao::getCategorias();
         $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
         $viewData["selected_categoriaId"] = $categoriaId;
 
+        // Obtener productos filtrados por categoría
         $productos = ProductsDao::getProducts("", "ACT", "productName", false, 0, 1000, $categoriaId);
-        $viewData["allProducts"] = $productos["products"];
+        $viewData["products"] = $productos["products"];
 
-        $resultadoCategorias = CategoriasDao::getCategorias();
-        $categorias = $resultadoCategorias["categorias"];
-
-        foreach ($categorias as $cat) {
-            $viewData["categories"][] = [
-                "categoriaId" => $cat["id"],
-                "nombre" => $cat["nombre"],
-                "selected_categoriaId" => ($cat["id"] == $categoriaId) ? "selected" : ""
-            ];
-        }
-
-
+        // Manejar POST (añadir al carrito)
         if ($this->isPostBack()) {
             if (Security::isLogged()) {
                 $usercod = Security::getUserId();
@@ -94,19 +86,13 @@ class Index extends PublicController
             $this->getCartCounter();
         }
 
+        // Búsqueda por nombre (si aplica)
         $nombre = $_GET["nombre"] ?? "";
         if (!empty($nombre)) {
-            $products = Cart::buscarPorNombre($nombre);
-        } else {
-            $products = Cart::getProductosDisponibles();
+            $viewData["products"] = Cart::buscarPorNombre($nombre);
         }
 
-
-
-
-        $viewData = [
-            "products" => $products,
-        ];
-        \Views\Renderer::render("index", $viewData);
+        // Renderizar vista con todos los datos
+        Renderer::render("index", $viewData);
     }
 }
