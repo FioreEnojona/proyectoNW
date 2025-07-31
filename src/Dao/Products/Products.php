@@ -8,10 +8,20 @@ class Products extends Table
 {
     public static function getFeaturedProducts()
     {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus FROM products p INNER JOIN highlights h ON p.productId = h.productId WHERE h.highlightStart <= NOW() AND h.highlightEnd >= NOW()";
+        $sqlstr = "SELECT 
+                p.productId, 
+                p.productName, 
+                p.productDescription, 
+                p.productPrice, 
+                p.productImgUrl, 
+                p.productStatus 
+              FROM products p 
+              INNER JOIN highlights h ON p.productId = h.productId 
+              WHERE p.productStatus = 'ACT'
+              AND h.highlightStart <= CURRENT_DATE() 
+              AND h.highlightEnd >= CURRENT_DATE()";
         $params = [];
-        $registros = self::obtenerRegistros($sqlstr, $params);
-        return $registros;
+        return self::obtenerRegistros($sqlstr, $params);
     }
 
     public static function getNewProducts()
@@ -24,11 +34,22 @@ class Products extends Table
 
     public static function getDailyDeals()
     {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, s.salePrice as productPrice, p.productImgUrl, p.productStatus FROM products p INNER JOIN sales s ON p.productId = s.productId WHERE s.saleStart <= NOW() AND s.saleEnd >= NOW()";
+        $sqlstr = "SELECT 
+                p.productId, 
+                p.productName, 
+                p.productDescription, 
+                s.salePrice as productPrice, 
+                p.productImgUrl, 
+                p.productStatus 
+              FROM products p 
+              INNER JOIN sales s ON p.productId = s.productId 
+              WHERE p.productStatus = 'ACT'
+              AND s.saleStart <= CURRENT_DATE() 
+              AND s.saleEnd >= CURRENT_DATE()";
         $params = [];
-        $registros = self::obtenerRegistros($sqlstr, $params);
-        return $registros;
+        return self::obtenerRegistros($sqlstr, $params);
     }
+
 
     public static function getProducts(
         string $partialName = "",
@@ -117,8 +138,8 @@ class Products extends Table
     }
 
     public static function getProductById(int $productId)
-{
-    $sqlstr = "SELECT 
+    {
+        $sqlstr = "SELECT 
                 p.productId, 
                 p.productName, 
                 p.productDescription, 
@@ -137,9 +158,9 @@ class Products extends Table
                FROM products p
                INNER JOIN categorias c ON p.categoriaId = c.id
                WHERE p.productId = :productId";
-    $params = ["productId" => $productId];
-    return self::obtenerUnRegistro($sqlstr, $params);
-}
+        $params = ["productId" => $productId];
+        return self::obtenerUnRegistro($sqlstr, $params);
+    }
 
 
     public static function insertProduct(

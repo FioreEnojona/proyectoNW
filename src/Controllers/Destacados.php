@@ -15,7 +15,6 @@ class Destacados extends PublicController
         Site::addLink("public/css/style.css");
         $viewData = [];
         $viewData["productsOnSale"] = ProductsDao::getDailyDeals();
-        $viewData["productsHighlighted"] = ProductsDao::getFeaturedProducts();
         $viewData["productsNew"] = ProductsDao::getNewProducts();
         Renderer::render("destacados", $viewData);
     }
