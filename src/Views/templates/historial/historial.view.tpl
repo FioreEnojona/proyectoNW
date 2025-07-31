@@ -1,7 +1,9 @@
-<h1>Historial de Compras</h1>
+
+<section class="depth-2 px-2 py-2">
+<h1>Historial de Compras</h1></section>
 <section class="WWList my-4">
     {{if bitacoras}}
-<table class="historial-table">
+<table>
     <thead>
         <tr>
             <th>Fecha</th>
