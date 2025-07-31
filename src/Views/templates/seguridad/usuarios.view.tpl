@@ -2,8 +2,8 @@
     <h2>Listado de Usuarios</h2>
 </section>
 </section>
-<section class="WWList my-4">
-    <table>
+<section class="table-container my-4">
+<table class="centered-table">
         <thead>
             <tr>
                 <th>ID</th>

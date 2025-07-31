@@ -14,11 +14,11 @@
 namespace Controllers;
 
 use Dao\Cart\Cart;
+use Dao\Products\Products as ProductsDao;
+use Dao\Products\Categorias as CategoriasDao;
 use Utilities\Site;
 use Utilities\Cart\CartFns;
 use Utilities\Security;
-use Dao\Products\Products as ProductsDao;
-use Dao\Products\Categorias as CategoriasDao;
 use Views\Renderer;
 
 /**
@@ -40,19 +40,8 @@ class Index extends PublicController
     public function run(): void
     {
         Site::addLink("public/css/products.css");
-        Site::addLink("public/css/style.css");
 
-        // Obtener categorías
-        $viewData = [];
-        $viewData["categories"] = CategoriasDao::getCategorias();
-        $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
-        $viewData["selected_categoriaId"] = $categoriaId;
-
-        // Obtener productos filtrados por categoría
-        $productos = ProductsDao::getProducts("", "ACT", "productName", false, 0, 1000, $categoriaId);
-        $viewData["products"] = $productos["products"];
-
-        // Manejar POST (añadir al carrito)
+        // Manejo de operaciones del carrito
         if ($this->isPostBack()) {
             if (Security::isLogged()) {
                 $usercod = Security::getUserId();
@@ -86,13 +75,35 @@ class Index extends PublicController
             $this->getCartCounter();
         }
 
-        // Búsqueda por nombre (si aplica)
+        // Obtener parámetros de filtrado
         $nombre = $_GET["nombre"] ?? "";
+        $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
+
+        // Obtener productos según filtros
         if (!empty($nombre)) {
-            $viewData["products"] = Cart::buscarPorNombre($nombre);
+            $products = Cart::buscarPorNombre($nombre);
+            $viewData["products"] = $products;
+        } else {
+            $productos = ProductsDao::getProducts("", "ACT", "productName", false, 0, 1000, $categoriaId);
+            $viewData["allProducts"] = $productos["products"];
         }
 
-        // Renderizar vista con todos los datos
+        // Obtener categorías para el filtro
+        $resultadoCategorias = CategoriasDao::getCategorias();
+        $categorias = $resultadoCategorias["categorias"];
+
+        foreach ($categorias as $cat) {
+            $viewData["categories"][] = [
+                "categoriaId" => $cat["id"],
+                "nombre" => $cat["nombre"],
+                "selected_categoriaId" => ($cat["id"] == $categoriaId) ? "selected" : ""
+            ];
+        }
+
+        // Datos adicionales para la vista
+        $viewData["selected_categoriaId"] = $categoriaId;
+        $viewData["searchTerm"] = $nombre;
+
         Renderer::render("index", $viewData);
     }
 }

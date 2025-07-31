@@ -60,6 +60,15 @@ class Funciones extends Table
         );
     }
 
+
+
+    public static function getFuncionesCount(): int
+    {
+        $sqlstr = "SELECT COUNT(*) as total FROM funciones;";
+        $result = self::obtenerUnRegistro($sqlstr, []);
+        return intval($result["total"]);
+    }
+
     public static function eliminarFunciones(string $fncod)
     {
         $sqlstr = "DELETE FROM funciones WHERE fncod = :fncod;";
