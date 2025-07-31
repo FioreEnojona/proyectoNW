@@ -7,7 +7,7 @@
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"   />
   <link rel="stylesheet" href="{{BASE_DIR}}/public/css/appstyle.css" />
   <link rel="stylesheet" href="{{BASE_DIR}}/public/css/style.css" />
   <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
@@ -35,7 +35,7 @@
       <div class="buscador_amazon_contenedor">
         <input class="buscador_amazon_input" type="search" name="nombre"
           placeholder="Buscar productos, marcas y más..." />
-              &nbsp;
+        &nbsp;
 
         <button class="buscador_amazon_boton" type="submit">
           <i class="fas fa-search"></i>
@@ -45,9 +45,10 @@
 
     <nav id="menu">
       <ul>
-        <li><a href="index.php?page={{PRIVATE_DEFAULT_CONTROLLER}}"class="nav-cta"><i class="fas fa-home"></i>&nbsp;Inicio</a></li>
+        <li><a href="index.php?page={{PRIVATE_DEFAULT_CONTROLLER}}" class="nav-cta"><i
+              class="fas fa-home"></i>&nbsp;Inicio</a></li>
         {{foreach NAVIGATION}}
-            <li><a href="{{nav_url}}"class="nav-ctb">{{nav_label}}</a></li>
+        <li><a href="{{nav_url}}" class="nav-ctb">{{nav_label}}</a></li>
         {{endfor NAVIGATION}}
         <li><a href="index.php?page=sec_logout" class="nav-cta"><i class="fas fa-sign-out-alt"></i>&nbsp;Salir</a></li>
       </ul>
@@ -55,21 +56,20 @@
     {{with login}}
     <span>
       <a href="index.php?page=Checkout_Checkout" class="carrito-link">
-        <i class="fa-solid fa-cart-shopping"></i> 
+        <i class="fa-solid fa-cart-shopping"></i>
         {{if ~CART_ITEMS}}
         {{~CART_ITEMS}}
         {{endif ~CART_ITEMS}}
       </a>
     </span>
-    <span class="username">{{userName}} <a href="index.php?page=sec_logout"><i
-          class="fas fa-sign-out-alt"></i></a></span>
+    <span class="username">{{userName}}<a href="index.php?page=sec_logout" class="nav-cta"><i class="fas fa-sign-out-alt"></i>&nbsp;Salir</a></span>
     {{endwith login}}
   </header>
   <main>
     {{{page_content}}}
   </main>
   <footer>
-     <div class="footer-content">
+    <div class="footer-content">
       <a href="https://www.facebook.com/Jireth.da/" target="_blank" rel="noopener" class="footer-link">
         <i class="fab fa-facebook-square"></i> <span class="facebook-text">Facebook</span>
       </a>
@@ -85,11 +85,14 @@
       <span class="footer-location">
         <i class="fas fa-map-marker-alt"></i> Santa Rosa de Copán, Honduras, América Central.
       </span>
+      <span class="footer-separator">|</span>
+      <br>
+    <p>Todos los Derechos Reservados &copy;</p>
     </div>
-    <div>Todo los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
   </footer>
   {{foreach EndScripts}}
   <script src="{{~BASE_DIR}}/{{this}}"></script>
   {{endfor EndScripts}}
 </body>
+
 </html>

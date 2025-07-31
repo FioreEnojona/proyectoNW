@@ -3,7 +3,7 @@
         <h1>Bienvenidos a <strong>Dulce Encanto</strong></h1>
         <p>Deliciosas creaciones artesanales que endulzan cada momento especial de tu vida. Desde 1995, llevamos alegría
             y sabor a tus celebraciones con recetas tradicionales y un toque de innovación.</p>
-        <a href="#produtos">Explorar Nuestro Catálogo</a>
+        
     </div>
 </section>
 
@@ -46,7 +46,7 @@
 
         <div>
             <article>
-                <img src="/img/icon-ingredientes.png" alt="Ingredientes Frescos y Naturales">
+                <img src="public/imgs/url/Blog-2.png" alt="Ingredientes Frescos y Naturales">
                 <h3>Ingredientes Frescos y Naturales</h3>
                 <p>Seleccionamos cuidadosamente los mejores ingredientes de proveedores locales comprometidos con la
                     calidad. Nuestras frutas son siempre de temporada, los huevos provienen de granjas libres de jaulas,
@@ -55,7 +55,7 @@
             </article>
 
             <article>
-                <img src="/img/icon-artesanal.png" alt="Recetas Artesanales">
+                <img src="public/imgs/url/tartas-y-pasteles.jpg" alt="Recetas Artesanales">
                 <h3>Tradición Artesanal</h3>
                 <p>Nuestras recetas son un legado familiar perfeccionado a lo largo de tres generaciones. Cada producto
                     es elaborado a mano con técnicas tradicionales combinadas con innovación moderna. Desde el amasado
@@ -65,7 +65,7 @@
             </article>
 
             <article>
-                <img src="/img/icon-corazon.png" alt="Hecho con Amor">
+                <img src="public/imgs/url/amor.jpg" alt="Hecho con Amor">
                 <h3>Pasión en Cada Detalle</h3>
                 <p>Más que un negocio, esto es nuestra pasión. Cada pastel, galleta o postre que creamos lleva una dosis
                     especial de amor y dedicación. Nos enorgullece ser parte de tus momentos especiales: bodas,
@@ -79,9 +79,9 @@
 <form method="get" action="index.php?page=Index">
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
-        {{foreach categorias}}
+        {{foreach categories}}
         <option value="{{categoriaId}}" {{selected_categoriaId}}>{{nombre}}</option>
-        {{endfor categorias}}
+        {{endfor categories}}
     </select>
 </form>
 
@@ -95,7 +95,7 @@
     <span class="stock">Disponible {{productStock}}</span>
     <form action="index.php?page=index" method="post">
         <input type="hidden" name="productId" value="{{productId}}">
-        <button type="submit" name="addToCart" class="add-to-cart">
+        <button type="submit" name="addToCart" class="btn-cart">
           <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
         </button>
          <a href="index.php?page=Products-Detalle&productId={{productId}}"class="btn-detail">Ver Detalle</a>
@@ -112,7 +112,7 @@
 
         <div>
             <article>
-                <img src="/img/pastel-fresa.jpg" alt="Pastel de Fresa">
+                <img src="public/imgs/url/fresa.jpg" alt="Pastel de Fresa">
                 <div>
                     <h3>Pastel de Fresa Clásico</h3>
                     <p>Nuestro emblemático pastel de fresa combina capas esponjosas de bizcocho vainilla con fresas
@@ -120,12 +120,12 @@
                         de nuestros clientes por más de 15 años. Perfecto para celebraciones íntimas o eventos grandes.
                     </p>
                     <p>Precio: $450 - $1,200</p>
-                    <a href="/productos/pastel-fresa">Ver detalles</a>
+                    
                 </div>
             </article>
 
             <article>
-                <img src="/img/cupcakes.jpg" alt="Cupcakes Surtidos">
+                <img src="public/imgs/url/colec.jpg" alt="Cupcakes Surtidos">
                 <div>
                     <h3>Colección de Cupcakes Premium</h3>
                     <p>Una selección gourmet que incluye: chocolate belga con ganache, vainilla tahití con frosting de
@@ -133,12 +133,12 @@
                         obra de arte, decorada a mano con ingredientes de primera calidad. Ideal para regalos
                         corporativos o eventos especiales.</p>
                     <p>Precio: $320 la docena</p>
-                    <a href="/productos/cupcakes">Ver detalles</a>
+                    
                 </div>
             </article>
 
             <article>
-                <img src="/img/cheesecake.jpg" alt="Cheesecake de Frambuesa">
+                <img src="public/imgs/url/images.jpg" alt="Cheesecake de Frambuesa">
                 <div>
                     <h3>Cheesecake de Frambuesa</h3>
                     <p>Nuestra versión del clásico cheesecake combina una base crujiente de galleta artesanal con un
@@ -146,13 +146,9 @@
                         es nuestro toque secreto: un delicado aroma de vainilla de Madagascar y una pizca de cardamomo
                         que realza todos los sabores.</p>
                     <p>Precio: $380 - $850</p>
-                    <a href="/productos/cheesecake">Ver detalles</a>
+                   
                 </div>
             </article>
-        </div>
-
-        <div>
-            <a href="index.php?page=Products_Products">Ver Todos Nuestros Productos</a>
         </div>
     </div>
 </section>

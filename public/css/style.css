@@ -15,6 +15,7 @@ body {
   font-size: 1rem;
   background-color: var(--vainilla);
   color: var(--chocolate);
+   padding: 2.5rem 0 0 0;
 }
 
 /* HEADER */
@@ -69,16 +70,15 @@ button {
 
 /* === ENLACES GENERALES CON ESTILO PASTEL === */
 a {
-  display: inline-block;
-  background: var(--gradient-dulce);
+  background-color: var(--frambuesa);
   color: white;
-  text-decoration: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 0.8rem;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  transition: background 0.3s ease, color 0.3s ease;
-}
+  padding: 0.8rem;
+  border: none;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 8px rgba(212, 163, 115, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;}
 
 a:hover {
   background: var(--gradient-pastel);

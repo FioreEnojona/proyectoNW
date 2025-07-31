@@ -78,9 +78,11 @@
       <span class="footer-location">
         <i class="fas fa-map-marker-alt"></i> Santa Rosa de Copán, Honduras, América Central.
       </span>
+      <span class="footer-separator">|</span>
+      <br>
+    <p>Todos los Derechos Reservados &copy;</p>
     </div>
-    <div>Todos los Derechos Reservados {{~CURRENT_YEAR}} &copy;</div>
-  </footer>
+  </footer>
   {{foreach EndScripts}}
   <script src="{{~BASE_DIR}}/{{this}}"></script>
   {{endfor EndScripts}}

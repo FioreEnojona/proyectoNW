@@ -24,9 +24,11 @@
 
   <div class="row my-4 align-center flex-end">
     <!-- Botón Añadir al Carrito -->
-    <form action="index.php?page=Cart_Add" method="POST" class="">
-      <input type="hidden" name="productId" value="{{productId}}">
-      <button class="primary col-12" type="submit">Añadir al Carrito</button>
+  <form action="index.php?page=index" method="post">
+        <input type="hidden" name="productId" value="{{productId}}">
+        <button type="submit" name="addToCart" class="btn-cart">
+          <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
+        </button>
     </form>
 
     <!-- Botón Regresar -->

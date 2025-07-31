@@ -40,13 +40,15 @@ section a {
   background: var(--gradient-dulce);
   color: white;
   text-decoration: none;
-  padding: 0.7rem 1.2rem;
+  padding: 0.8rem;
+  border: none;
   border-radius: 0.8rem;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background 0.3s ease;
   text-align: center;
   vertical-align: middle;
+
 }
 
 
