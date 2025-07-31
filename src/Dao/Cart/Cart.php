@@ -201,4 +201,9 @@ class Cart extends \Dao\Table
         ];
         return self::executeNonQuery($sql, $params);
     }
+    public static function getByCategoria(int $categoriaId)
+    {
+        $sql = "SELECT * FROM products WHERE categoriaId = :categoriaId AND productStatus = 'ACT'";
+        return self::obtenerRegistros($sql, ["categoriaId" => $categoriaId]);
+    }
 }

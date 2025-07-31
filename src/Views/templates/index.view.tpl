@@ -87,24 +87,23 @@
 </form>
 
 <div class="product-list" class="menuancla">
-    {{foreach allProducts}}
-    <div class="product" data-productId="{{productId}}">
-        <img src="{{productImgUrl}}" alt="{{productName}}">
-        <h2>{{productName}}</h2>
-        <p>{{productDescription}}</p>
-        <span class="price">{{productPrice}}</span>
-        <span class="stock">Disponible {{productStock}}</span>
-        <a href="index.php?page=Products-Detalle&productId={{productId}}" class="btn-detail">Ver Detalle</a>
-        <form action="index.php?page=index#menuancla" method="post">
-            <input type="hidden" name="productId" value="{{productId}}">
-            <button type="submit" name="addToCart" class="btn-cart">
-                <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
-            </button>
-        </form>
-    </div>
-    {{endfor allProducts}}
+  {{foreach products}}
+  <div class="product" data-productId="{{productId}}">
+    <img src="{{productImgUrl}}" alt="{{productName}}">
+    <h2>{{productName}}</h2>
+    <p>{{productDescription}}</p>
+    <span class="price">{{productPrice}}</span>
+    <span class="stock">Disponible {{productStock}}</span>
+    <a href="index.php?page=Products-Detalle&productId={{productId}}" class="btn-detail">Ver Detalle</a>
+    <form action="index.php?page=index#menuancla" method="post">
+        <input type="hidden" name="productId" value="{{productId}}">
+        <button type="submit" name="addToCart" class="add-to-cart">
+          <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
+        </button>
+    </form>
+  </div>
+  {{endfor products}}
 </div>
-
 <section>
     <div>
         <h2>Nuestras Exquisitas Creaciones</h2>

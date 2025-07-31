@@ -1,5 +1,6 @@
 -- Active: 1750217631131@@127.0.0.1@3306@nwbd1
 -- Active: 1750217631131@@127.0.0.1@3306@nwbd1
+
 CREATE TABLE
     `usuario` (
         `usercod` bigint(10) NOT NULL AUTO_INCREMENT,
