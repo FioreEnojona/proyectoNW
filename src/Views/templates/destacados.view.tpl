@@ -14,7 +14,7 @@
             <span class="sale-end">Oferta válida hasta: {{saleEnd}}</span>
         </div>
         <button class="add-to-cart">Agregar al Carrito</button>
-        <button class="view-details">Ver Detalles</button>
+        <a href="index.php?page=Products-Detalle&productId={{productId}}"class="btn-detail">Ver Detalle</a>
     </div>
     {{endfor productsOnSale}}
 </div>

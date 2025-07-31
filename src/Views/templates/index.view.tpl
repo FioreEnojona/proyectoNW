@@ -3,7 +3,7 @@
         <h1>Bienvenidos a <strong>Dulce Encanto</strong></h1>
         <p>Deliciosas creaciones artesanales que endulzan cada momento especial de tu vida. Desde 1995, llevamos alegría
             y sabor a tus celebraciones con recetas tradicionales y un toque de innovación.</p>
-        
+
     </div>
 </section>
 
@@ -76,8 +76,8 @@
     </div>
 </section>
 
-<h1>Menú</h1>
-<form method="get" action="index.php?page=Index">
+<h1 >Menú</h1>
+<form method="get" action="index.php?page=index#menuancla">
     <select name="categoriaId" onchange="this.form.submit()">
         <option value="0">Todas las Opciones</option>
         {{foreach categories}}
@@ -86,7 +86,7 @@
     </select>
 </form>
 
-<div class="product-list">
+<div class="product-list" class="menuancla">
     {{foreach allProducts}}
     <div class="product" data-productId="{{productId}}">
         <img src="{{productImgUrl}}" alt="{{productName}}">
@@ -94,13 +94,13 @@
         <p>{{productDescription}}</p>
         <span class="price">{{productPrice}}</span>
         <span class="stock">Disponible {{productStock}}</span>
-        <button class="add-to-cart">Agregar al Carrito</button>
-         <form action="index.php?page=index" method="post">
-        <input type="hidden" name="productId" value="{{productId}}">
-        <button type="submit" name="addToCart" class="btn-cart">
-          <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
-        </button>
-    </form>
+        <a href="index.php?page=Products-Detalle&productId={{productId}}" class="btn-detail">Ver Detalle</a>
+        <form action="index.php?page=index#menuancla" method="post">
+            <input type="hidden" name="productId" value="{{productId}}">
+            <button type="submit" name="addToCart" class="btn-cart">
+                <i class="fa-solid fa-cart-plus"></i>Agregar al Carrito
+            </button>
+        </form>
     </div>
     {{endfor allProducts}}
 </div>
@@ -120,7 +120,7 @@
                         de nuestros clientes por más de 15 años. Perfecto para celebraciones íntimas o eventos grandes.
                     </p>
                     <p>Precio: $450 - $1,200</p>
-                    
+
                 </div>
             </article>
 
@@ -133,7 +133,7 @@
                         obra de arte, decorada a mano con ingredientes de primera calidad. Ideal para regalos
                         corporativos o eventos especiales.</p>
                     <p>Precio: $320 la docena</p>
-                    
+
                 </div>
             </article>
 
@@ -146,7 +146,7 @@
                         es nuestro toque secreto: un delicado aroma de vainilla de Madagascar y una pizca de cardamomo
                         que realza todos los sabores.</p>
                     <p>Precio: $380 - $850</p>
-                   
+
                 </div>
             </article>
         </div>

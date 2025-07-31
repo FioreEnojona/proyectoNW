@@ -14,7 +14,8 @@ class Products extends Table
                 p.productDescription, 
                 p.productPrice, 
                 p.productImgUrl, 
-                p.productStatus 
+                p.productStatus,
+                p.productStock
               FROM products p 
               INNER JOIN highlights h ON p.productId = h.productId 
               WHERE p.productStatus = 'ACT'
@@ -26,10 +27,20 @@ class Products extends Table
 
     public static function getNewProducts()
     {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus FROM products p WHERE p.productStatus = 'ACT' ORDER BY p.productId DESC LIMIT 3";
+        $sqlstr = "SELECT 
+                p.productId, 
+                p.productName, 
+                p.productDescription, 
+                p.productPrice, 
+                p.productImgUrl, 
+                p.productStatus,
+                p.productStock
+                FROM products p 
+                WHERE p.productStatus = 'ACT' 
+                ORDER BY p.productId DESC 
+                LIMIT 3";
         $params = [];
-        $registros = self::obtenerRegistros($sqlstr, $params);
-        return $registros;
+        return self::obtenerRegistros($sqlstr, $params);
     }
 
     public static function getDailyDeals()
@@ -40,7 +51,8 @@ class Products extends Table
                 p.productDescription, 
                 s.salePrice as productPrice, 
                 p.productImgUrl, 
-                p.productStatus 
+                p.productStatus,
+                p.productStock
               FROM products p 
               INNER JOIN sales s ON p.productId = s.productId 
               WHERE p.productStatus = 'ACT'
@@ -49,7 +61,6 @@ class Products extends Table
         $params = [];
         return self::obtenerRegistros($sqlstr, $params);
     }
-
 
     public static function getProducts(
         string $partialName = "",
@@ -60,15 +71,22 @@ class Products extends Table
         int $itemsPerPage = 10,
         int $categoriaId = 0
     ) {
-        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productPrice, p.productImgUrl, p.productStatus,
-                          c.nombre as categoriaNombre,
-                          CASE 
-                              WHEN p.productStatus = 'ACT' THEN 'Activo' 
-                              WHEN p.productStatus = 'INA' THEN 'Inactivo' 
-                              ELSE 'Sin Asignar' 
-                          END as productStatusDsc 
-                   FROM products p
-                   INNER JOIN categorias c ON p.categoriaId = c.id";
+        $sqlstr = "SELECT 
+                 p.productId, 
+                 p.productName, 
+                 p.productDescription, 
+                 p.productPrice, 
+                 p.productImgUrl, 
+                 p.productStatus,
+                 p.productStock,
+                 c.nombre as categoriaNombre,
+                 CASE 
+                     WHEN p.productStatus = 'ACT' THEN 'Activo' 
+                     WHEN p.productStatus = 'INA' THEN 'Inactivo' 
+                     ELSE 'Sin Asignar' 
+                 END as productStatusDsc 
+              FROM products p
+              INNER JOIN categorias c ON p.categoriaId = c.id";
 
         $sqlstrCount = "SELECT COUNT(*) as count FROM products p INNER JOIN categorias c ON p.categoriaId = c.id";
 
@@ -146,6 +164,7 @@ class Products extends Table
                 p.productPrice, 
                 p.productImgUrl, 
                 p.productStatus,
+                p.productStock,
                 p.categoriaId,
                 p.productIngredients,
                 p.productFeatures,
@@ -162,26 +181,29 @@ class Products extends Table
         return self::obtenerUnRegistro($sqlstr, $params);
     }
 
-
     public static function insertProduct(
         string $productName,
         string $productDescription,
         float $productPrice,
         string $productImgUrl,
         string $productStatus,
-        string $categoriaId
+        string $categoriaId,
+        int $productStock = 0
     ): int {
         $sqlstr = "INSERT INTO products 
-                  (productName, productDescription, productPrice, productImgUrl, productStatus, categoriaId) 
+                  (productName, productDescription, productPrice, productImgUrl, 
+                   productStatus, categoriaId, productStock) 
                   VALUES 
-                  (:productName, :productDescription, :productPrice, :productImgUrl, :productStatus, :categoriaId)";
+                  (:productName, :productDescription, :productPrice, :productImgUrl, 
+                   :productStatus, :categoriaId, :productStock)";
         return self::executeNonQuery($sqlstr, [
             "productName" => $productName,
             "productDescription" => $productDescription,
             "productPrice" => $productPrice,
             "productImgUrl" => $productImgUrl,
             "productStatus" => $productStatus,
-            "categoriaId" => $categoriaId
+            "categoriaId" => $categoriaId,
+            "productStock" => $productStock
         ]);
     }
 
@@ -192,7 +214,8 @@ class Products extends Table
         float $productPrice,
         string $productImgUrl,
         string $productStatus,
-        string $categoriaId
+        string $categoriaId,
+        int $productStock
     ): int {
         $sqlstr = "UPDATE products SET 
                   productName = :productName,
@@ -200,7 +223,8 @@ class Products extends Table
                   productPrice = :productPrice,
                   productImgUrl = :productImgUrl,
                   productStatus = :productStatus,
-                  categoriaId = :categoriaId
+                  categoriaId = :categoriaId,
+                  productStock = :productStock
                   WHERE productId = :productId";
         return self::executeNonQuery($sqlstr, [
             "productId" => $productId,
@@ -209,7 +233,8 @@ class Products extends Table
             "productPrice" => $productPrice,
             "productImgUrl" => $productImgUrl,
             "productStatus" => $productStatus,
-            "categoriaId" => $categoriaId
+            "categoriaId" => $categoriaId,
+            "productStock" => $productStock
         ]);
     }
 

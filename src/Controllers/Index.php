@@ -13,6 +13,7 @@
 
 namespace Controllers;
 
+use COM;
 use Dao\Cart\Cart;
 use Dao\Products\Products as ProductsDao;
 use Dao\Products\Categorias as CategoriasDao;
@@ -77,16 +78,17 @@ class Index extends PublicController
 
         // Obtener parámetros de filtrado
         $nombre = $_GET["nombre"] ?? "";
-        $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
 
         // Obtener productos según filtros
         if (!empty($nombre)) {
             $products = Cart::buscarPorNombre($nombre);
-            $viewData["products"] = $products;
         } else {
-            $productos = ProductsDao::getProducts("", "ACT", "productName", false, 0, 1000, $categoriaId);
-            $viewData["allProducts"] = $productos["products"];
+            $products = Cart::getProductosDisponibles();
         }
+        $viewData = [
+            "products" => $products,
+        ];
+        $categoriaId = isset($_GET["categoriaId"]) ? intval($_GET["categoriaId"]) : 0;
 
         // Obtener categorías para el filtro
         $resultadoCategorias = CategoriasDao::getCategorias();

@@ -33,7 +33,6 @@
   <input type="hidden" name="page" value="Index" />
   <div class="buscador_amazon_contenedor">
     <input class="buscador_amazon_input" type="search" name="nombre" placeholder="Buscar productos, marcas y más..." />
-    &nbsp;
     <button class="buscador_amazon_boton" type="submit">
       <i class="fas fa-search"></i>
     </button>
