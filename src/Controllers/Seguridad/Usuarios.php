@@ -5,14 +5,14 @@ namespace Controllers\Seguridad;
 use Controllers\PrivateController;
 use Utilities\Context;
 use Utilities\Paging;
-use Dao\Seguridad\Usuarios as DaoUsuarios;
+use Dao\Seguridad\Usuarios as UsuariosDao;
 use Views\Renderer;
 
 class Usuarios extends PrivateController
 {
-    private $useremail = "";
-    private $username = "";
-    private $userest = "";
+    private $userEmail = "";
+    private $userName = "";
+    private $userStatus = "";
     private $orderBy = "";
     private $orderDescending = false;
     private $pageNumber = 1;
@@ -21,142 +21,122 @@ class Usuarios extends PrivateController
     private $usuarios = [];
     private $usuariosCount = 0;
     private $pages = 0;
-    private $canView = false;
-    private $canEdit = false;
-    private $canDelete = false;
-    private $canInsert = false;
+    private $user_DSP = false;
+    private $user_UPD = false;
+    private $user_DEL = false;
+    private $user_INS = false;
 
     public function run(): void
     {
         $this->getParamsFromContext();
         $this->getParams();
 
-        $this->usuarios = DaoUsuarios::getUsuarios();
-        $this->usuariosCount = count($this->usuarios);
-
-        $this->applyFilters();
-        $this->applySorting();
-        $this->applyPagination();
-
-        $this->prepareViewData();
-
-        Renderer::render("seguridad/usuarios", $this->viewData);
-    }
-
-    private function applyFilters(): void
-    {
-        $this->usuarios = array_filter($this->usuarios, function ($usuario) {
-            $matches = true;
-            if ($this->useremail !== "" && stripos($usuario['useremail'], $this->useremail) === false) {
-                $matches = false;
-            }
-            if ($this->username !== "" && stripos($usuario['username'], $this->username) === false) {
-                $matches = false;
-            }
-            if ($this->userest !== "" && $usuario['userest'] !== $this->userest) {
-                $matches = false;
-            }
-            return $matches;
-        });
-        $this->usuariosCount = count($this->usuarios);
-    }
-
-    private function applySorting(): void
-    {
-        if ($this->orderBy !== "") {
-            usort($this->usuarios, function ($a, $b) {
-                $cmp = strcmp($a[$this->orderBy], $b[$this->orderBy]);
-                return $this->orderDescending ? -$cmp : $cmp;
-            });
-        }
-    }
-
-    private function applyPagination(): void
-    {
-        // Aseguramos que itemsPerPage sea al menos 1
-        $this->itemsPerPage = max(1, $this->itemsPerPage);
-
+        $tmpUsuarios = UsuariosDao::getUsuarios(); // Aquí puedes luego implementar paginación si el DAO la soporta
+        $this->usuarios = $tmpUsuarios;
+        $this->usuariosCount = count($tmpUsuarios);
         $this->pages = $this->usuariosCount > 0 ? ceil($this->usuariosCount / $this->itemsPerPage) : 1;
 
-        // Validamos que pageNumber esté dentro del rango válido
-        $this->pageNumber = max(1, min($this->pages, $this->pageNumber));
+        if ($this->pageNumber > $this->pages) {
+            $this->pageNumber = $this->pages;
+        }
 
-        $offset = ($this->pageNumber - 1) * $this->itemsPerPage;
-        $this->usuarios = array_slice($this->usuarios, $offset, $this->itemsPerPage);
+        foreach ($this->usuarios as &$usuario) {
+            $usuario["userestDsc"] = match ($usuario["userest"]) {
+                "ACT" => "Activo",
+                "INA" => "Inactivo",
+                default => "Desconocido"
+            };
+        }
+
+        $this->setParamsToContext();
+        $this->setParamsToDataView();
+        Renderer::render("seguridad/usuarios", $this->viewData);
     }
 
     private function getParams(): void
     {
-        $this->useremail = $_GET["useremail"] ?? $this->useremail;
-        $this->username = $_GET["username"] ?? $this->username;
+        $this->userEmail = $_GET["userEmail"] ?? $this->userEmail;
+        $this->userName = $_GET["userName"] ?? $this->userName;
 
-        $this->userest = isset($_GET["userest"]) && in_array($_GET["userest"], ['ACT', 'INA', 'EMP']) ?
-            $_GET["userest"] : $this->userest;
-        if ($this->userest === "EMP") {
-            $this->userest = "";
-        }
+        $this->userStatus = isset($_GET["userStatus"]) && in_array($_GET["userStatus"], ["ACT", "INA", "EMP"]) ? $_GET["userStatus"] : $this->userStatus;
+        if ($this->userStatus === "EMP") $this->userStatus = "";
 
-        $this->orderBy = isset($_GET["orderBy"]) && in_array($_GET["orderBy"], ["useremail", "username", "userest", ""]) ?
-            $_GET["orderBy"] : $this->orderBy;
+        $this->orderBy = isset($_GET["orderBy"]) && in_array($_GET["orderBy"], ["usercod", "useremail", "username", "userest", "clear"]) ? $_GET["orderBy"] : $this->orderBy;
+        if ($this->orderBy === "clear") $this->orderBy = "";
 
-        $this->orderDescending = isset($_GET["orderDescending"]) ?
-            boolval($_GET["orderDescending"]) : $this->orderDescending;
-
-        $this->pageNumber = isset($_GET["pageNum"]) ? max(1, intval($_GET["pageNum"])) : $this->pageNumber;
-        $this->itemsPerPage = isset($_GET["itemsPerPage"]) ? max(1, intval($_GET["itemsPerPage"])) : $this->itemsPerPage;
+        $this->orderDescending = isset($_GET["orderDescending"]) ? boolval($_GET["orderDescending"]) : $this->orderDescending;
+        $this->pageNumber = isset($_GET["pageNum"]) ? intval($_GET["pageNum"]) : $this->pageNumber;
+        $this->itemsPerPage = isset($_GET["itemsPerPage"]) ? intval($_GET["itemsPerPage"]) : $this->itemsPerPage;
     }
 
     private function getParamsFromContext(): void
     {
-        $this->useremail = Context::getContextByKey("usuarios_useremail");
-        $this->username = Context::getContextByKey("usuarios_username");
-        $this->userest = Context::getContextByKey("usuarios_userest");
+        $this->userEmail = Context::getContextByKey("usuarios_userEmail");
+        $this->userName = Context::getContextByKey("usuarios_userName");
+        $this->userStatus = Context::getContextByKey("usuarios_userStatus");
         $this->orderBy = Context::getContextByKey("usuarios_orderBy");
         $this->orderDescending = boolval(Context::getContextByKey("usuarios_orderDescending"));
-        $this->pageNumber = max(1, intval(Context::getContextByKey("usuarios_page")));
-        $this->itemsPerPage = max(1, intval(Context::getContextByKey("usuarios_itemsPerPage")));
+        $this->pageNumber = intval(Context::getContextByKey("usuarios_page"));
+        $this->itemsPerPage = intval(Context::getContextByKey("usuarios_itemsPerPage"));
 
-        $this->canView = $this->isFeatureAutorized("Usuarios_DSP");
-        $this->canEdit = $this->isFeatureAutorized("Usuarios_UPD");
-        $this->canDelete = $this->isFeatureAutorized("Usuarios_DEL");
-        $this->canInsert = $this->isFeatureAutorized("Usuarios_INS");
+        if ($this->pageNumber < 1) $this->pageNumber = 1;
+        if ($this->itemsPerPage < 1) $this->itemsPerPage = 10;
+
+        $this->user_DSP = $this->isFeatureAutorized("Usuarios_DSP");
+        $this->user_UPD = $this->isFeatureAutorized("Usuarios_UPD");
+        $this->user_DEL = $this->isFeatureAutorized("Usuarios_DEL");
+        $this->user_INS = $this->isFeatureAutorized("Usuarios_INS");
     }
 
-    private function prepareViewData(): void
+    private function setParamsToContext(): void
     {
-        $this->viewData = [
-            "useremail" => $this->useremail,
-            "username" => $this->username,
-            "userest" => $this->userest,
-            "orderBy" => $this->orderBy,
-            "orderDescending" => $this->orderDescending,
-            "pageNum" => $this->pageNumber,
-            "itemsPerPage" => $this->itemsPerPage,
-            "usuariosCount" => $this->usuariosCount,
-            "pages" => $this->pages,
-            "usuarios" => $this->usuarios,
-            "canView" => $this->canView,
-            "canEdit" => $this->canEdit,
-            "canDelete" => $this->canDelete,
-            "canInsert" => $this->canInsert,
-            "userest_ACT" => $this->userest === "ACT" ? "selected" : "",
-            "userest_INA" => $this->userest === "INA" ? "selected" : "",
-            "userest_EMP" => $this->userest === "" ? "selected" : ""
-        ];
+        Context::setContext("usuarios_userEmail", $this->userEmail, true);
+        Context::setContext("usuarios_userName", $this->userName, true);
+        Context::setContext("usuarios_userStatus", $this->userStatus, true);
+        Context::setContext("usuarios_orderBy", $this->orderBy, true);
+        Context::setContext("usuarios_orderDescending", $this->orderDescending, true);
+        Context::setContext("usuarios_page", $this->pageNumber, true);
+        Context::setContext("usuarios_itemsPerPage", $this->itemsPerPage, true);
+    }
+
+    private function setParamsToDataView(): void
+    {
+        $this->viewData["userEmail"] = $this->userEmail;
+        $this->viewData["userName"] = $this->userName;
+        $this->viewData["userStatus"] = $this->userStatus;
+        $this->viewData["orderBy"] = $this->orderBy;
+        $this->viewData["orderDescending"] = $this->orderDescending;
+        $this->viewData["pageNum"] = $this->pageNumber;
+        $this->viewData["itemsPerPage"] = $this->itemsPerPage;
+        $this->viewData["usuariosCount"] = $this->usuariosCount;
+        $this->viewData["pages"] = $this->pages;
+        $this->viewData["usuarios"] = $this->usuarios;
+
+        $this->viewData["user_DSP"] = $this->user_DSP;
+        $this->viewData["user_UPD"] = $this->user_UPD;
+        $this->viewData["user_DEL"] = $this->user_DEL;
+        $this->viewData["user_INS"] = $this->user_INS;
 
         if ($this->orderBy !== "") {
-            $this->viewData["orderBy_" . $this->orderBy] = true;
+            $orderByKey = "Order" . ucfirst($this->orderBy);
+            $orderByKeyNoOrder = "OrderBy" . ucfirst($this->orderBy);
+            $this->viewData[$orderByKeyNoOrder] = true;
             if ($this->orderDescending) {
-                $this->viewData["orderDesc"] = true;
+                $orderByKey .= "Desc";
             }
+            $this->viewData[$orderByKey] = true;
         }
 
-        $this->viewData["pagination"] = Paging::getPagination(
+        $statusKey = "userStatus_" . ($this->userStatus === "" ? "EMP" : $this->userStatus);
+        $this->viewData[$statusKey] = "selected";
+
+        $pagination = Paging::getPagination(
             $this->usuariosCount,
             $this->itemsPerPage,
             $this->pageNumber,
             "index.php?page=Seguridad_Usuarios",
             "Seguridad_Usuarios"
         );
+        $this->viewData["pagination"] = $pagination;
     }
 }
