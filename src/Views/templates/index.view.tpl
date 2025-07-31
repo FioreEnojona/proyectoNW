@@ -86,7 +86,7 @@
     </select>
 </form>
 
-<div class="product-list" class="menuancla">
+<div class="product-list" id="menuancla">
   {{foreach products}}
   <div class="product" data-productId="{{productId}}">
     <img src="{{productImgUrl}}" alt="{{productName}}">
